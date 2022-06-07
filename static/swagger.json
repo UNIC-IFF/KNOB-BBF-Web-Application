@@ -1,0 +1,180 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Institute For the Future",
+    "version": "1.0.0",
+    "title": "Action Panel for BBF",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Control",
+      "description": "API for Control panel"
+    }
+  ],
+  "paths": {
+    "/request/status": {
+      "get": {
+        "tags": [
+          "Control"
+        ],
+        "summary": "Returns Nodes that are active for the current network",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+    },
+    
+      "/request/start": {
+      "post": {
+        "tags": [
+          "Control"
+        ],
+        "summary": "Create a new Control system",
+        "requestBody": {
+          "description": "Control Post Object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Array"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/request/configure": {
+      "put": {
+        "summary": "Control by ID",
+        "tags": [
+          "Control"
+        ],
+        "requestBody": {
+          "description": "Configure the network (10 nodes)",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Array"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/request/stop": {
+      "delete": {
+        "summary": "Stop the network and nodes",
+        "tags": [
+          "Control"
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Book Request not found."
+          }
+        }
+      }
+    },
+  
+  "/request/mon": {
+    "get": {
+      "tags": [
+        "Monitoring"
+      ],
+      "summary": "Returns Monitoring logs for configure action",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    },
+    "post": {
+      "tags": [
+        "Monitoring"
+      ],
+      "summary": "Returns Monitoring logs for start action",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+
+  }
+},
+  "components": {
+    "schemas": {
+      "id": {
+        "properties": {
+          "uuid": {
+            "type": "string"
+          }
+        }
+      },
+      
+      "Array": {
+        "type": "array",
+        "items": {
+          "type": "string"
+          }
+        }
+      }
+    
+  }
+}

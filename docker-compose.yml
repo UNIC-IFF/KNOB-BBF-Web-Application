@@ -1,0 +1,12 @@
+version: '3'
+services:
+  bbf-apis:
+    build: .
+    container_name: bbf-gui-apis
+    environment:
+    - TEST=IFF
+    ports:
+      - 5000:5000
+    volumes:
+      - ".:/usr/src/app"
+    restart: unless-stopped

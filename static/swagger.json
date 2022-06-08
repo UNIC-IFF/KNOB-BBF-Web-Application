@@ -21,12 +21,22 @@
     }
   ],
   "paths": {
-    "/request/status": {
+    "/request/{network}/status": {
       "get": {
         "tags": [
           "Control"
         ],
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
         "summary": "Returns Nodes that are active for the current network",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -38,28 +48,26 @@
       }
     },
     
-      "/request/start": {
+      "/request/{network}/start": {
       "post": {
         "tags": [
           "Control"
         ],
-        "summary": "Create a new Control system",
-        "requestBody": {
-          "description": "Control Post Object",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Array"
-              }
-            }
-          }
-        },
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        "summary": "Start new network",
+        
         "produces": [
           "application/json"
         ],
         "responses": {
           "201": {
-            "description": "OK",
+            "description": "OK Started",
             "schema": {
               "$ref": "#/components/schemas/Array"
             }
@@ -70,29 +78,26 @@
         }
       }
     },
-    "/request/configure": {
+    "/request/{network}/configure": {
       "put": {
-        "summary": "Control by ID",
+        "summary": "Configure 10 nodes",
         "tags": [
           "Control"
         ],
-        "requestBody": {
-          "description": "Configure the network (10 nodes)",
+         "parameters":[{
+          "in": "path",
+          "name":"network",         
           "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Array"
-              }
-            }
-          }
-        },
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        
         "produces": [
-          "application/json"
+          "string"
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "OK Configured",
             "schema": {
               "$ref": "#/components/schemas/Array"
             }
@@ -103,15 +108,59 @@
         }
       }
     },
-    "/request/stop": {
+    "/request/{network}/stop": {
       "delete": {
         "summary": "Stop the network and nodes",
         "tags": [
           "Control"
         ],
+        
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "204": {
-            "description": "OK",
+            "description": "OK Stoped",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Book Request not found."
+          }
+        }
+      }
+    },
+    "/request/{network}/clean": {
+      "delete": {
+        "summary": "Clean the network and nodes",
+        "tags": [
+          "Control"
+        ],
+        
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "OK Cleaned",
             "schema": {
               "$ref": "#/components/schemas/Array"
             }
@@ -126,11 +175,18 @@
       }
     },
   
-  "/request/mon": {
+  "/request/{network}/mon": {
     "get": {
       "tags": [
         "Monitoring"
       ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+         "description": "Choose the prefered Blockchain Network",
+         "schema":{"$ref":"#/components/schemas/network"}  
+      }],
       "summary": "Returns Monitoring logs for configure action",
       "responses": {
         "200": {
@@ -145,6 +201,13 @@
       "tags": [
         "Monitoring"
       ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+         "description": "Choose the prefered Blockchain Network",
+         "schema":{"$ref":"#/components/schemas/network"}  
+      }],
       "summary": "Returns Monitoring logs for start action",
       "responses": {
         "200": {
@@ -154,20 +217,97 @@
           }
         }
       }
+    },
+    "delete": {
+      "summary": "Stop Monitoring",
+      "tags": [
+        "Monitoring"
+      ],
+      
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+         "description": "Choose the prefered Blockchain Network",
+         "schema":{"$ref":"#/components/schemas/network"}  
+      }],
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "204": {
+          "description": "OK stoped",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        },
+        "400": {
+          "description": "Failed. Misunderstood Request."
+        },
+        "404": {
+          "description": "Failed. Book Request not found."
+        }
+      }
     }
+  },
 
+"/request/{network}/traffic": {
+ 
+    "get": {
+      "tags": [
+        "Traffc Generator"
+      ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+         "description": "Choose the prefered Blockchain Network",
+         "schema":{"$ref":"#/components/schemas/network"}  
+      }],
+      "summary": "Returns Traffic log",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+},
+
+"/request/{network}/node": {
+  "get": {
+    "tags": [
+      "Node Information"
+    ],
+    "parameters":[{
+      "in": "path",
+      "name":"network",         
+      "required": true,
+       "description": "Choose the prefered Blockchain Network",
+       "schema":{"$ref":"#/components/schemas/network"}  
+    }],
+    "summary": "Returns Node logs",
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "$ref": "#/components/schemas/Array"
+        }
+      }
+    }
   }
+}
 },
   "components": {
     "schemas": {
-      "id": {
-        "properties": {
-          "uuid": {
-            "type": "string"
-          }
-        }
+      "network": {
+        "type":"string",
+        "properties":{
+          "type":"string",
+          "format":"string"  }       
       },
-      
       "Array": {
         "type": "array",
         "items": {

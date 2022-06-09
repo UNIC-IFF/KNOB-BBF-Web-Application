@@ -61,9 +61,4 @@ if __name__ == '__main__':
 
     PORT = int(os.environ.get('PORT', 5000))
 
-    if ARGS.debug:
-        print("Running in debug mode")
-        CORS = CORS(APP)
-        APP.run(host='0.0.0.0', port=PORT, debug=True)
-    else:
-        APP.run(host='0.0.0.0', port=PORT, debug=False)
+    APP.run(host='0.0.0.0', port=PORT, debug=True)

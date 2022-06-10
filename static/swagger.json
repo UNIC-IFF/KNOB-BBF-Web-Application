@@ -16,11 +16,31 @@
   ],
   "tags": [
     {
-      "name": "Control",
+      "name": "APIs",
       "description": "API for Control panel"
     }
   ],
   "paths": {
+    "/request/running_networks": {
+      "get": {
+        "tags": [
+          "Running_Networks"
+        ],
+        "summary": "Returns the active networks",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+    },
+    
     "/request/{network}/status": {
       "get": {
         "tags": [
@@ -251,20 +271,44 @@
     }
   },
 
-"/request/{network}/traffic": {
- 
+  "/traffic/{network}/traffic": {
+  
+      "get": {
+        "tags": [
+          "Traffic"
+        ],
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+          "description": "Choose the prefered Blockchain Network",
+          "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        "summary": "Returns Traffic log",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+  },
+
+  "/traffic/{network}/node": {
     "get": {
       "tags": [
-        "Traffc Generator"
+        "Traffic"
       ],
       "parameters":[{
         "in": "path",
         "name":"network",         
         "required": true,
-         "description": "Choose the prefered Blockchain Network",
-         "schema":{"$ref":"#/components/schemas/network"}  
+        "description": "Choose the prefered Blockchain Network",
+        "schema":{"$ref":"#/components/schemas/network"}  
       }],
-      "summary": "Returns Traffic log",
+      "summary": "Returns Node logs",
       "responses": {
         "200": {
           "description": "OK",
@@ -274,31 +318,89 @@
         }
       }
     }
-},
-
-"/request/{network}/node": {
-  "get": {
-    "tags": [
-      "Node Information"
+  },
+  "/traffic/{network}/acc/{public_key}": {
+    "post": {
+      "tags": [
+        "Traffic"
+      ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+        "description": "Choose the prefered Blockchain Network",
+        "schema":{"$ref":"#/components/schemas/network"}  
+      },
+      {
+        "in": "path",
+        "name":"public_key",         
+        "required": true,
+        "description": "Choose the prefered public key",
+        "schema":{"$ref":"#/components/schemas/public_key"}  
+      }
     ],
-    "parameters":[{
-      "in": "path",
-      "name":"network",         
-      "required": true,
-       "description": "Choose the prefered Blockchain Network",
-       "schema":{"$ref":"#/components/schemas/network"}  
-    }],
-    "summary": "Returns Node logs",
-    "responses": {
-      "200": {
-        "description": "OK",
-        "schema": {
-          "$ref": "#/components/schemas/Array"
+      "summary": "Returns Node logs",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
         }
       }
     }
-  }
-}
+  },
+
+  "/request/list": {
+    "get": {
+      "tags": [
+        "Print Available Blockchain Networks"
+      ],
+      "summary": "Returns all the available networks",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
+
+  "/docker/managment/stats": {
+    "get": {
+      "tags": [
+        "Return current docker stats"
+      ],
+      "summary": "Returns all the available networks",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
+
+  "/docker/managment/list": {
+    "get": {
+      "tags": [
+        "Return current docker stats"
+      ],
+      "summary": "Returns all the available networks",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/list_of_nodes"
+          }
+        }
+      }
+    }
+  } 
 },
   "components": {
     "schemas": {
@@ -308,6 +410,45 @@
           "type":"string",
           "format":"string"  }       
       },
+      "public_key": {
+        "type":"string",
+        "properties":{
+          "type":"string",
+          "format":"string"  }       
+      },
+      "node": {
+        "type": "object",
+        "properties": {
+          "Container_name": {
+            "type": "string",
+            "format": "string"
+          },
+          "Container_ID": {
+            "type": "string",
+            "format": "string"
+          },
+          "Container_status": {
+            "type": "string",
+            "format": "string"
+          },
+          "Container_image": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      },
+      "list_of_nodes": {
+        "type": "object",
+        "properties": {
+          "bookRequest": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/node"
+            }
+          }
+        }
+      },
+      
       "Array": {
         "type": "array",
         "items": {

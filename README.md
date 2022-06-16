@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/UNIC-IFF/BBF-FLASK-API/blob/main/bbf-gui-logo.png" /></p>
+<p align="center"><img src="https://github.com/UNIC-IFF/BBF-FLASK-API/blob/main/figs/bbf_api_logo.png" /></p>
 
 
 # Overview

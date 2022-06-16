@@ -78,18 +78,18 @@ def get_status(network):
         s.append(st[i])
     return json.dumps(s)
 
-@GETH_API.route('/request/<string:network>/start', methods=['POST'])
-def post_start(network):
+@GETH_API.route('/request/<string:network>/start/<int:NUM_OF_NODES>', methods=['POST'])
+def post_start(network, NUM_OF_NODES):
     """Return all book requests
     @return: 200: an array of all Start logs as a \
     flask/response object with application/json mimetype.
     """
-    
+    NUM_OF_NODES= abs(NUM_OF_NODES)
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
          abort(404)
-    print('Start 5 Nodes') #later we will let the user from the interface to choose this number 
-    return json.dumps(control_command(network,'start -n 5'))
+    print(f'Start {NUM_OF_NODES} Nodes') #later we will let the user from the interface to choose this number 
+    return json.dumps(control_command(network,f'start -n {NUM_OF_NODES}'))
 
 
 @GETH_API.route('/request/<string:network>/clean', methods=['DELETE'])
@@ -104,17 +104,18 @@ def clean(network):
     print('CLEAN') #later we will let the user from the interface to choose this number 
     return json.dumps(control_command(network,'clean'))
 
-@GETH_API.route('/request/<string:network>/configure', methods=['PUT'])
-def put_configure(network):
+@GETH_API.route('/request/<string:network>/configure/<int:NUM_OF_NODES>', methods=['PUT'])
+def put_configure(network, NUM_OF_NODES):
     """Return all book requests
     @return: 200: an array of all Configure logs as a \
     flask/response object with application/json mimetype.
     """
+    NUM_OF_NODES= abs(NUM_OF_NODES)
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
          abort(404)
     print('Configure 5 Nodes') #later we will let the user from the interface to choose this number 
-    return json.dumps(control_command(network,'configure -n 5'))
+    return json.dumps(control_command(network,f'configure -n {NUM_OF_NODES}'))
 
 
 @GETH_API.route('/request/<string:network>/stop', methods=['DELETE'])

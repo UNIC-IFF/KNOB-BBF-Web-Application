@@ -11,4 +11,5 @@ flask-swagger-ui==3.20.9
 cdifflib==1.2.5
 configparser==5.2.0
 docker
+docker-compose
 

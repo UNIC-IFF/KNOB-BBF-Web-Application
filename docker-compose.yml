@@ -8,5 +8,7 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - ".:/usr/src/app"
+      - "./:/usr/src/app"
+      - "/home/george/Documents/blockchain-benchmarking-framework/:/usr/src/app/bbf"
     restart: unless-stopped
+ 

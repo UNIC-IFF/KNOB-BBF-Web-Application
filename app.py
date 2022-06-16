@@ -5,6 +5,10 @@ import os
 from flask import Flask, jsonify, make_response
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
+
+
+from requests import request
+
 from routes import request_api
 
 APP = Flask(__name__)
@@ -60,4 +64,4 @@ if __name__ == '__main__':
 
     PORT = int(os.environ.get('PORT', 5000))
 
-    APP.run(host='0.0.0.0', port=PORT, debug=True, extra_files=['./static/swagger.json'])
+    APP.run(host='0.0.0.0', port=PORT, debug=True, extra_files=['./static/swagger.json','/home/george/Documents/blockchain-benchmarking-framework/'])

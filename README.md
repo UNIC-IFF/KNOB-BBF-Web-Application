@@ -11,6 +11,11 @@ Change the conf.ini file with your own paths.
 The swagger URL is the: http://127.0.0.1:5000/swagger
 For each API type the prefered network. The list of the avialable networks can be seen by the "list" API.
 
+# Model Architecture
+
+<p align="center"><img src="https://github.com/UNIC-IFF/BBF-FLASK-API/blob/main/figs/architecture.png" /></p>
+
+
 ## Contributors
 - Marios Touloupos ( @mtouloup ) - UBRI Fellow Researcher / PhD Candidate, University of Nicosia - Institute for the Future ( UNIC -IFF)
 - George Michoulis ( @gmixoulis ) - Full Stack / Blockchain Developer, University of Nicosia - Institute for the Future ( UNIC -IFF)

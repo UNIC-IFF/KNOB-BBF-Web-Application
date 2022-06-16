@@ -68,7 +68,7 @@
       }
     },
     
-      "/request/{network}/start": {
+      "/request/{network}/start/{NUM_OF_NODES}": {
       "post": {
         "tags": [
           "Control"
@@ -79,7 +79,14 @@
           "required": true,
            "description": "Choose the prefered Blockchain Network",
            "schema":{"$ref":"#/components/schemas/network"}  
-        }],
+        },{
+        "in": "path",
+          "name":"NUM_OF_NODES",         
+          "required": true,
+           "description": "Choose the prefered number of nodes to be started",
+           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        }
+      ],
         "summary": "Start new network",
         
         "produces": [
@@ -98,7 +105,7 @@
         }
       }
     },
-    "/request/{network}/configure": {
+    "/request/{network}/configure/{NUM_OF_NODES}": {
       "put": {
         "summary": "Configure 10 nodes",
         "tags": [
@@ -110,7 +117,15 @@
           "required": true,
            "description": "Choose the prefered Blockchain Network",
            "schema":{"$ref":"#/components/schemas/network"}  
-        }],
+        },
+        {
+          "in": "path",
+          "name":"NUM_OF_NODES",         
+          "required": true,
+           "description": "Choose the prefered number of nodes to be configured",
+           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        }
+      ],
         
         "produces": [
           "string"
@@ -454,7 +469,13 @@
         "items": {
           "type": "string"
           }
-        }
+        },
+        "NUM_OF_NODES": {
+          "type": "integer",
+          "items": {
+            "type": "string"
+            }
+          }
       }
     
   }

@@ -21,7 +21,7 @@
     }
   ],
   "paths": {
-    "/request/running_networks": {
+    "/docker/managment/running_networks": {
       "get": {
         "tags": [
           "Running_Networks"
@@ -286,7 +286,7 @@
     }
   },
 
-  "/traffic/{network}/traffic": {
+  "/traffic/{network}/traffic/{num_of_nodes}/{num_of_txs}": {
   
       "get": {
         "tags": [
@@ -298,6 +298,20 @@
           "required": true,
           "description": "Choose the prefered Blockchain Network",
           "schema":{"$ref":"#/components/schemas/network"}  
+        },
+        {
+          "in": "path",
+          "name":"num_of_nodes",         
+          "required": true,
+          "description": "Choose the prefered Blockchain Network",
+          "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        },
+        {
+          "in": "path",
+          "name":"num_of_txs",         
+          "required": true,
+          "description": "Choose the prefered Blockchain Network",
+          "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
         }],
         "summary": "Returns Traffic log",
         "responses": {
@@ -455,7 +469,7 @@
       "list_of_nodes": {
         "type": "object",
         "properties": {
-          "bookRequest": {
+          "node": {
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/node"
@@ -463,7 +477,42 @@
           }
         }
       },
-      
+      "container": {
+        "type": "object",
+        "properties": {
+          "Container_name": {
+            "type": "string",
+            "format": "string"
+          },
+          "Network_Stats": {
+            "type": "string",
+            "format": "string"
+          },
+          "memory_usage_percentage": {
+            "type": "number",
+            "format": "number"
+          },
+          "CPU_ucsage_percent": {
+            "type": "number",
+            "format": "number"
+          },
+          "Uptime": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      },
+      "list_of_containers": {
+        "type": "object",
+        "properties": {
+          "node": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/container"
+            }
+          }
+        }
+      },
       "Array": {
         "type": "array",
         "items": {

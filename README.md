@@ -15,6 +15,15 @@ For each API type the prefered network. The list of the avialable networks can b
 
 <p align="center"><img src="https://github.com/UNIC-IFF/BBF-FLASK-API/blob/main/figs/architecture.png" /></p>
 
+# Files description
+- app.py: the main file that operates the flask api and combines all the components
+- conf.ini: enviroment viariables for the FLASK API (undockerized)
+- defaults.env: enviroment viariables for the Docker/FLASK API (dockerized) 
+- docker-compose: The docker-compose file that enables docker-compose command and builds the docker filer
+- static/swagger.json: Swagger is a set of open-source tools built around the OpenAPI Specification that can help design, build, document and consume REST APIs. swagger.json file is required to parameterize the apis and return the outputs.
+- static/request_api.py: Is responsible for the controller (./control.sh) of the BBF. It executes the basic commands
+- static/docker_api.py: Contains docker related apis (e.g., uptime, network, memory usage etc)
+- static/traffic_monitor_apis.py: Contains traffic and node related APIs. It can create traffic, return node's information and account information.
 
 ## Contributors
 - Marios Touloupos ( @mtouloup ) - UBRI Fellow Researcher / PhD Candidate, University of Nicosia - Institute for the Future ( UNIC -IFF)

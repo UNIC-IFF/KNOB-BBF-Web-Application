@@ -9,6 +9,6 @@ services:
       - 5000:5000
     volumes:
       - "./:/usr/src/app"
-      - "/home/george/Documents/blockchain-benchmarking-framework/:/usr/src/app/bbf"
+      - "${INIT_PATH}/:/usr/src/app/bbf"
     restart: unless-stopped
  

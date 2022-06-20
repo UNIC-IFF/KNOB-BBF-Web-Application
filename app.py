@@ -5,11 +5,7 @@ import os
 from flask import Flask, jsonify, make_response
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
-
-
-from requests import request
-
-from routes import request_api
+from routes import request_api, traffic_monitor_apis, docker_api
 
 APP = Flask(__name__)
 
@@ -28,6 +24,8 @@ APP.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 
 
 APP.register_blueprint(request_api.get_blueprint())
+APP.register_blueprint(traffic_monitor_apis.get_blueprint())
+APP.register_blueprint(docker_api.get_blueprint())
 
 @APP.errorhandler(400)
 def handle_400_error(_error):

@@ -8,7 +8,10 @@ import datetime
 import pandas as pd
 NUM_OF_NODES=5
 BASE_PATH = Path(__file__).resolve().parent
-from  docker_stats import normalize
+
+
+
+
 
 config = configparser.ConfigParser()
 config.read('conf.ini')
@@ -21,6 +24,22 @@ BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
 Active_Networks=set()
 def remove_network(network):
     Active_Networks.remove(network)
+
+
+def normalize(dictionary): # transforms docker output to dict
+    for key, value in dictionary.items():
+        if isinstance(value, dict):
+            normalize(value)
+
+        item_dict = dict()
+        if isinstance(value, list):
+            for item in value:
+                if isinstance(item, dict) and "op" in item:
+                    item_dict.update({item.pop("op"): item})
+        if item_dict:
+            dictionary[key] = item_dict
+
+    return dictionary
 
 
 def get_blueprint():

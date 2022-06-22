@@ -218,7 +218,6 @@
       "parameters":[{
         "in": "path",
         "name":"network",         
-        "required": true,
          "description": "Choose the prefered Blockchain Network",
          "schema":{"$ref":"#/components/schemas/network"}  
       }],
@@ -239,7 +238,6 @@
       "parameters":[{
         "in": "path",
         "name":"network",         
-        "required": true,
          "description": "Choose the prefered Blockchain Network",
          "schema":{"$ref":"#/components/schemas/network"}  
       }],

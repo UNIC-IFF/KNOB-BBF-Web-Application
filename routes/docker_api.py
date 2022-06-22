@@ -6,13 +6,10 @@ import configparser
 from pathlib import Path
 import datetime
 import pandas as pd
+
+
 NUM_OF_NODES=5
 BASE_PATH = Path(__file__).resolve().parent
-
-
-
-
-
 config = configparser.ConfigParser()
 config.read('conf.ini')
 PATH= config['DEFAULT']['PATH'] #add your path to framework
@@ -100,6 +97,8 @@ def docker_stats():
 
    return json.dumps(container_Stats)
 
+
+
 @GETH_API.route('/docker/managment/list', methods=['GET'])
 #returns the container list information
 def docker_list():
@@ -109,3 +108,13 @@ def docker_list():
         container_dict.append({"Container_name": container.name,"Container_ID":container.short_id,"Container_status": container.status,"Container_image":re.search(r"\'(.*?)\'",str(container.image)).group(1) })
 
    return json.dumps(container_dict)
+
+def docker_logs():
+   import io
+
+   client = docker.from_env()
+   container_logs={}
+   for container in client.containers.list():
+    a =pd.DataFrame(container.logs(timestamps=False,tail=40).decode("utf8").splitlines(), index=None, columns=None)
+    container_logs[container.name]= a.to_html(header=False,index=False, table_id="table-logs", classes="table-striped table-dark table-responsive w-100 d-block d-md-table")
+   return  container_logs

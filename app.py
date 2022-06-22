@@ -1,14 +1,15 @@
 """A Python Flask REST API BoilerPlate (CRUD) Style"""
-
 import argparse
 import os
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify, make_response, render_template
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 from routes import request_api, traffic_monitor_apis, docker_api
 
-APP = Flask(__name__)
 
+APP = Flask(__name__)
+APP.app_context().push()
+CORS(APP)
 ### swagger specific ###
 SWAGGER_URL = '/swagger'
 API_URL = '/static/swagger.json'
@@ -19,6 +20,13 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
         'app_name': "Blockchain-Benchmarking-Framework-Flask-API"
     }
 )
+
+@APP.route("/logs", methods=["GET", "POST"])
+def home():
+    logs=docker_api.docker_logs()
+    return render_template('base.html', logs=logs)
+
+
 APP.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 ### end swagger specific ###
 
@@ -30,6 +38,7 @@ APP.register_blueprint(docker_api.get_blueprint())
 @APP.errorhandler(400)
 def handle_400_error(_error):
     """Return a http 400 error to client"""
+    
     return make_response(jsonify({'error': 'Misunderstood'}), 400)
 
 

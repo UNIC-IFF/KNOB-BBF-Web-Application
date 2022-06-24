@@ -3,13 +3,17 @@ import argparse
 import os
 from flask import Flask, jsonify, make_response, render_template
 from flask_cors import CORS
+from flask_babel import gettext
 from flask_swagger_ui import get_swaggerui_blueprint
 from routes import request_api, traffic_monitor_apis, docker_api
+from flask_babel import Babel
+
 
 
 APP = Flask(__name__)
 APP.app_context().push()
 CORS(APP)
+Babel(APP)
 ### swagger specific ###
 SWAGGER_URL = '/swagger'
 API_URL = '/static/swagger.json'
@@ -21,11 +25,29 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
     }
 )
 
-@APP.route("/logs", methods=["GET", "POST"])
+@APP.route("/home", methods=["GET", "POST"])
 def home():
-    logs=docker_api.docker_logs()
-    return render_template('base.html', logs=logs)
+    return render_template('home.html')
 
+@APP.route("/blog", methods=["GET", "POST"])
+def blog():
+    return render_template('blog.html')
+
+@APP.route("/token", methods=["GET", "POST"])
+def token():
+    return render_template('token.html')
+
+
+@APP.route("/ico", methods=["GET", "POST"])
+def ico():
+    return render_template('ico.html')
+
+
+@APP.route("/roadmap", methods=["GET", "POST"])
+def roadmap():
+    return render_template('roadmap.html')   
+
+    
 
 APP.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 ### end swagger specific ###

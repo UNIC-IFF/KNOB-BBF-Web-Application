@@ -90,7 +90,6 @@ def docker_stats():
       memory_utilization = round(memory_usage/limit * 100, 3)
      #--------------------------- UpTime ----------------------------------
       date= (pd.to_datetime(datetime.datetime.now(datetime.timezone.utc))-pd.to_datetime(i['read']))
-      
       container_Stats.append({"Container_name":i['name'], "Network_Stats":i['networks'], "memory_usage_percentage":memory_utilization, "CPU_ucsage_percent":percent, "Uptime":str(date)})
      else:
             continue
@@ -110,8 +109,6 @@ def docker_list():
    return json.dumps(container_dict)
 
 def docker_logs():
-   import io
-
    client = docker.from_env()
    container_logs={}
    for container in client.containers.list():

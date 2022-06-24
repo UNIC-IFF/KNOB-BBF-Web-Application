@@ -1,12 +1,11 @@
 """The Endpoints to manage the Geth Actions"""
-import json
 from routes.docker_api import get_running_networks, remove_network
 from flask import  abort, Blueprint
 from subprocess import Popen, PIPE
 import configparser
 from  difflib import get_close_matches as gcm
 from pathlib import Path
-
+import pandas as pd
 NUM_OF_NODES=5
 BASE_PATH = Path(__file__).resolve().parent
 
@@ -22,7 +21,7 @@ BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
 
 def control_command(network, command, sudo): #
   
-    cmd=f"cd {INIT_PATH} && ./control.sh {network} {command}"
+    cmd=f"echo && ./control.sh {network} {command}"
     if sudo == True:
         cmd=f"cd {INIT_PATH} && echo {PWD} | sudo -S ./control.sh {network} {command}"
     print(cmd)
@@ -31,10 +30,9 @@ def control_command(network, command, sudo): #
     print(stdout)
     if stderr:
         print(stderr)
-    stdout=stdout.decode('utf-8').replace("'", '"')
-    st= stdout.splitlines()
+    stdout=stdout.decode('utf-8').replace("'", '"').splitlines()
     get_running_networks()
-    return st
+    return stdout
 
 def get_blueprint():
     """Return the blueprint for the main app module"""
@@ -54,11 +52,11 @@ def get_status(network):
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
          abort(404)
-    st =control_command(network,'status', sudo=False)
+    st=control_command(network,'status', sudo=False)
     s=[]
     for i in range(4, len(st)-1):
         s.append(st[i])
-    return json.dumps(s)
+    return pd.DataFrame(s).to_json(orient='split',indent= 2, index=False)
 
 @GETH_API.route('/request/<string:network>/start/<int:NUM_OF_NODES>', methods=['POST'])
 def post_start(network, NUM_OF_NODES):
@@ -71,7 +69,7 @@ def post_start(network, NUM_OF_NODES):
     if network not in BLOCKCHAINS:
          abort(404)
     print(f'Start {NUM_OF_NODES} Nodes') #later we will let the user from the interface to choose this number 
-    return json.dumps(control_command(network,f'start -n {NUM_OF_NODES}', sudo=False))
+    return pd.DataFrame(control_command(network,f'start -n {NUM_OF_NODES}', sudo=False)).to_json(orient='split',indent= 2, index=False)
 
 
 @GETH_API.route('/request/<string:network>/clean', methods=['DELETE'])
@@ -84,7 +82,7 @@ def clean(network):
     if network not in BLOCKCHAINS:
          abort(404)
     print('CLEAN') #later we will let the user from the interface to choose this number 
-    return json.dumps(control_command(network,'clean', sudo=True))
+    return pd.DataFrame(control_command(network,'clean', sudo=True)).to_json(orient='split',indent= 2, index=False)
 
 @GETH_API.route('/request/<string:network>/configure/<int:NUM_OF_NODES>', methods=['PUT'])
 def put_configure(network, NUM_OF_NODES):
@@ -97,7 +95,22 @@ def put_configure(network, NUM_OF_NODES):
     if network not in BLOCKCHAINS:
          abort(404)
     print('Configure 5 Nodes') #later we will let the user from the interface to choose this number 
-    return json.dumps(control_command(network,f'configure -n {NUM_OF_NODES}', sudo=False))
+    return pd.DataFrame(control_command(network,f'configure -n {NUM_OF_NODES}', sudo=False)).to_json(orient='split',indent= 2, index=False)
+
+
+@GETH_API.route('/request/<string:network>/configure/<int:NUM_OF_NODES_BN>/<int:NUM_OF_NODES_VN>', methods=['PUT'])
+def put_configure_besu(network, NUM_OF_NODES_BN, NUM_OF_NODES_VN):
+    """Return all book requests
+    @return: 200: an array of all Configure logs as a \
+    flask/response object with application/json mimetype.
+    """
+    NUM_OF_NODES_BN= abs(NUM_OF_NODES_BN)
+    NUM_OF_NODES_VN=abs(NUM_OF_NODES_VN)
+    network=compile_network_name(network)
+    if network not in BLOCKCHAINS:
+         abort(404)
+    print('Configure 5 Nodes') #later we will let the user from the interface to choose this number 
+    return pd.DataFrame(control_command(network,f'configure -bn {NUM_OF_NODES_BN} -vn {NUM_OF_NODES_VN}', sudo=False)).to_json(orient='split',indent= 2, index=False)    
 
 
 @GETH_API.route('/request/<string:network>/stop', methods=['DELETE'])
@@ -109,7 +122,7 @@ def stop(network):
          abort(404)
     print('stop nodes') #later we will let the user from the interface to choose this number with configure
     remove_network(str(network))
-    return json.dumps(control_command(network,'stop', sudo=False))
+    return pd.DataFrame(control_command(network,'stop', sudo=False)).to_json(orient='split',indent= 2, index=False)
 
 
 @GETH_API.route('/request/list', methods=['GET'])
@@ -123,4 +136,4 @@ def show_list():
         print(stderr)
         abort(404)
     stdout=stdout.decode('utf-8').splitlines()     
-    return json.dumps(stdout) 
+    return pd.DataFrame(stdout).to_json(orient='split',indent= 2, index=False) 

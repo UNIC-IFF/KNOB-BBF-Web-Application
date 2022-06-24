@@ -130,3 +130,9 @@ dmypy.json
 
 #Visual Code
 .vscode
+
+
+node_modules
+dist
+build
+*.log

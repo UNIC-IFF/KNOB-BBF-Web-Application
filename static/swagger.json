@@ -143,6 +143,51 @@
         }
       }
     },
+    "/request/{network}/configure/{NUM_OF_NODES_BN}/{NUM_OF_NODES_VN}": {
+      "put": {
+        "summary": "Configure 10 nodes",
+        "tags": [
+          "Control"
+        ],
+         "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        },
+        {
+          "in": "path",
+          "name":"NUM_OF_NODES_BN",         
+          "required": true,
+           "description": "Choose the prefered number of BOOT nodes to be configured",
+           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        },
+        {
+          "in": "path",
+          "name":"NUM_OF_NODES_VN",         
+          "required": true,
+           "description": "Choose the prefered number of VALIDATOR nodes to be configured",
+           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        }
+      ],
+        
+        "produces": [
+          "string"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK Configured",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
     "/request/{network}/stop": {
       "delete": {
         "summary": "Stop the network and nodes",

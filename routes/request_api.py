@@ -1,4 +1,6 @@
 """The Endpoints to manage the Geth Actions"""
+from concurrent.futures import process
+import os
 from routes.docker_api import get_running_networks, remove_network
 from flask import  abort, Blueprint
 from subprocess import Popen, PIPE
@@ -6,6 +8,8 @@ import configparser
 from  difflib import get_close_matches as gcm
 from pathlib import Path
 import pandas as pd
+import multiprocessing
+
 NUM_OF_NODES=5
 BASE_PATH = Path(__file__).resolve().parent
 
@@ -19,20 +23,40 @@ GETH_API = Blueprint('traffic_api', __name__)
 BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
 
 
+def get_char(process):
+    character = process.stdout
+    print(
+        character,
+        end="",
+        flush=True,  # Unbuffered print
+    )
+    return character
+
+def search_for_output(strings, process):
+    buffer = ""
+    while not any(string in buffer for string in strings):
+        buffer = buffer + get_char(process)
+
 def control_command(network, command, sudo): #
-  
-    cmd=f"echo && ./control.sh {network} {command}"
+    f= os.open("blockchain-benchmarking-framework/bbf-commands", os.O_RDWR)
+
+    
+    cmd=f"echo blockchain-benchmarking-framework/control.sh xrpl status"
     if sudo == True:
         cmd=f"cd {INIT_PATH} && echo {PWD} | sudo -S ./control.sh {network} {command}"
-    print(cmd)
-    session = Popen([cmd],shell=True, stdout=PIPE, stderr=PIPE)
-    stdout, stderr = session.communicate()
-    print(stdout)
-    if stderr:
-        print(stderr)
-    stdout=stdout.decode('utf-8').replace("'", '"').splitlines()
-    get_running_networks()
-    return stdout
+    process = Popen([cmd],shell=True,stdin=PIPE, stdout=f, stderr=PIPE)
+    #ps_process = Popen([cmd], stdout=f)
+    grep_process = Popen(['cat blockchain-benchmarking-framework/bbf-commands'], shell= True,stdin=f, stdout=PIPE)
+    output = grep_process.communicate()[0]
+    
+    print(output)
+    #if stderr:
+    #    print(stderr)
+    #stdout=stdout.decode('utf-8').replace("'", '"').splitlines()
+    #get_running_networks
+    return "stdout"
+
+
 
 def get_blueprint():
     """Return the blueprint for the main app module"""

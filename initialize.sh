@@ -12,7 +12,8 @@ docker-compose up -d --build
 
 if [ -d "$WORKING_DIR/blockchain-benchmarking-framework" ] 
 then
-    echo "Directory $WORKING_DIR/blockchain-benchmarking-framework exists." 
+    echo "Directory $WORKING_DIR/blockchain-benchmarking-framework exists."
+    rm -r  $WORKING_DIR/blockchain-benchmarking-framework
 	echo "Requesting any updates..."
     if [ -z "$(ls -A $WORKING_DIR/blockchain-benchmarking-framework )" ]; then
         git clone "https://github.com/UNIC-IFF/blockchain-benchmarking-framework.git" 

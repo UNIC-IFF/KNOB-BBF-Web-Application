@@ -6,7 +6,7 @@ The Blockchain Benchmarking Framework will focus on the development of a user-fr
 
 # Instructions
 
-To execute the FLASK API you should type "flask run" under the main folder. 
+To execute the FLASK API you should execute with admin privileges the initialize.sh ( 'sudo ./initialize.sh' ) file under the main folder. 
 Change the conf.ini file with your own paths.
 The swagger URL is the: http://127.0.0.1:5000/swagger
 For each API type the prefered network. The list of the avialable networks can be seen by the "list" API.

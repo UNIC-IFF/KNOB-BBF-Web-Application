@@ -2,19 +2,9 @@ import json
 import re
 import docker
 from flask import   Blueprint
-import configparser
-from pathlib import Path
 import datetime
 import pandas as pd
 
-
-NUM_OF_NODES=5
-BASE_PATH = Path(__file__).resolve().parent
-config = configparser.ConfigParser()
-config.read('conf.ini')
-PATH= config['DEFAULT']['PATH'] #add your path to framework
-PWD= config['DEFAULT']['PWD']#sudo password 
-INIT_PATH= config['DEFAULT']['INIT_PATH']
 GETH_API = Blueprint('docker_api', __name__)
 BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
 

@@ -601,97 +601,126 @@ body {
 /* ==========================================================================
 5. ICO Page
 ========================================================================== */
+.ico-wrapper {
+    background: url(../img/bg/bg-token-top.png) no-repeat top center, url(../img/bg/bg-token-left.png) no-repeat top left, url(../img/bg/bg-token-bottom.png) no-repeat bottom right, #1c004c;
+}
+.ico-wrapper {
+    .ico-image img {
+        height: 220px;
+    }
 
-.ico-countdown {
-    //Countdown card
-    .ico-card {
-        width: 100%;
-
-        @include primary-gradient-right;
-
-        color: $white;
-        padding: 20px 40px;
-        border-radius: 6px;
-        animation-delay: .3s;
-
-        //Progress bar
-        .progress-block {
-            .progress-tags {
-                display: flex;
-                padding: 20px 30px;
-
-                div {
-                    position: relative;
-                    text-align: right;
-                    font-family: 'Cabin', sans-serif;
-                    font-size: .65rem;
-                    text-transform: uppercase;
-
-                    &:before {
-                        content: '';
-                        height: 26px;
-                        width: 1px;
-                        background: $smoke-white;
-                        position: absolute;
-                        top: 25px;
-                        right: 0px;
-                        transform: translateX(50%);
-                    }
-
-                    &:first-child, &:nth-child(2) {
-                        flex-grow: 2;
-                    }
-
-                    &:nth-child(3) {
-                        flex-grow: 1;
-                    }
-                }
-            }
-
-            //Color
-            progress {
-                &.ico-progress {
-                    &::-webkit-progress-value {
-                        @include secondary-gradient-right;
-                    }
-
-                    &::-moz-progress-bar {
-                        @include secondary-gradient-right;
-                    }
-
-                    &::-ms-fill {
-                        @include secondary-gradient-right;
-                    }
-                }
-            }
-        }
-
-        //Button
-        .button-block {
-            text-align: center;
-            margin: 20px 0 10px 0;
-            padding: 0 15%;
-        }
-
-        //Icons
-        .icon-block {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    .is-ico-details {
+        .details-title {
+            color: $white;
             padding: 5px 0;
+        }
 
-            i {
-                margin: 0 5px;
-                color: $smoke-white;
+        ul {
+            li::before {
+                content: "- ";
+                color: $light-blue;
+            }
+
+            li {
+                font-size: .85rem;
+                color: $light-blue;
             }
         }
     }
-}
 
-.login-form {
-    padding: 0 40px;
-}
+    .ico-repartition {
+        height: 380px;
+    }
+    .ico-countdown {
+        //Countdown card
+        .ico-card {
+            width: 100%;
 
+            @include primary-gradient-right;
+
+            color: $white;
+            padding: 20px 40px;
+            border-radius: 6px;
+            animation-delay: .3s;
+
+            //Progress bar
+            .progress-block {
+                .progress-tags {
+                    display: flex;
+                    padding: 20px 30px;
+
+                    div {
+                        position: relative;
+                        text-align: right;
+                        font-family: 'Cabin', sans-serif;
+                        font-size: .65rem;
+                        text-transform: uppercase;
+
+                        &:before {
+                            content: '';
+                            height: 26px;
+                            width: 1px;
+                            background: $smoke-white;
+                            position: absolute;
+                            top: 25px;
+                            right: 0px;
+                            transform: translateX(50%);
+                        }
+
+                        &:first-child, &:nth-child(2) {
+                            flex-grow: 2;
+                        }
+
+                        &:nth-child(3) {
+                            flex-grow: 1;
+                        }
+                    }
+                }
+
+                //Color
+                progress {
+                    &.ico-progress {
+                        &::-webkit-progress-value {
+                            @include secondary-gradient-right;
+                        }
+
+                        &::-moz-progress-bar {
+                            @include secondary-gradient-right;
+                        }
+
+                        &::-ms-fill {
+                            @include secondary-gradient-right;
+                        }
+                    }
+                }
+            }
+
+            //Button
+            .button-block {
+                text-align: center;
+                margin: 20px 0 10px 0;
+                padding: 0 15%;
+            }
+
+            //Icons
+            .icon-block {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px 0;
+
+                i {
+                    margin: 0 5px;
+                    color: $smoke-white;
+                }
+            }
+        }
+    }
+
+    .login-form {
+        padding: 0 40px;
+    }
+}
 /* ==========================================================================
 6. Roadmap page
 ========================================================================== */

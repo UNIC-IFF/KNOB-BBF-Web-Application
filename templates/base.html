@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 
-    <link rel="stylesheet" href="../static/css/app.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/dist/css/app.css">
+    <link rel="stylesheet" type="text/css" href="../static/dist/css/main.css">
 </head>
 
 <body>
@@ -35,7 +35,7 @@
                         <!-- Brand -->
                         <div class="navbar-brand">
                             <a href="index.html" class="navbar-item">
-                                <img class="rotating" src="../static/img/logo/krypton-gradient.svg" alt="">
+                                <img class="rotating" src="../static/dist/img/logo/krypton-gradient.svg" alt="">
                                 <span class="brand-name">Blockchain Benchmarking Framework</span>
                             </a>
                             <!-- Responsive toggle -->
@@ -64,29 +64,26 @@
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'home' %} active{% endif %} ">
                                     <a class="is-centered-responsive" href="{{ url_for('home') }}">{{ gettext("Home") }}</a>
                                 </div>
-                                <!-- Menu item -->
+                               <!--   
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'ico' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('ico') }}">{{ gettext("Ico") }}</a>
                                 </div>
-                                <!-- Menu item -->
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'roadmap' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('roadmap') }}">{{ gettext("Roadmap") }}</a>
                                 </div>
-                                <!-- Menu item -->
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'blog' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('blog') }}">{{ gettext("Blog") }}</a>
                                 </div>
-                                <!-- Menu item -->
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'token' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('token') }}">{{ gettext("Token") }}</a>
                                 </div>
-                                <!-- Sign up -->
                                 <div class="navbar-item is-nav-link">
                                     <a href="#" class="button k-button k-primary raised has-gradient slanted">
                                         <span class="text">Register</span>
                                         <span class="front-gradient"></span>
                                     </a>
                                 </div>
+                            -->
                             </div>
                         </div>
                     </div>
@@ -102,7 +99,7 @@
                         <!-- Brand -->
                         <div class="navbar-brand">
                             <a href="index.html" class="navbar-item">
-                                <img class="rotating" src="../static/img/logo/krypton.svg" alt="">
+                                <img class="rotating" src="../static/dist/img/logo/krypton.svg" alt="">
                                 <span class="brand-name">BBF</span>
                             </a>
                             <!-- Responsive toggle -->
@@ -131,36 +128,31 @@
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'home' %} active{% endif %} ">
                                     <a class="is-centered-responsive" href="{{ url_for('home') }}">{{ gettext("Home") }}</a>
                                 </div>
-                                <!-- Menu item -->
-                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'ico' %} active{% endif %}">
+                               <!-- <div class="navbar-item is-nav-link {%- if request.endpoint == 'ico' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('ico') }}">{{ gettext("Ico") }}</a>
                                 </div>
-                                <!-- Menu item -->
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'roadmap' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('roadmap') }}">{{ gettext("Roadmap") }}</a>
                                 </div>
-                                <!-- Menu item -->
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'blog' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('blog') }}">{{ gettext("Blog") }}</a>
                                 </div>
-                                <!-- Menu item -->
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'token' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('token') }}">{{ gettext("Token") }}</a>
                                 </div>
-                                <!-- Sign up -->
                                 <div class="navbar-item is-nav-link">
                                     <a href="#" class="button k-button k-primary raised has-gradient slanted">
                                         <span class="text">Register</span>
                                         <span class="front-gradient"></span>
                                     </a>
                                 </div>
-                                <!-- Sign up -->
                                 <div class="navbar-item">
                                     <a href="#" class="button k-button k-primary raised has-gradient slanted">
                                         <span class="text">Register</span>
                                         <span class="front-gradient"></span>
                                     </a>
                                 </div>
+                                -->
                             </div>
                         </div>
                     </div>
@@ -174,7 +166,7 @@
                     <!-- Logo -->
                     <div class="footer-logo">
                         <a href="#">
-                            <img class="rotating" src="../static/img/logo/krypton-gradient.svg" alt="">
+                            <img class="rotating" src="../static/dist/img/logo/krypton-gradient.svg" alt="">
                             <div class="brand-name">BBF</div>
                             <div class="brand-subtitle">Blockchain brought to another level</div>
                         </a>
@@ -238,14 +230,14 @@
                 </div>
                 
                 <!-- Absolute image -->
-                <img class="solar-system" src="../static/img/bg/solar.svg" alt="">
+                <img class="solar-system" src="../static/dist/img/bg/solar.svg" alt="">
             </footer>    <!-- Back To Top Button -->
             <div x-data="initBackToTop()" x-on:scroll.window="scroll($event)" @click="goTop($event)" id="backtotop"><a href="javascript:" :class="{
                 'visible': scrolled,
                 '': !scrolled
             }"></a></div>
             <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-            <script src="../static/js/bundle.js"></script>
+            <script src="../static/dist/js/bundle.js"></script>
         
         </body>
         

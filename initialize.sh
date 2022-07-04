@@ -13,7 +13,6 @@ docker-compose up -d --build
 if [ -d "$WORKING_DIR/blockchain-benchmarking-framework" ] 
 then
     echo "Directory $WORKING_DIR/blockchain-benchmarking-framework exists."
-    rm -r  $WORKING_DIR/blockchain-benchmarking-framework
 	echo "Requesting any updates..."
     if [ -z "$(ls -A $WORKING_DIR/blockchain-benchmarking-framework )" ]; then
         git clone "https://github.com/UNIC-IFF/blockchain-benchmarking-framework.git" 
@@ -32,6 +31,7 @@ echo "Creating pipe if not exist"
 pipe=bbf-commands
 
 
+
 if [[ ! -p "$WORKING_DIR/blockchain-benchmarking-framework/$pipe" ]]; then
     mkfifo $WORKING_DIR/blockchain-benchmarking-framework/$pipe
 	echo "Pipe created"
@@ -41,8 +41,8 @@ fi
 
 echo "Make the pipe listen forever in background..."
 while true; do 
-    eval "$(cat $WORKING_DIR/blockchain-benchmarking-framework/$pipe) &> $WORKING_DIR/output.txt;"; 
-done &
+    eval "$(cat $WORKING_DIR/blockchain-benchmarking-framework/$pipe) &> $WORKING_DIR/output.txt" ; 
+done 
 
 
 

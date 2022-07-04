@@ -28,6 +28,9 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
 @APP.route("/home", methods=["GET", "POST"])
 def home():
     return render_template('home.html')
+@APP.route("/home1", methods=["GET", "POST"])
+def home1():
+    return render_template('home1.html')
 
 @APP.route("/blog", methods=["GET", "POST"])
 def blog():
@@ -45,7 +48,15 @@ def ico():
 
 @APP.route("/roadmap", methods=["GET", "POST"])
 def roadmap():
-    return render_template('roadmap.html')   
+    return render_template('roadmap.html')
+
+@APP.route("/dozzle", methods=["GET", "POST"])
+def dozzle():
+    return render_template('dozzle.html') 
+
+@APP.route("/grafana", methods=["GET", "POST"])
+def grafana():
+    return render_template('grafana.html')      
 
     
 
@@ -93,4 +104,4 @@ if __name__ == '__main__':
 
     PORT = int(os.environ.get('PORT', 5000))
 
-    APP.run(host='0.0.0.0', port=PORT, debug=True, extra_files=['./static/swagger.json','/home/george/Documents/blockchain-benchmarking-framework/'])
+    APP.run(host='0.0.0.0', port=PORT, debug=True, extra_files=['./static/swagger.json'])

@@ -1,26 +1,28 @@
+
+
 export default {
   config: {
-    port: 9050,
+    port: 5000,
   },
   paths: {
-    root: "./",
+    root: './',
     src: {
-      base: "./src",
-      css: "./src/css",
-      js: "./src/js",
-      img: "./src/img",
+      base: "./static",
+      css: "./static/css",
+      js: "./static/js",
+      img: "./static/img",
     },
     dist: {
-      base: "./dist",
-      css: "./dist/css",
-      js: "./dist/js",
-      img: "./dist/img",
+      base: "./static/dist",
+      css: "./static/dist/css",
+      js: "./static/dist/js",
+      img: "./static/dist/img",
     },
     build: {
-      base: "./build",
-      css: "./build/css",
-      js: "./build/js",
-      img: "./build/img",
+      base: "./static/build",
+      css: "./static/build/css",
+      js: "./static/build/js",
+      img: "./static/build/img",
     },
   },
 };

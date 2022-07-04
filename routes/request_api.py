@@ -15,7 +15,7 @@ INIT_PATH="blockchain-benchmarking-framework/ "
 
 def control_command(PATH,network, command): #
     # send command to hostpipe
-    fi= os.open("/hostpipe/bbf-commands", os.O_WRONLY)
+    fi= os.open("blockchain-benchmarking-framework/bbf-commands", os.O_WRONLY)
     
     lock= rwlock.RWLockFairD()
     lock_w=lock.gen_wlock()

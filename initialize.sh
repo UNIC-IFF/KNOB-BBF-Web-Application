@@ -2,7 +2,6 @@
 
 DEFAULT_ENVFILE="$(dirname $0)/defaults.env"
 ENVFILE=${ENVFILE:-"$DEFAULT_ENVFILE"}
-INIT_PATH=WORKING_DIR=${WORKING_DIR:-$(realpath ./blockchain-benchmarking-framework/bbf-commands)}
 
 source $ENVFILE
 

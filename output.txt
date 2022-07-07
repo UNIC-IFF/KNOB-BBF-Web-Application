@@ -1,0 +1,6 @@
+--list
+List supported networks:
+besu-poa
+geth
+stellar-docker-testnet
+xrpl

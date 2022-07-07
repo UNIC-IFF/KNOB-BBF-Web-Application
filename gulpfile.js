@@ -205,6 +205,10 @@ function watchFiles() {
     `${options.paths.src.js}/**/*.js`,
     series(javascriptBuild, previewReload)
   ).on("change", reload);
+  watch(
+    `${options.paths.src.fonts}/**/*`,
+    series(copyFonts, previewReload)
+  ).on("change", reload);
   watch(`${options.paths.src.img}/**/*`, series(copyImages, previewReload)).on("change", reload);
   console.log(logSymbols.info, "Watching for Changes..");
 }

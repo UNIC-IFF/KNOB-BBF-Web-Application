@@ -81,6 +81,9 @@ body {
 
 
 //Helpers
+.whitten{
+    filter: brightness(0) invert(1);
+}
 .is-disabled {
     pointer-events: none;
     opacity: 0.4;

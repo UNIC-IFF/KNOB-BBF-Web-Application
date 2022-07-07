@@ -232,7 +232,10 @@ body {
 
     //logo
     .hero-logo {
-        height: 80px;
+        height: 100px;
+    }
+    .whitten{
+        filter: brightness(0) invert(1);
     }
 }
 

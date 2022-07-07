@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blockchain Benchmarking Framework</title>
 
-    <link rel="icon" type="image/png" href="../static/img/favicon.png" />
+    <link rel="icon" type="image/png" href="../static/dist/img/favicon.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="../static/dist/css/app.css">
     <link rel="stylesheet" type="text/css" href="../static/dist/css/main.css">
@@ -34,7 +35,7 @@
                     <div class="container">
                         <!-- Brand -->
                         <div class="navbar-brand">
-                            <a href="index.html" class="navbar-item">
+                            <a href="{{ url_for('home') }}" class="navbar-item">
                                 <img class="rotating" src="../static/dist/img/logo/krypton-gradient.svg" alt="">
                                 <span class="brand-name">Blockchain Benchmarking Framework</span>
                             </a>
@@ -64,7 +65,7 @@
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'home' %} active{% endif %} ">
                                     <a class="is-centered-responsive" href="{{ url_for('home') }}">{{ gettext("Home") }}</a>
                                 </div>
-                               <!--   
+                                
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'ico' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('ico') }}">{{ gettext("Ico") }}</a>
                                 </div>
@@ -74,16 +75,7 @@
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'blog' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('blog') }}">{{ gettext("Blog") }}</a>
                                 </div>
-                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'token' %} active{% endif %}">
-                                    <a class="is-centered-responsive" href="{{ url_for('token') }}">{{ gettext("Token") }}</a>
-                                </div>
-                                <div class="navbar-item is-nav-link">
-                                    <a href="#" class="button k-button k-primary raised has-gradient slanted">
-                                        <span class="text">Register</span>
-                                        <span class="front-gradient"></span>
-                                    </a>
-                                </div>
-                            -->
+                                
                             </div>
                         </div>
                     </div>
@@ -98,7 +90,7 @@
                     <div class="container">
                         <!-- Brand -->
                         <div class="navbar-brand">
-                            <a href="index.html" class="navbar-item">
+                            <a href="{{ url_for('home') }}" class="navbar-item">
                                 <img class="rotating" src="../static/dist/img/logo/krypton.svg" alt="">
                                 <span class="brand-name">BBF</span>
                             </a>
@@ -128,7 +120,7 @@
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'home' %} active{% endif %} ">
                                     <a class="is-centered-responsive" href="{{ url_for('home') }}">{{ gettext("Home") }}</a>
                                 </div>
-                               <!-- <div class="navbar-item is-nav-link {%- if request.endpoint == 'ico' %} active{% endif %}">
+                               <div class="navbar-item is-nav-link {%- if request.endpoint == 'ico' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('ico') }}">{{ gettext("Ico") }}</a>
                                 </div>
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'roadmap' %} active{% endif %}">
@@ -137,22 +129,7 @@
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'blog' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('blog') }}">{{ gettext("Blog") }}</a>
                                 </div>
-                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'token' %} active{% endif %}">
-                                    <a class="is-centered-responsive" href="{{ url_for('token') }}">{{ gettext("Token") }}</a>
-                                </div>
-                                <div class="navbar-item is-nav-link">
-                                    <a href="#" class="button k-button k-primary raised has-gradient slanted">
-                                        <span class="text">Register</span>
-                                        <span class="front-gradient"></span>
-                                    </a>
-                                </div>
-                                <div class="navbar-item">
-                                    <a href="#" class="button k-button k-primary raised has-gradient slanted">
-                                        <span class="text">Register</span>
-                                        <span class="front-gradient"></span>
-                                    </a>
-                                </div>
-                                -->
+
                             </div>
                         </div>
                     </div>
@@ -174,59 +151,15 @@
                     
                     <!-- Columns -->
                     <div class="columns footer-columns is-vcentered">
-                        <div class="column is-4">
-                            <!-- Links group -->
-                            <ul class="footer-links">
-                                <li>
-                                    <a href="#">Token</a>
-                                </li>
+                    
             
-                                <li>
-                                    <a href="#">ICO</a>
-                                </li>
-            
-                                <li>
-                                    <a href="#">Roadmap</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Newsletter -->
-                        <div class="column is-4">
-                            <div class="subscribe-block">
-                                <form>
-                                    <!-- Field -->
-                                    <div class="control">
-                                        <!-- Special input -->
-                                        <input class="krypton-subscribe-input" type="email" name="email" placeholder="">
-                                        <button class="subscribe-button">
-                                            <span>Subscribe</span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Links group -->
-                        <div class="column is-4">
-                            <ul class="footer-links">
-                                <li>
-                                    <a href="#">Register</a>
-                                </li>
-            
-                                <li>
-                                    <a href="#">Media</a>
-                                </li>
-            
-                                <li>
-                                    <a href="#">Telegram</a>
-                                </li>
-                            </ul>
-                        </div>
+                      
                     </div>
                     <!-- Copyright -->
                     <p class="k-copyright">© 2022 - | Institute For the Future - University of Nicosia. All Rights Reserved</p>
                     <br>
                     <!-- Made by -->
-                    <p class="coded-by">Designed and Coded by <a href="https://cssninja.io" target="_blank">Css Ninja</a></p>
+                    <p class="coded-by">Designed and Coded by <a href="https://www.unic.ac.cy/iff/dlrc/" target="_blank">IFF / DLRC team</a></p>
                 </div>
                 
                 <!-- Absolute image -->
@@ -237,7 +170,7 @@
                 '': !scrolled
             }"></a></div>
             <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-            <script src="../static/dist/js/bundle.js"></script>
+            <script src="../static/js/bundle.js"></script>
         
         </body>
         

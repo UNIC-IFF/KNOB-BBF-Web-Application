@@ -43,6 +43,7 @@ def token():
 
 @APP.route("/ico", methods=["GET", "POST"])
 def ico():
+    li=request_api.show_list()
     return render_template('ico.html')
 
 

@@ -4,6 +4,8 @@ export function getUrlParams(param) {
   return urlParams.get(param);
 }
 
+
+
 export function switchDemoImages(environment) {
   if (environment === "development") {
     const targets = document.querySelectorAll("[data-demo-src]");

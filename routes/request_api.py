@@ -144,5 +144,9 @@ def stop(network):
 @GETH_API.route('/request/list', methods=['GET'])
 #begin with this action for the framework
 def show_list(): 
-    INIT_PATH=INIT_PATH+"control.sh -list"
-    return pd.DataFrame(control_command(INIT_PATH," ",'--list')).to_json(orient='split',indent= 2, index=False) 
+    INIT_PATH="blockchain-benchmarking-framework/"+"control.sh -list"
+    l=pd.DataFrame(control_command(INIT_PATH," ",'--list')).to_json(orient='split',indent= 2, index=False) 
+    l2=[]
+  
+
+    return pd.DataFrame(control_command(INIT_PATH," ",'--list')).to_json(orient='split',indent= 2, index=False)

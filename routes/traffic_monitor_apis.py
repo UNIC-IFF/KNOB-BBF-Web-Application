@@ -21,12 +21,12 @@ def monitoring(network):
          abort(404)
     if request.method == 'GET': #configure the monitoring 
         network= " " #the network is not specified in this command      
-        return json.dumps(control_command(INIT_PATH,network,'-mon prom-monitoring-stack configure')) 
+        return json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack configure')) 
     elif request.method == 'POST': #start the monitoring
         network= " " #the network is not specified in this command  
-        return json.dumps(control_command(INIT_PATH,network,'-mon prom-monitoring-stack start')) 
+        return json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack start')) 
     else:
-        return json.dumps(control_command(INIT_PATH+" ",network,'-mon prom-monitoring-stack stop')) 
+        return json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack stop')) 
 
 @GETH_API.route('/traffic/<string:network>/traffic/<int:num_of_nodes>/<int:num_of_txs>', methods=['GET'])
 #begin with this action for the framework

@@ -6,11 +6,11 @@ The Blockchain Benchmarking Framework will focus on the development of a user-fr
 
 # Instructions
 
-To execute the FLASK API you should execute with admin privileges the initialize.sh ( 'sudo ./initialize.sh' ) file under the main folder. 
+To execute the FLASK API you should execute with admin privileges the initialize.sh ( `sudo ./initialize.sh` ) file under the main folder. 
 In case the css and Js is not working properly please execute in the terminal the following commands:
-- 1. docker exec -it bbf-gui-apis /bin/bash
-- 2. npm install
-- 3. gulp
+ 1. `docker exec -it bbf-gui-apis /bin/bash`
+ 2. `npm install`
+ 3. `gulp`
 The swagger URL is the: http://127.0.0.1:5000/swagger
 For each API type the prefered network. The list of the avialable networks can be seen by the "list" API.
 

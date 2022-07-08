@@ -38,6 +38,14 @@ else
     echo "Pipe already exists"
 fi
 
+echo "Execute npm install in case it didnt run while building the container"
+docker exec -it bbf-gui-apis sh -c "npm install"
+
+echo "Execute gulp in the GUI container"
+docker exec -it bbf-gui-apis sh -c "gulp &"
+
+./update_repos.sh
+
 echo "Make the pipe listen forever in background..."
 while true; do 
     eval "$(cat $WORKING_DIR/blockchain-benchmarking-framework/$pipe) &> $WORKING_DIR/output.txt" ; 

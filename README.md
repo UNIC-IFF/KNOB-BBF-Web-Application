@@ -12,8 +12,8 @@ In case the css and Js is not working properly please execute in the terminal th
  2. `npm install`
  3. `gulp`
 
-The swagger URL is the: http://172.19.0.2/swagger
-The main page is the: http://172.19.0.2/home
+The swagger URL is the: * http://bbf-gui.ddns.net/swagger [http://bbf-gui.ddns.net/swagger]
+The main page is the: * http://bbf-gui.ddns.net/ [http://bbf-gui.ddns.net/]
 For each API type the prefered network. The list of the avialable networks can be seen by the "list" API.
 
 # Model Architecture

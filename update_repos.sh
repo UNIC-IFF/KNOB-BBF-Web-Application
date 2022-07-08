@@ -9,6 +9,6 @@ while true
 do 
     git pull
 	git submodule update
-	docker exec -it bbf-gui-apis sh -c "gulp &"
+	docker exec bbf-gui-apis sh -c "gulp &"
     sleep 43000
 done

@@ -24,18 +24,16 @@
     "setup": "gulp setup"
   },
   "dependencies": {
-
     "@ryangjchandler/fern": "^0.1.0",
-    
     "aos": "^3.0.0-beta.6",
     "bulma": "^0.9.3",
+    "bulma-accordion": "^2.0.1",
     "codemirror": "^5.64.0",
     "feather-icons": "^4.28.0",
     "ionicons": "^6.0.0",
     "js-datepicker": "^5.18.0",
     "notyf": "^3.10.0",
     "plyr": "^3.6.9",
-
     "postcss": "8.3.11",
     "simplebar": "5.3.3"
   },
@@ -44,6 +42,7 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "@babel/register": "^7.16.0",
+    "@creativebulma/bulma-collapsible": "^1.0.4",
     "autoprefixer": "^10.4.0",
     "babelify": "^10.0.0",
     "browser-sync": "^2.27.7",
@@ -51,15 +50,15 @@
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
+    "gulp-cli": "^2.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^8.0.0",
     "gulp-purgecss": "^4.0.3",
     "gulp-replace": "^1.1.3",
     "gulp-sass": "^5.0.0",
-    "gulp-cli":"^2.3.0",
-    "gulp-util": "^3.0.7",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.7",
     "gulp-webp": "^4.0.1",
     "ini": "^2.0.0",
     "log-symbols": "^5.0.0",

@@ -41,7 +41,7 @@
   <div class="hero-foot">
       <div class="container" style="padding-top: 50px">
         <h3 class="title is-light is-semibold has-text-centered is-spaced" > Sponsors </h3>
-          <div class="tabs is-centered">
+          <div class="tabs is-centered" style="padding-bottom:28px;">
           
               <!-- Client / partner list -->
               <ul>
@@ -53,61 +53,40 @@
       </div>
   </div>
 </section>
-<!-- /Landing page Hero -->
-<div class="divider is-centered is-spacer"></div>
-<!-- Icon Features section -->
-<section id="start" class="section is-transparent is-relative">
-  <!-- Container -->
-  <div class="container is-primary" style="padding-top:5em">
 
-      
-      <!-- Content wrapper -->
-      <div class="content-wrapper is-medium">
-        <h3 class="title is-light is-semibold has-text-centered is-spaced" > Supported Newtowrks </h3>
-          <div class="columns is-vcentered">
-           
-            
-              <!-- Feature -->
-              <div class="column is-3">
-                  <div class="feature">
-                      <img style="padding-bottom:2em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/Ripple-Logo.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                  </div>
-              </div>
-              <div class="column is-3">
-                <div class="feature">
-                    <img style="padding-bottom:2.2em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/Stellar.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
-              
-                </div>
-            </div>
-              <!-- Feature -->
-              <div class="column is-3">
-                  <div class="feature">
-                      <img style="padding-bottom:2em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/hyperledger.png" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-               
-                  </div>
-              </div>
-              <!-- Feature -->
-              <div class="column is-3">
-                  <div >
-                      <img style="padding-bottom:1em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/ethereum.png"  alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                      
-                  </div>
-              </div>
-          </div>
-          
-          <!-- Play video button -->
+<!-- App section -->
+<section class="section is-darkest">
+    <!-- Container -->
+    <div class="container">
+        <h2 class="title is-light is-semibold has-text-centered ">Controller</h2>
+        <div class="content-wrapper is-large ">
+            <img  src="../static/img/controller.svg" width="80%" height="80%" style="align:center; display: block;
+            margin-left: auto;
+            margin-right: auto;" alt="Controller">
+        </div>
 
-      </div>
-      <!-- Content wrapper -->
-  </div>
-  <!-- /Container -->
-</section>
-<!-- /Icon Features section -->
+       <!-- Divider -->
+       <!-- Title -->
+       <h2 class="title is-light is-semibold has-text-centered is-spaced">Instructions</h2>
+       <h4 class="subtitle is-6 is-light is-compact" style="text-align:justify">The  video in the end of the page presents a demonstration of the Benchmarking Framework.
+          The above Controller is the Framework's controller which depicts the components of the framework. The first and mandatory step is the Monitoring. This step
+      trigger the benchmarking engine which will later record the networks' traffic. Second step is the Benchmarking Engine. In this you can select which blockchain network to configure and start, but also you can 
+       generate traffic which are transactions between random generated accounts. The managment component is the third one where you can understand the logs of the nodes and the network's information,
+      also you can navigate to Dozzle for the complete logs and to Grafana where you can watch the actual benchmargking diagrams. The Available Networks presents the current running networks configured in previous steps. </h4>
+  
+       
+       
+        <!-- /Content wrapper -->
+    </div>
+    <!-- /Container -->
+  </section>
+
+
 
 <!-- Side Features section -->
-<section id="big-gradient" class="section is-transparent">
+<section class="section" >
   <!-- Container -->
-  <div class="container">
+  <div class="container"  style="position:relative;">
       <!-- Divider -->
       <div class="divider is-centered is-spacer"></div>
       <!-- Title & subtitle -->
@@ -211,59 +190,25 @@
           </div>
       </div>
       <!-- /Content wrapper -->
-  </div>
-  <!-- /Container -->
-</section>
-<!-- /Side Features section -->
 
-
-<!-- App section -->
-<section class="section is-medium is-darkest">
-  <!-- Container -->
-  <div class="container">
-     <!-- Divider -->
-     <div class="divider is-centered is-long"></div>
-     <!-- Title -->
-     <h2 class="title is-light is-semibold has-text-centered is-spaced">Instructions</h2>
-     <h4 class="subtitle is-6 is-light is-compact" style="text-align:justify">The following video presents a demonstration of the Benchmarking Framework.
-        The following Controller is the Framework's controller which depicts the components of the framework. The first and mandatory step is the Monitoring. This step
-    trigger the benchmarking engine which will later record the networks' traffic. Second step is the Benchmarking Engine. In this you can select which blockchain network to configure and start, but also you can 
-     generate traffic which are transactions between random generated accounts. The managment component is the third one where you can understand the logs of the nodes and the network's information,
-    also you can navigate to Dozzle for the complete logs and to Grafana where you can watch the actual benchmargking diagrams. The Available Networks presents the current running networks configured in previous steps. </h4>
-
-     
-      <!-- Content wrapper -->
-      <div class="content-wrapper is-large">
-
-          <!-- Row -->
-          <div class="columns is-vcentered">
-            <div class="column is-12">
-                
-                <div class="cta-wrapper has-text-centered">
-                    <div class="video-button levitate js-modal-btn" data-video-id="6WG7D47tGb0">
-                        <img  id="show" src="../static/dist/img/icons/play.svg" alt="">
-                    </div>
-                    <div class="menu" style="padding-top:30px; display:none" >
-                        <iframe width="560" height="315" src="../static/dist/img/media/bc-becnh-framework.mp4" type="video/mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-                    </div>
-                    </iframe>
-                </div>
-             </div>
-          </div>
-
-          <div class="content-wrapper is-large">
-            <img  src="../static/img/controller.svg" alt="">
-        </div>
-
+      <div class="columns is-vcentered" style="margin-bottom:10em;">
+        <span> dsd</span>
+        <span>dsdsd</span>
+        <span>dsds</span>
+        <span></span>
       </div>
-      <!-- /Content wrapper -->
+
   </div>
+
   <!-- /Container -->
 </section>
+
+
+
 <!-- /App section -->
 
 <!-- Company section -->
-<section class="section is-medium has-big-dark-gradient">
+<section class="section ">
   <!-- Container -->
   <div class="container">
       <!-- Divider -->
@@ -635,20 +580,87 @@
                               </div>
                           </div>
                       </div>
-                      <!-- /Accordion -->
                   </div>
               </div>
           </div>
           <!-- /Content wrapper -->
-
-          <!-- Spaced divider -->
-          <div class="divider is-centered is-spacer"></div>
-          
-
-      </div>
       <!-- /Content wrapper -->
   </div>
 </section>
+<!-- /Landing page Hero -->
+<div class="divider is-centered"></div>
+<!-- Icon Features section -->
+<section id="start" class="section is-transparent is-relative">
+  <!-- Container -->
+  <div class="container is-primary" >
+     <!-- Content wrapper -->
+     <div class="content-wrapper is-large">
+  
+        <!-- Row -->
+        <div class="columns is-vcentered">
+
+            
+          <div class="column is-12">
+            <h3 class="title is-light is-semibold has-text-centered is-spaced" > Demonstration Video </h3>
+
+              
+              <div class="cta-wrapper has-text-centered">
+                  <div class="video-button levitate js-modal-btn" data-video-id="6WG7D47tGb0">
+                      <img  id="show" src="../static/dist/img/icons/play.svg" alt="">
+                  </div>
+                  <div class="menu" style="padding-top:20px; display:none;  " >
+                      <iframe width="560" height="315" src="../static/dist/img/media/bc-becnh-framework.mp4" type="video/mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                  </div>
+                  </iframe>
+              </div>
+           </div>
+        </div>
+
+
+    </div>
+      
+      <!-- Content wrapper -->
+      <div class="content-wrapper is-medium">
+        <h3 class="title is-light is-semibold has-text-centered is-spaced" > Supported Networks </h3>
+          <div class="columns is-vcentered">
+           
+            
+              <!-- Feature -->
+              <div class="column is-3">
+                  <div class="feature">
+                      <img style="padding-bottom:2em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/Ripple-Logo.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                  </div>
+              </div>
+              <div class="column is-3">
+                <div class="feature">
+                    <img style="padding-bottom:2.2em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/Stellar.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
+              
+                </div>
+            </div>
+              <!-- Feature -->
+              <div class="column is-3">
+                  <div class="feature">
+                      <img style="padding-bottom:2em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/hyperledger.png" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+               
+                  </div>
+              </div>
+              <!-- Feature -->
+              <div class="column is-3">
+                  <div >
+                      <img style="padding-bottom:1em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/ethereum.png"  alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                      
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Play video button -->
+
+      </div>
+      <!-- Content wrapper -->
+  </div>
+  <!-- /Container -->
+</section>
+<!-- /Icon Features section -->
 
 <script>
     $(document).ready(function(){
@@ -656,6 +668,7 @@
           $('.menu').toggle("slide");
         });
     });
+
 </script>
 
 {%endblock%}

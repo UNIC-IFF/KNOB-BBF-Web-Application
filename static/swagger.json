@@ -106,7 +106,7 @@
       }
     },
     "/request/{network}/configure/{NUM_OF_NODES}": {
-      "put": {
+      "post": {
         "summary": "Configure 10 nodes",
         "tags": [
           "Control"
@@ -144,7 +144,7 @@
       }
     },
     "/request/{network}/configure/{NUM_OF_NODES_BN}/{NUM_OF_NODES_VN}": {
-      "put": {
+      "post": {
         "summary": "Configure 10 nodes",
         "tags": [
           "Control"

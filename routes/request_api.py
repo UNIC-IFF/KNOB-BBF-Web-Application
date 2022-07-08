@@ -1,4 +1,5 @@
 """The Endpoints to manage the Geth Actions"""
+from email import header
 import os
 from routes.docker_api import get_running_networks, remove_network
 from flask import  abort, Blueprint
@@ -11,6 +12,7 @@ PATH="blockchain-benchmarking-framework/control.sh "
 GETH_API = Blueprint('traffic_api', __name__)
 BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
 INIT_PATH="blockchain-benchmarking-framework/ "
+
 
 
 def control_command(PATH,network, command): #
@@ -100,7 +102,7 @@ def clean(network):
     print('CLEAN') #later we will let the user from the interface to choose this number 
     return pd.DataFrame(control_command(PATH,network,'clean')).to_json(orient='split',indent= 2, index=False)
 
-@GETH_API.route('/request/<string:network>/configure/<int:NUM_OF_NODES>', methods=['PUT'])
+@GETH_API.route('/request/<string:network>/configure/<int:NUM_OF_NODES>', methods=['POST'])
 def put_configure(network, NUM_OF_NODES):
     """Return all book requests
     @return: 200: an array of all Configure logs as a \
@@ -114,7 +116,7 @@ def put_configure(network, NUM_OF_NODES):
     return pd.DataFrame(control_command(PATH,network,f'configure -n {NUM_OF_NODES}')).to_json(orient='split',indent= 2, index=False)
 
 
-@GETH_API.route('/request/<string:network>/configure/<int:NUM_OF_NODES_BN>/<int:NUM_OF_NODES_VN>', methods=['PUT'])
+@GETH_API.route('/request/<string:network>/configure/<int:NUM_OF_NODES_BN>/<int:NUM_OF_NODES_VN>', methods=['POST'])
 def put_configure_besu(network, NUM_OF_NODES_BN, NUM_OF_NODES_VN):
     """Return all book requests
     @return: 200: an array of all Configure logs as a \

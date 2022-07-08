@@ -7,8 +7,8 @@ from flask_babel import gettext
 from flask_swagger_ui import get_swaggerui_blueprint
 from routes import request_api, traffic_monitor_apis, docker_api
 from flask_babel import Babel
-
-
+import json
+from itertools import  chain
 
 APP = Flask(__name__)
 APP.app_context().push()
@@ -24,6 +24,24 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
         'app_name': "Blockchain-Benchmarking-Framework-Flask-API"
     }
 )
+
+num2words1 = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', \
+            6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten', \
+            11: 'Eleven', 12: 'Twelve', 13: 'Thirteen', 14: 'Fourteen', \
+            15: 'Fifteen', 16: 'Sixteen', 17: 'Seventeen', 18: 'Eighteen', 19: 'Nineteen'}
+num2words2 = ['Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety']
+
+def number(Number):
+
+    if (Number > 1) or (Number < 19):
+        return (num2words1[Number])
+    elif (Number > 20) or (Number < 99):
+        return (num2words2[Number])
+
+def flatten(listOfLists):
+    "Flatten one level of nesting"
+    return chain.from_iterable(listOfLists)
+
 
 @APP.route("/home", methods=["GET", "POST"])
 def home():
@@ -43,8 +61,9 @@ def token():
 
 @APP.route("/ico", methods=["GET", "POST"])
 def ico():
-    li=request_api.show_list()
-    return render_template('ico.html')
+    li=json.loads(request_api.show_list())
+    
+    return render_template('ico.html', li=list(flatten(li["data"][2:])))
 
 
 @APP.route("/roadmap", methods=["GET", "POST"])

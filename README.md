@@ -6,9 +6,14 @@ The Blockchain Benchmarking Framework will focus on the development of a user-fr
 
 # Instructions
 
-To execute the FLASK API you should execute with admin privileges the initialize.sh ( 'sudo ./initialize.sh' ) file under the main folder. 
-Change the conf.ini file with your own paths.
+To execute the FLASK API you should execute with admin privileges the initialize.sh ( `sudo ./initialize.sh` ) file under the main folder. 
+In case the css and Js is not working properly please execute in the terminal the following commands:
+ 1. `docker exec -it bbf-gui-apis /bin/bash`
+ 2. `npm install`
+ 3. `gulp`
+
 The swagger URL is the: http://127.0.0.1:5000/swagger
+The main page is the: http://127.0.0.1:5000/home
 For each API type the prefered network. The list of the avialable networks can be seen by the "list" API.
 
 # Model Architecture
@@ -17,7 +22,6 @@ For each API type the prefered network. The list of the avialable networks can b
 
 # Files description
 - app.py: the main file that operates the flask api and combines all the components
-- conf.ini: enviroment viariables for the FLASK API (undockerized)
 - defaults.env: enviroment viariables for the Docker/FLASK API (dockerized) 
 - docker-compose: The docker-compose file that enables docker-compose command and builds the docker filer
 - static/swagger.json: Swagger is a set of open-source tools built around the OpenAPI Specification that can help design, build, document and consume REST APIs. swagger.json file is required to parameterize the apis and return the outputs.

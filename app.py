@@ -1,7 +1,7 @@
 """A Python Flask REST API BoilerPlate (CRUD) Style"""
 import argparse
 import os
-from flask import Flask, jsonify, make_response, render_template
+from flask import Flask, jsonify, make_response, render_template, redirect
 from flask_cors import CORS
 from flask_babel import gettext
 from flask_swagger_ui import get_swaggerui_blueprint
@@ -43,6 +43,10 @@ def flatten(listOfLists):
     return chain.from_iterable(listOfLists)
 
 
+@APP.route("/", methods=["GET", "POST"])
+def init():
+    return redirect('home')
+
 @APP.route("/home", methods=["GET", "POST"])
 def home():
     return render_template('home.html')
@@ -59,11 +63,11 @@ def token():
     return render_template('token.html')
 
 
-@APP.route("/ico", methods=["GET", "POST"])
-def ico():
+@APP.route("/available_networks", methods=["GET", "POST"])
+def available_networks():
     li=json.loads(request_api.show_list())
     
-    return render_template('ico.html', li=list(flatten(li["data"][2:])))
+    return render_template('available_networks.html', li=list(flatten(li["data"][2:])))
 
 
 @APP.route("/roadmap", methods=["GET", "POST"])
@@ -122,6 +126,6 @@ if __name__ == '__main__':
                         help="Use flask debug/dev mode with file change reloading")
     ARGS = PARSER.parse_args()
 
-    PORT = int(os.environ.get('PORT', 5000))
+    PORT = int(os.environ.get('PORT', 80))
 
     APP.run(host='0.0.0.0', port=PORT, debug=True, extra_files=['./static/swagger.json'])

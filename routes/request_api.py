@@ -147,8 +147,6 @@ def stop(network):
 #begin with this action for the framework
 def show_list(): 
     INIT_PATH="blockchain-benchmarking-framework/"+"control.sh -list"
-    l=pd.DataFrame(control_command(INIT_PATH," ",'--list')).to_json(orient='split',indent= 2, index=False) 
-    l2=[]
-  
+    l=pd.DataFrame(control_command(INIT_PATH," ",'--list')).to_json(orient='split',indent= 2, index=False)   
 
     return pd.DataFrame(control_command(INIT_PATH," ",'--list')).to_json(orient='split',indent= 2, index=False)

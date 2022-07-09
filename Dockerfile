@@ -18,7 +18,7 @@ RUN npm install gulp-cli -g
 RUN gulp &
 
 #Expose Port
-EXPOSE 5000
+EXPOSE 80
 
 VOLUME /hostpipe
 

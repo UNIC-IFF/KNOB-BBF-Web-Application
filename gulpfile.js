@@ -35,7 +35,7 @@ function livePreview(done) {
     server: {
       baseDir: options.paths.dist.base,
     },
-    port:  5000,
+    port:  80,
   });
   done();
 }

@@ -1,7 +1,7 @@
 
 {%extends 'base.html'%}
 
-{% block title %}ICO{% endblock %}
+{% block title %}Available Networks{% endblock %}
 
 {% block content %}
 
@@ -10,8 +10,9 @@
             <div class="container">
                 <div class="columns is-vcentered">
                     {%for v in li%}
-                    <div class="accordion accordion-flush" id="accordionExample">
-                        <div class="accordion-item">
+                    <!--
+                    <div class="accordion accordion-flush" id="accordion">
+                        <div class="accordion-item title">
                           <h2 class="accordion-header" id="{{v}}">
                             <button href="#showReq{{v}}" onclick="showReqDetails('{{v}}')" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{v}}" aria-expanded="true" aria-controls="collapse{{v}}">
                               {{v}}
@@ -25,45 +26,50 @@
                         </div>
                         
                       </div>
-                      <!--
-                      <div key={this.state.accordionItems.indexOf(i)}>
-                        <div 
-                          className="title" 
-                          onClick={this.click.bind(null, i)}
-                        >
-                         <div className="arrow-wrapper">
-                           <i className={i.open 
-                             ? "fa fa-angle-down fa-rotate-180" 
-                             : "fa fa-angle-down"}
-                           ></i>
-                         </div>
-                         <span className="title-text">
-                           {i.title}
-                         </span>
-                       </div>
-                       <div className={i.open 
-                         ? "content content-open" 
-                         : "content"}
-                        >
-                          <div className={i.open 
-                            ? "content-text content-text-open" 
-                            : "content-text"}
-                          > {i.content}
+                      -->
+                      <section class="container">
+                        <div id="accordion" class="accordion-container">
+                          <div class=" accordion-item" >
+                              <h2 class="accordion-header" id="{{v}}">
+                                <button   href="#showReq{{v}}" onclick="showReqDetails('{{v}}')" class="accordion-button btn  btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{v}}" aria-expanded="true" aria-controls="collapse{{v}}">
+                                  {{v}}
+                                </button>
+                              </h2>
+                      
+                            <div id="collapse{{v}}" class=" accordion-collapse collapse in"  aria-labelledby="{{v}}"  data-parent="#accordion">
+                              <h4  id="showReq{{v}}" class="accordion-body" style=" background-color: transparent;
+                              border-radius: 4px;
+                              color: white;
+                              font-size: 19px;
+                              text-align: justify;
+                              position: relative;
+                              z-index: 1000;
+                              transition: all .8s ease-in;
+                              background-color: rgba(0,0,0, .1);
+                              transition: all 350ms cubic-bezier(0.080, 1.090, 0.320, 1.275);
+                              overflow: auto;
+                              opacity: 1;" >
+                                no content
+                              </h4>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    -->
+                          
+                        
+                      </section>
+                   
                     {% endfor %}
 
 
     
                 </div>
+               
+ 
+
             </div>
         </div>
     
 
     </section>
-
 <script>
 
     let data = 

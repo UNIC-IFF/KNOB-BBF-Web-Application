@@ -604,15 +604,15 @@ body {
 /* ==========================================================================
 5. ICO Page
 ========================================================================== */
-.ico-wrapper {
+.available_networks-wrapper {
     background: url(../img/bg/bg-token-top.png) no-repeat top center, url(../img/bg/bg-token-left.png) no-repeat top left, url(../img/bg/bg-token-bottom.png) no-repeat bottom right, #1c004c;
 }
-.ico-wrapper {
-    .ico-image img {
+.available_networks-wrapper {
+    .available_networks-image img {
         height: 220px;
     }
 
-    .is-ico-details {
+    .is-available_networks-details {
         .details-title {
             color: $white;
             padding: 5px 0;
@@ -630,100 +630,113 @@ body {
             }
         }
     }
+    
 
-    .ico-repartition {
-        height: 380px;
-    }
-    .ico-countdown {
-        //Countdown card
-        .ico-card {
-            width: 100%;
 
-            @include primary-gradient-right;
+.accordion-container {
 
-            color: $white;
-            padding: 20px 40px;
-            border-radius: 6px;
-            animation-delay: .3s;
+    
+    .accordion-item {
+        background-color: transparent;
+      .accordion-header {
 
-            //Progress bar
-            .progress-block {
-                .progress-tags {
-                    display: flex;
-                    padding: 20px 30px;
-
-                    div {
-                        position: relative;
-                        text-align: right;
-                        font-family: 'Cabin', sans-serif;
-                        font-size: .65rem;
-                        text-transform: uppercase;
-
-                        &:before {
-                            content: '';
-                            height: 26px;
-                            width: 1px;
-                            background: $smoke-white;
-                            position: absolute;
-                            top: 25px;
-                            right: 0px;
-                            transform: translateX(50%);
-                        }
-
-                        &:first-child, &:nth-child(2) {
-                            flex-grow: 2;
-                        }
-
-                        &:nth-child(3) {
-                            flex-grow: 1;
-                        }
-                    }
-                }
-
-                //Color
-                progress {
-                    &.ico-progress {
-                        &::-webkit-progress-value {
-                            @include secondary-gradient-right;
-                        }
-
-                        &::-moz-progress-bar {
-                            @include secondary-gradient-right;
-                        }
-
-                        &::-ms-fill {
-                            @include secondary-gradient-right;
-                        }
-                    }
-                }
-            }
-
-            //Button
-            .button-block {
-                text-align: center;
-                margin: 20px 0 10px 0;
-                padding: 0 15%;
-            }
-
-            //Icons
-            .icon-block {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 5px 0;
-
-                i {
-                    margin: 0 5px;
-                    color: $smoke-white;
-                }
-            }
+        
+   
+        button:hover {
+            cursor: pointer;
+            background-color: rgba(0,0,0, .5);
+          }
+        button{
+            background-color: rgba(0,0,0, .4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: left;
+        line-height: 2;
+        font-weight: lighter;
+        position: relative;
+        z-index: 200;
+        border-radius: 4px;
+        transition: all .2s ease-in;
         }
-    }
+          
+        
+        .btn-link {
+          color: #FFFFFF;	
+          font-family: Montserrat;	
+          font-size: 19px;	
+          font-weight: 600;	
+          line-height: 23px;    
+        }
+        %collapsed-pic{
+          background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDIyLjA2MiAyMi4wNjIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDIyLjA2MiAyMi4wNjI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8cGF0aCBkPSJNMjEuNDU0LDUuNTEzbC0wLjczNy0wLjczN2MtMC44MDgtMC44MS0yLjEzNC0wLjgxLTIuOTQzLDBsLTYuNzQzLDYuNzQyTDQuMjg5LDQuNzc2ICAgYy0wLjgwOS0wLjgxLTIuMTM1LTAuODEtMi45NDQsMEwwLjYwOCw1LjUxM2MtMC44MTEsMC44MDktMC44MTEsMi4xMzUsMCwyLjk0NWw4LjgzNSw4LjgzNWMwLjQzNSwwLjQzNSwxLjAxOCwwLjYyOCwxLjU4NywwLjU5NyAgIGMwLjU3MSwwLjAzMSwxLjE1NC0wLjE2MiwxLjU4OC0wLjU5N2w4LjgzNi04LjgzNUMyMi4yNjQsNy42NDksMjIuMjY0LDYuMzIzLDIxLjQ1NCw1LjUxM3oiIGZpbGw9IiMzNDM0MzQiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K);
+        }
+        %notcollapsed-pic{
+          background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDIyLjA2NCAyMi4wNjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDIyLjA2NCAyMi4wNjQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMjEuNDU2LDEzLjYwNWwtOC44MzUtOC44MzVjLTAuNDM0LTAuNDM1LTEuMDE3LTAuNjI4LTEuNTg5LTAuNTk4Yy0wLjU3MS0wLjAzLTEuMTU0LDAuMTYyLTEuNTg4LDAuNTk4bC04LjgzNiw4LjgzNSAgIGMtMC44MTIsMC44MS0wLjgxMiwyLjEzNSwwLDIuOTQ0bDAuNzM5LDAuNzM3YzAuODA4LDAuODEsMi4xMzQsMC44MSwyLjk0MiwwbDYuNzQyLTYuNzQybDYuNzQyLDYuNzQyICAgYzAuODA5LDAuODEsMi4xMzUsMC44MSwyLjk0MiwwbDAuNzM3LTAuNzM3QzIyLjI2NywxNS43NDEsMjIuMjY3LDE0LjQxNSwyMS40NTYsMTMuNjA1eiIgZmlsbD0iIzg2MDAyMSIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+        }
+        button.btn.btn-link {
+            width: 100%;
+            text-align: left;
+          }
+        button.btn {
+          &:after {
+            content:'';
+            background-repeat: no-repeat;
+            background-position: 50%;
+            width: 3rem;
+            height: 3rem;
+            text-align: center;
+            float: right;
+            padding: .7rem;
+            border: 1px solid #ffff;
+            border-radius: 50%;
+          }
+          }
+         button.btn.collapsed {
+            &:after{
+              @extend %collapsed-pic;
+              background-color: rgba(0, 0, 0, .55);
 
-    .login-form {
-        padding: 0 40px;
+            }
+           }
+          button.btn:not(.collapsed) {
+              &:after{
+              @extend %notcollapsed-pic;
+              background-color: rgba(0,0,0, .4);
+                
+             }
+        }
+        button.btn-link:not(.collapsed)::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+           
+            background-color: rgba(0, 0, 0, .55);
+            opacity:.31;
+            
+        }
+  
+      }
+     iv[id*=collapse] [id*=showReq]{
+
+        background-color: transparent;
+        border-radius: 4px;
+        color: white;
+        font-size: 19px;
+        text-align: justify;
+        position: relative;
+        z-index: 1000;
+        transition: all .8s ease-in;
+        background-color: rgba(0,0,0, .1);
+        transition: all 350ms cubic-bezier(0.080, 1.090, 0.320, 1.275);
+        overflow: auto;
+        opacity: 1;
+        }
+       
     }
-}
+  }
+  }
 /* ==========================================================================
 6. Roadmap page
 ========================================================================== */

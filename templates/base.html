@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blockchain Benchmarking Framework</title>
 
-    <link rel="icon" type="image/png" href="../static/dist/img/favicon.png"/>
+    <link rel="icon" type="image/png" href="../static/img/favicon.png"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -70,11 +71,14 @@
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'available_networks' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('available_networks') }}">{{ gettext("Available Networks") }}</a>
                                 </div>
-                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'roadmap' %} active{% endif %}">
-                                    <a class="is-centered-responsive" href="{{ url_for('roadmap') }}">{{ gettext("Roadmap") }}</a>
+                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'managment' %} active{% endif %}">
+                                    <a class="is-centered-responsive" href="{{ url_for('managment') }}">{{ gettext("Managment") }}</a>
                                 </div>
-                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'blog' %} active{% endif %}">
-                                    <a class="is-centered-responsive" href="{{ url_for('blog') }}">{{ gettext("Blog") }}</a>
+                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'monitoring' %} active{% endif %}">
+                                    <a class="is-centered-responsive" href="{{ url_for('monitoring') }}">{{ gettext("Monitoring") }}</a>
+                                </div>
+                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'benchmarking_engine' %} active{% endif %}">
+                                    <a class="is-centered-responsive" href="{{ url_for('benchmarking_engine') }}">{{ gettext("Benchmarking Engine") }}</a>
                                 </div>
                                 
                             </div>
@@ -124,11 +128,14 @@
                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'available_networks' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('available_networks') }}">{{ gettext("Available Networks") }}</a>
                                 </div>
-                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'roadmap' %} active{% endif %}">
-                                    <a class="is-centered-responsive" href="{{ url_for('roadmap') }}">{{ gettext("Roadmap") }}</a>
+                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'managment' %} active{% endif %}">
+                                    <a class="is-centered-responsive" href="{{ url_for('managment') }}">{{ gettext("Managment") }}</a>
                                 </div>
-                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'blog' %} active{% endif %}">
-                                    <a class="is-centered-responsive" href="{{ url_for('blog') }}">{{ gettext("Blog") }}</a>
+                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'monitoring' %} active{% endif %}">
+                                    <a class="is-centered-responsive" href="{{ url_for('monitoring') }}">{{ gettext("Monitoring") }}</a>
+                                </div>
+                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'benchmarking_engine' %} active{% endif %}">
+                                    <a class="is-centered-responsive" href="{{ url_for('benchmarking_engine') }}">{{ gettext("Benchmarking Engine") }}</a>
                                 </div>
 
                             </div>

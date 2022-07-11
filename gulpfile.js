@@ -76,22 +76,7 @@ function javascriptBuild() {
   );
 }
 
-//Compile HTML partials with Panini
-function compileHTML() {
-  console.log(logSymbols.info, "Compiling HTML..");
-  panini.refresh();
-  return src(__dirname+"/templates/**/*.html")
-    .pipe(
-      panini({
-        root: "templates",
-        layouts: "/static/layouts/",
-        partials: "/static/partials/",
- 
-      })
-    )
-    .pipe(dest(__dirname+"/static/dist/"))
-    .pipe(browserSync.stream());
-}
+
 
 
 function copyFonts() {

@@ -24,11 +24,45 @@ body {
 }
 
 /* ==========================================================================
-1. Index Hero and Navbar
+1. Home Hero and Navbar
 ========================================================================== */
 
 .home-wrapper {
     background: url(../img/bg/gradient-left-darker.png) repeat-y top left, url(../img/bg/gradient-right-darker.png) repeat-y top right, #1c004c;
+
+
+    @media (min-width: 720px) {
+        #myelement1 { height: 40%; float:right; justify-content: center;}
+        #myelement2 {margin-top:-1.48em} 
+    }
+    @media (max-width: 1024px) {#myelement1 { height: 40%;}#myelement2 {width:100%; height:100%; margin-top:-1.48em} }
+    #middle-image{
+        margin-top: 0.35em;
+    }
+
+    
+    .image-gallery {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      
+      .image-gallery > li {
+        height: 300px;
+        cursor: pointer;
+        position: relative;
+        float: left;
+      }
+      
+      .image-gallery li img {
+        object-fit: cover;
+        float:left;
+        width: auto;
+        
+
+      }
 }
 
 .hero, .section {
@@ -472,12 +506,12 @@ body {
 4. Token page
 ========================================================================== */
 
-.token-wrapper {
+.monitoring-wrapper {
     background: url(../img/bg/bg-token-top.png) no-repeat top center, url(../img/bg/bg-token-left.png) no-repeat top left, url(../img/bg/bg-token-bottom.png) no-repeat bottom right, #1c004c;
 }
 
-.token-wrapper {
-    .token-image img {
+.monitoring-wrapper {
+    .monitoring-image img {
         height: 220px;
     }
 
@@ -557,7 +591,7 @@ body {
         }
     }
 
-    .token-documentation {
+    .monitoring-documentation {
         padding: 60px 40px;
         transition: all .3s ease;
         box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.2);
@@ -738,15 +772,15 @@ body {
   }
   }
 /* ==========================================================================
-6. Roadmap page
+6. managment page
 ========================================================================== */
 
-.roadmap-wrapper {
+.managment-wrapper {
     background: url(../img/bg/bg-token-top.png) no-repeat top center, url(../img/bg/bg-token-left.png) no-repeat top left, url(../img/bg/bg-token-bottom.png) no-repeat bottom right, #1c004c;
 }
 
-.roadmap-wrapper {
-    .roadmap-image img {
+.managment-wrapper {
+    .managment-image img {
         height: 280px;
     }
 
@@ -962,7 +996,7 @@ body {
     }
 }
 
-.roadmap-end {
+.managment-end {
     max-width: 600px;
     margin: 0 auto;
     position: relative;
@@ -1012,12 +1046,12 @@ body {
 7. Media page
 ========================================================================== */
 
-.media-wrapper {
+.benchmarking_engine-wrapper {
     background: url(../img/bg/gradient-left-darker.png) no-repeat top left, url(../img/bg/gradient-right-darker.png) no-repeat top right, #1c004c;
 }
 
-.media-wrapper {
-    .blog-image img {
+.benchmarking_engine-wrapper {
+    .benchmarking_engine-image img {
         height: 550px;
     }
 
@@ -1272,7 +1306,7 @@ body {
     }
 
     //Single post
-    .blog-featured {
+    .benchmarking_engine-featured {
         width: 100%;
         height: auto;
         border-radius: 6px;

@@ -54,13 +54,13 @@ def home():
 def home1():
     return render_template('home1.html')
 
-@APP.route("/blog", methods=["GET", "POST"])
-def blog():
-    return render_template('blog.html')
+@APP.route("/managment", methods=["GET", "POST"])
+def managment():
+    return render_template('managment.html')
 
-@APP.route("/token", methods=["GET", "POST"])
-def token():
-    return render_template('token.html')
+@APP.route("/benchmarking_engine", methods=["GET", "POST"])
+def benchmarking_engine():
+    return render_template('benchmarking_engine.html')
 
 
 @APP.route("/available_networks", methods=["GET", "POST"])
@@ -70,9 +70,9 @@ def available_networks():
     return render_template('available_networks.html', li=list(flatten(li["data"][2:])))
 
 
-@APP.route("/roadmap", methods=["GET", "POST"])
-def roadmap():
-    return render_template('roadmap.html')
+@APP.route("/monitoring", methods=["GET", "POST"])
+def monitoring():
+    return render_template('monitoring.html')
 
 @APP.route("/dozzle", methods=["GET", "POST"])
 def dozzle():
@@ -128,4 +128,4 @@ if __name__ == '__main__':
 
     PORT = int(os.environ.get('PORT', 80))
 
-    APP.run(host='0.0.0.0', port=PORT, debug=True, extra_files=['./static/swagger.json'])
+    APP.run(host='0.0.0.0', port=80, debug=True, extra_files=['./static/swagger.json'])

@@ -12,9 +12,9 @@ In case the css and Js is not working properly please execute in the terminal th
  2. `npm install`
  3. `gulp`
 
-The swagger URL is the: [http://bbf-gui.ddns.net/swagger] .
+The swagger URL is the: i) private- [localhost/swagger] ii) public - [http://bbf-gui.ddns.net/swagger] .
 
-The main page is the: [http://bbf-gui.ddns.net/] .
+The main page is the:   i) private- [localhost/home] ii) public  [http://bbf-gui.ddns.net/] .
 
 For each API type the prefered network. The list of the avialable networks can be seen by the "list" API.
 

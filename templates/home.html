@@ -34,7 +34,7 @@
               <!-- Hero image -->
               <div class="container">
                 <!-- heading text -->
-                <ul class="image-gallery">
+                <ul class="image-gallery" style="float:bottom; align-items:bottom">
                   <li>
                     <a href="{{'available_networks'}}"  target="_blank"  ><img id="myelemen" src="../static/dist/img/an.png"  alt="Available Networks"></a>
                   </li>
@@ -56,7 +56,7 @@
 
   <!-- Hero footer -->
   <div class="hero-foot">
-      <div class="container" style="padding-top: 50px">
+      <div class="container" style="padding-top: 8%">
         <h3 class="title is-light is-semibold has-text-centered is-spaced" > Sponsors </h3>
           <div class=" is-centered" style="padding-bottom:98px;">
             <div class="columns  is-desktop ">
@@ -72,24 +72,39 @@
 </section>
 
 <!-- App section -->
-<section class="section is-darkest">
+<section class="section is-darkest is-medium" style="display:block">
     <!-- Container -->
     <div class="container">
        
 
-       <!-- Divider -->
-       <!-- Title -->
-       <h2 class="title is-light is-semibold has-text-centered is-spaced">Instructions</h2>
-       <p class="is-light" style="text-align:justify;">The  video in the end of the page presents a demonstration of the Benchmarking Framework.
-          The above Controller is the Framework's controller which depicts the components of the framework. The first and mandatory step is the Monitoring. This step
-      trigger the benchmarking engine which will later record the networks' traffic. Second step is the Benchmarking Engine. In this you can select which blockchain network to configure and start, but also you can 
-       generate traffic which are transactions between random generated accounts. The managment component is the third one where you can understand the logs of the nodes and the network's information,
-      also you can navigate to Dozzle for the complete logs and to Grafana where you can watch the actual benchmargking diagrams. The Available Networks presents the current running networks configured in previous steps. </p>
-  
+        <div class="columns is-vcentered">
+            
+
+            <!-- Feature content -->
+            <div class="column is-5 is-offset-1">
+                <div class="side-feature-content">
+
+                    <h3 class="title is-4 is-light"><img src="../static/img/icons/techpaper.svg" alt=""> <span>Instructions</span></h3>
+                    <div class="divider is-long"></div>
+                    <p class="is-light" style="text-align:justify;">The  video in the end of the page presents a demonstration of the Benchmarking Framework.
+                        The above Controller is the Framework's controller which depicts the components of the framework. The first and mandatory step is the Monitoring. This step
+                    trigger the benchmarking engine which will later record the networks' traffic. Second step is the Benchmarking Engine. In this you can select which blockchain network to configure and start, but also you can 
+                     generate traffic which are transactions between random generated accounts. The managment component is the third one where you can understand the logs of the nodes and the network's information,
+                    also you can navigate to Dozzle for the complete logs and to Grafana where you can watch the actual benchmargking diagrams. The Available Networks presents the current running networks configured in previous steps. </p>
+                </div>
+            </div>
+
+            <!-- Feature image -->
+            <div class="column is-7" style="padding-top:6.6%">
+                    <iframe width="560" height="315" src="../static/dist/img/media/bc-becnh-framework.mp4" type="video/mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                </iframe>
+            </div>
+        </div>
+
         <!-- Divider -->
-      <div class="divider is-centered "></div>
+      <div class="divider is-centered  is-spaced"></div>
       <!-- Title & subtitle -->
-      <h2 class="title is-light is-semibold has-text-centered is-spaced">About Blockchain Benchmarking Framework</h2>
+      <h2 class="title is-light is-semibold has-text-centered is-spaced" style="padding-top:5%">About Blockchain Benchmarking Framework</h2>
       <p class="is-light" style="text-align:justify;">
        Since the choice of a blockchain protocol is challenging,
        especially for corporates that seek to use the technology
@@ -114,14 +129,14 @@
 
 
 <!-- Side Features section -->
-<section class="section is-medium" >
+<section class="section is-medium" style="display:flex" >
   <!-- Container -->
-  <div class="container" >
+  <div class="container is-medium"  >
      
 
       <!-- Content wrapper -->
-      <div class="content-wrapper is-large">
-        <div class="divider is-centered"></div>
+      <div class="content-wrapper is-large" style="padding-top:5%">
+        <div class="divider is-centered is-spaced" ></div>
         <div class="content-wrapper is-medium">
             <h3 class="title is-light is-semibold has-text-centered is-spaced" > Supported Networks </h3>
               <div class="columns is-vcentered">
@@ -192,7 +207,7 @@
               </div>
 
               <!-- Feature content -->
-              <div class="column is-5">
+              <div class="column is-5" style="padding-top:5%">
                   <div class="side-feature-content">
 
                       <h3 class="title is-4 is-light"><img src="../static/img/icons/ico/bitnetwork.svg" alt=""> <span>Conference Article</span></h3>
@@ -218,7 +233,7 @@
               </div>
           </div>
 
-          <div class="columns is-vcentered">
+          <div class="columns is-vcentered" style="padding-top:5%">
               <!-- Feature content -->
               <div class="column is-5 is-offset-1">
                   <div class="side-feature-content">
@@ -241,12 +256,10 @@
               </div>
           </div>
       </div>
-      <!-- /Content wrapper -->
 
 
   </div>
 
-  <!-- /Container -->
 </section>
 
 
@@ -254,9 +267,9 @@
 <!-- /App section -->
 
 <!-- Company section -->
-<section class="section is-medium ">
+<section class="section is-medium " style="display:flex">
   <!-- Container -->
-  <div class="container" style="margin-top:-10em;">
+  <div class="container is-medium" style="">
       <!-- Divider -->
       <div class="divider is-centered"></div>
       <!-- Title & subtitle -->
@@ -437,7 +450,7 @@
                                   What is Blockchain ?
                               </label>
                               <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                  <p>Blockchain is a disruptive technology that focuses on the safe exchange of data between several distributed applications.</p>
                               </div>
                           </div>
 
@@ -445,10 +458,11 @@
                           <div class="accordion-option">
                               <input type="checkbox" id="toggle2" class="accordion-toggle" />
                               <label class="accordion-title" for="toggle2">
-                                  What is ICO ?
+                                What is the blockchain trilemma?
                               </label>
                               <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                  <p>Termed by Vitalik Buterin, the blockchain trilemma addresses the challenges developers face in creating a blockchain that is scalable, decentralized and secure — without compromising on any facet.
+                                </p>
                               </div>
                           </div>
 
@@ -456,10 +470,11 @@
                           <div class="accordion-option">
                               <input type="checkbox" id="toggle3" class="accordion-toggle" />
                               <label class="accordion-title" for="toggle3">
-                                  Where to get the Whitepaper ?
+                                What is your motivation behind this work?
                               </label>
                               <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                  <p>The motivation for this work is to provide a the necessary tools that aim to study the performance of blockchain protocols and understand how they react under different settings and malicious behaviors.
+                                </p>
                               </div>
                           </div>
 
@@ -467,23 +482,14 @@
                           <div class="accordion-option">
                               <input type="checkbox" id="toggle4" class="accordion-toggle" />
                               <label class="accordion-title" for="toggle4">
-                                  What is Krypton Core Innovation ?
+                                Why did you pick this idea to work on?
                               </label>
                               <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                  <p>We are a team of blockchain researchers at an the DLRC lab of University of Nicosia. Exploring the space (at the technical level) we have identified that there is a lack of tools, frameworks and documentation for assessing the performance of blockchain protocols. Most studies available in the literature build simulators. Our approach enables users to deploy close to real scenarios with the use of the actual clients used by a variety of protocols. </p>
                               </div>
                           </div>
 
-                          <!-- Option -->
-                          <div class="accordion-option">
-                              <input type="checkbox" id="toggle5" class="accordion-toggle" />
-                              <label class="accordion-title" for="toggle5">
-                                  When will be the platform released ?
-                              </label>
-                              <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                              </div>
-                          </div>
+                         
                       </div>
                       <!-- /Accordion -->
                   </div>
@@ -493,14 +499,26 @@
 
                       <!-- Accordion -->
                       <div class="accordion">
+                         <!-- Option -->
+                         <div class="accordion-option">
+                            <input type="checkbox" id="toggle5" class="accordion-toggle" />
+                            <label class="accordion-title" for="toggle5">
+                              What networks are currently supported?
+                            </label>
+                            <div class="accordion-content">
+                                <p>Currently our solution supports XRPL protocol, Hyperledger Besu, Geth and Stellar. We are also working on integrating Hyperledger Fabric, Avalanche and IOST blockchains.
+                              </p>
+                            </div>
+                        </div>
                           <!-- Option -->
                           <div class="accordion-option">
                               <input type="checkbox" id="toggle6" class="accordion-toggle" />
                               <label class="accordion-title" for="toggle6">
-                                  How much tokens will be sold ?
+                                What are the consensus algorithms that are supported and tested?
                               </label>
                               <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                  <p>Currently, within the Blockchain Benchmarking Framework (BBF) you can work with PoA, PoW, SCP an RPCA.
+                                </p>
                               </div>
                           </div>
 
@@ -508,10 +526,11 @@
                           <div class="accordion-option">
                               <input type="checkbox" id="toggle7" class="accordion-toggle" />
                               <label class="accordion-title" for="toggle7">
-                                  What happens if Soft Cap isn't reached ?
+                                What are the most important functionalities of the BBF?
                               </label>
                               <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                  <p>Along with a blockchain network, the end-user can deploy a monitoring system which is consisted of different services for capturing and visualizing the produced data while a benchmarking test is being executed. Currently, when a blockchain is deployed with the BBF, the user can generate new accounts/wallets, spread the corresponding tokens (i.e.  generating traffic in the form of payment transactions) and adapt the network connectivity to create different network topologies. In addition, a benchmarking test could be defined by the user of the BBF within a file, describing a malicious behavior by one or multiple network nodes. An example of such a scenario can be found <a href="https://github.com/UNIC-IFF/xrpl-unl-manager/blob/3f852e1563b63f2e0acc048ff754e9f946e79cc7/sample_unlscenario.json">here</a>.
+                                </p>
                               </div>
                           </div>
 
@@ -519,34 +538,18 @@
                           <div class="accordion-option">
                               <input type="checkbox" id="toggle8" class="accordion-toggle" />
                               <label class="accordion-title" for="toggle8">
-                                  How much do you want to raise with the ICO ?
+                                How can I use the Blockchain Benchmarking Framework?
                               </label>
                               <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                  <p>The first step is to select which blockchain network to configure and start through the <a href="{{benchmarking_engine}}">Benchmarking Engine</a>. Then, you can easily create wallets and generate traffic in form of payment transactions between random generated accounts. 
+                                    Afterwards, you are able to monitor and visualize all the available information through the <a href="{{monitoring}}">Monitoring Engine</a>. 
+                                    Additionally, through the <a href="{{managment}}">Management</a> page, you have the full control of your network (e.g., start and stop a network).
+                                     Finally, you can check the <a href="{{available_networks}}"> Available Networks </a> and always keep up with our latest additions. 
+                                </p>
                               </div>
                           </div>
 
-                          <!-- Option -->
-                          <div class="accordion-option">
-                              <input type="checkbox" id="toggle9" class="accordion-toggle" />
-                              <label class="accordion-title" for="toggle9">
-                                  When will the tokens be distributed ?
-                              </label>
-                              <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                              </div>
-                          </div>
-
-                          <!-- Option -->
-                          <div class="accordion-option">
-                              <input type="checkbox" id="toggle10" class="accordion-toggle" />
-                              <label class="accordion-title" for="toggle10">
-                                  Will their be Bounties ?
-                              </label>
-                              <div class="accordion-content">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                              </div>
-                          </div>
+                          
                       </div>
                   </div>
               </div>
@@ -555,42 +558,6 @@
       <!-- /Content wrapper -->
   </div>
 </section>
-<!-- /Landing page Hero -->
-<div class="divider is-centered"></div>
-<!-- Icon Features section -->
-<section id="start" class="section is-transparent is-relative">
-  <!-- Container -->
-  <div class="container is-primary" >
-     <!-- Content wrapper -->
-     <div class="content-wrapper is-large">
-  
-        <!-- Row -->
-        <div class="columns is-vcentered">
-
-            
-          <div class="column is-12">
-            <h3 class="title is-light is-semibold has-text-centered is-spaced" > Demonstration Video </h3>
-
-              
-              <div class="cta-wrapper has-text-centered">
-                  <div class="video-button levitate js-modal-btn" data-video-id="6WG7D47tGb0">
-                      <img  id="show" src="../static/dist/img/icons/play.svg" alt="">
-                  </div>
-                  <div class="menu" style="padding-top:20px; display:none;  " >
-                      <iframe width="560" height="315" src="../static/dist/img/media/bc-becnh-framework.mp4" type="video/mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-                  </div>
-                  </iframe>
-              </div>
-           </div>
-        </div>
-
-
-    </div>
-      
- 
-  <!-- /Container -->
-</section>
-<!-- /Icon Features section -->
 
 <script>
     $(document).ready(function(){

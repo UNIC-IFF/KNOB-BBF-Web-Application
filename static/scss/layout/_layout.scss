@@ -47,6 +47,7 @@ body {
         margin: 0;
         padding: 0;
         overflow: hidden;
+        float: right;
       }
       
       .image-gallery > li {
@@ -55,12 +56,24 @@ body {
         position: relative;
         float: left;
       }
+      .image-gallery li img:hover {
+        cursor: pointer;
+        opacity: 0.3;
+      }
       
       .image-gallery li img {
         object-fit: cover;
         float:left;
         width: auto;
         
+
+      }
+      #logos{
+        width:60%; 
+        filter: brightness(0) invert(1);
+      }
+      #logos:hover{
+        opacity: 0.3;
 
       }
 }

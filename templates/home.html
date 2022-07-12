@@ -21,11 +21,11 @@
                   <!-- CTA -->
                   <p class="buttons">
                       <a href="https://github.com/UNIC-IFF/BBF-FLASK-API/" target="_blank" class="button k-button k-primary raised has-gradient is-fat is-bold">
-                        <i class="fa fa-github text" style="font-size:14px"> Front-End Repository</i> 
+                        <i class="fa fa-github text" style="font-size:13px; display:box; width:4em;"> BBF Core</i> 
                           <span class="front-gradient"></span>
                       </a>
                       <a href="https://github.com/UNIC-IFF/blockchain-benchmarking-framework"  target="_blank" class="button k-button k-primary raised has-gradient is-fat is-bold">
-                        <i class="fa fa-github text" style="font-size:14px"> Back-End Repository </i>
+                        <i class="fa fa-github text" style="font-size:13px; display:box; width:4em;"> BBF UI </i>
                         <span class="front-gradient"></span>
                     </a>
                   </p>
@@ -44,6 +44,7 @@
                   <li>
                     <a href="{{'monitoring'}}"  target="_blank" ><img id="middle-image" src="../static/dist/img/mt.png"  alt="Monitoring"></a>
                   </li>
+                  <li>
                   <a href="{{'benchmarking_engine'}}"  target="_blank" ><img id="myelemen" src="../static/dist/img/be.png"  alt="Benchmarking Engine"></a>
                   </li>
                   <!-- other items here -->
@@ -61,7 +62,7 @@
             <div class="columns  is-desktop ">
           
               <!-- Client / partner list -->
-              <div class="column is-quarter" ><a href="https://ubri.ripple.com/"><img id="myelement1" class="hero-logo whitten"  target="_blank" src="../static/dist/img/logo/long-logo3.png"  alt="University of Nicosia"></a></div>
+              <div class="column is-quarter" ><a href="https://www.unic.ac.cy/iff/dlrc"><img id="myelement1" class="hero-logo whitten"  target="_blank" src="../static/dist/img/logo/long-logo3.png"  alt="University of Nicosia"></a></div>
               <div class="column is-quarter"> <a href="https://ubri.ripple.com/" > <img id="myelement2"   class="hero-logo whitten" target="_blank" src="../static/dist/img/logo/ripple.png" alt="Ripple University Blockchain Research Initiative"></a></div>
 
             </div>
@@ -79,17 +80,17 @@
        <!-- Divider -->
        <!-- Title -->
        <h2 class="title is-light is-semibold has-text-centered is-spaced">Instructions</h2>
-       <h4 class="subtitle is-5 is-light is-compact has-text-justify " style="text-align:justify">The  video in the end of the page presents a demonstration of the Benchmarking Framework.
+       <p class="is-light" style="text-align:justify;">The  video in the end of the page presents a demonstration of the Benchmarking Framework.
           The above Controller is the Framework's controller which depicts the components of the framework. The first and mandatory step is the Monitoring. This step
       trigger the benchmarking engine which will later record the networks' traffic. Second step is the Benchmarking Engine. In this you can select which blockchain network to configure and start, but also you can 
        generate traffic which are transactions between random generated accounts. The managment component is the third one where you can understand the logs of the nodes and the network's information,
-      also you can navigate to Dozzle for the complete logs and to Grafana where you can watch the actual benchmargking diagrams. The Available Networks presents the current running networks configured in previous steps. </h4>
+      also you can navigate to Dozzle for the complete logs and to Grafana where you can watch the actual benchmargking diagrams. The Available Networks presents the current running networks configured in previous steps. </p>
   
         <!-- Divider -->
       <div class="divider is-centered "></div>
       <!-- Title & subtitle -->
       <h2 class="title is-light is-semibold has-text-centered is-spaced">About Blockchain Benchmarking Framework</h2>
-      <h4 class="subtitle is-5 is-light has-text-justify is-compact" style="text-align:justify">
+      <p class="is-light" style="text-align:justify;">
        Since the choice of a blockchain protocol is challenging,
        especially for corporates that seek to use the technology
        for their products and/or services, we developed an architecture for a
@@ -100,11 +101,14 @@
         settings and synthetic scenarios. In addition, the
         modules provided by the benchmarking framework aim
         to identify any performance bottlenecks during the
-        network being under heavy load.</h4>
+        network being under heavy load.</p>
        
         <!-- /Content wrapper -->
     </div>
     <!-- /Container -->
+
+
+
   </section>
 
 
@@ -117,6 +121,43 @@
 
       <!-- Content wrapper -->
       <div class="content-wrapper is-large">
+        <div class="divider is-centered"></div>
+        <div class="content-wrapper is-medium">
+            <h3 class="title is-light is-semibold has-text-centered is-spaced" > Supported Networks </h3>
+              <div class="columns is-vcentered">
+               
+                
+                  <!-- Feature -->
+                  <div class="column is-3">
+                      <div class="feature">
+                        <a href="https://xrpl.org/"  target="_blank"> <img id="logos" style="padding-bottom:2em;" src="../static/dist/img/logo/Ripple-Logo.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart"></a>
+                      </div>
+                  </div>
+                  <div class="column is-3">
+                    <div class="feature">
+                        <a href="https://www.stellar.org/"  target="_blank"> <img id="logos"  style="padding-bottom:2.2em;" src="../static/dist/img/logo/Stellar.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart"> </a>
+                  
+                    </div>
+                </div>
+                  <!-- Feature -->
+                  <div class="column is-3">
+                      <div class="feature">
+                        <a href="https://www.hyperledger.org/blog/2019/08/29/announcing-hyperledger-besu" target="_blank"> <img id="logos"  style="padding-bottom:2em;" src="../static/dist/img/logo/hyperledger.png" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart"></a>
+                   
+                      </div>
+                  </div>
+                  <!-- Feature -->
+                  <div class="column is-3">
+                      <div >
+                        <a href="https://ethereum.org/en/"  target="_blank">  <img id="logos"  id="eth-logo"style="padding-bottom:1em; " src="../static/dist/img/logo/ethereum.png"  alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart"></a>
+                          
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Play video button -->
+    
+        </div>
         <div class="divider is-centered"></div>
         <h2 class="title is-light is-semibold has-text-centered is-spaced">Articles</h2>
           <div class="columns is-vcentered">
@@ -220,7 +261,9 @@
       <div class="divider is-centered"></div>
       <!-- Title & subtitle -->
       <h2 class="title is-light is-semibold has-text-centered is-spaced">Our Team</h2>
-      <h4 class="subtitle is-6 is-light is-compact" style="text-align:justify">The Distributed Ledgers Research Centre (DLRC) positions itself as the bridge between pure academic research and the open challenges from the wider Blockchain ecosystem. The Centre aims to advance the field with transformative applications of the technology that emerge directly from the ecosystem.</h4>
+      <h4 class="subtitle is-6 is-light is-compact" style="text-align:justify">The Institute for the Future (IFF) is an interdisciplinary research Centre at the University of Nicosia (UNIC), aimed at advancing emerging technologies and contributing to their effective application in industry, government and education as well as evaluating their impact on society at large. IFF’s current focus is on two main areas: (a) Crypto-assets and Blockchains and (b) Forecasting. 
+        The Distributed Ledgers Research Centre (DLRC) is hosted at the Institute for the Future (IFF), University of Nicosia (UNIC) and it positions itself as the bridge between pure academic research and the open challenges from the wider Blockchain ecosystem. Our team consists of academic staff, lab researchers and PhD students. We are a diverse mixture of people, fueled by our passion for academic research on blockchains and distributed ledgers. DLRC aims to advance the field with transformative applications of the technology that emerge directly from the ecosystem by turning academic research into applications that can benefit the wider Blockchain ecosystem, by providing computing or storage resources to transactions, redundancy, decentralization and security, and by collaborating with sponsors to support research and technical understanding of protocols. We are proud to offer technical courses design and development programs as the world’s leading University in Blockchain and Digital Currency Education. Our team is fully committed to the Centre’s aims and we are proud to have managed to sign significant agreements with multiple project teams from the ecosystem.
+        </h4>
 
       <!-- Content wrapper -->
       <div class="content-wrapper is-large">
@@ -374,86 +417,7 @@
 
           </div>
 
-          <!-- Spaced divider -->
-          <div class="divider is-centered is-spacer"></div>
-          <!-- Title & subtitle -->
-          <h2 class="title is-light is-semibold has-text-centered is-spaced">Advisors</h2>
-          <h4 class="subtitle is-6 is-light has-text-centered is-compact">Viderer malorum sadipscing cum ei. Eu impetus perfecto sit, no sea labore detraxit. Primis mediocrem necessitatibus an vis. Ut sea pertinax perpetua, eruditi volumus quaestio ex mel, has ei tota homero.</h4>
-
-          <!-- Content wrapper -->
-          <div class="content-wrapper is-large">
-              <div class="columns is-vcentered is-multiline">
-
-                  <!-- Advisor -->
-                  <div class="column is-one-fifth">
-                      <div class="advisor-container has-text-centered">
-                          <!-- Picture -->
-                          <div class="photo">
-                              <img src="../static/img/team/a1.jpg" alt="" data-aos="fade-down" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                          </div>
-                          <!-- Meta -->
-                          <div class="info">
-                              <div class="subtitle is-6 is-light is-compressed">Rafael Agostino</div>
-                              <div class="position">Board Member</div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <!-- Advisor -->
-                  <div class="column is-one-fifth">
-                      <div class="advisor-container has-text-centered">
-                          <div class="photo">
-                              <img src="../static/img/team/a2.jpg" alt="" data-aos="fade-down" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                          </div>
-                          <div class="info">
-                              <div class="subtitle is-6 is-light is-compressed">Marysa Vosniak</div>
-                              <div class="position">Board Member</div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <!-- Advisor -->
-                  <div class="column is-one-fifth">
-                      <div class="advisor-container has-text-centered">
-                          <div class="photo">
-                              <img src="../static/img/team/a3.jpg" alt="" data-aos="fade-down" data-aos-delay="500" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                          </div>
-                          <div class="info">
-                              <div class="subtitle is-6 is-light is-compressed">Glenn Mitchells</div>
-                              <div class="position">Board Member</div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <!-- Advisor -->
-                  <div class="column is-one-fifth">
-                      <div class="advisor-container has-text-centered">
-                          <div class="photo">
-                              <img src="../static/img/team/a4.jpg" alt="" data-aos="fade-down" data-aos-delay="700" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                          </div>
-                          <div class="info">
-                              <div class="subtitle is-6 is-light is-compressed">Gary Simmons</div>
-                              <div class="position">Crypto Finance Analyst</div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <!-- Advisor -->
-                  <div class="column is-one-fifth">
-                      <div class="advisor-container has-text-centered">
-                          <div class="photo">
-                              <img src="../static/img/team/a5.jpg" alt="" data-aos="fade-down" data-aos-delay="900" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                          </div>
-                          <div class="info">
-                              <div class="subtitle is-6 is-light is-compressed">Olga Broniszewska</div>
-                              <div class="position">Crypto Finance Analyst</div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- /Content wrapper -->
-
+          
           <!-- Spaced divider -->
           <!-- Title & subtitle -->
           <h2 class="title is-light is-semibold has-text-centered is-spaced">FAQ</h2>
@@ -623,45 +587,7 @@
 
     </div>
       
-      <!-- Content wrapper -->
-      <div class="content-wrapper is-medium">
-        <h3 class="title is-light is-semibold has-text-centered is-spaced" > Supported Networks </h3>
-          <div class="columns is-vcentered">
-           
-            
-              <!-- Feature -->
-              <div class="column is-3">
-                  <div class="feature">
-                      <img style="padding-bottom:2em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/Ripple-Logo.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                  </div>
-              </div>
-              <div class="column is-3">
-                <div class="feature">
-                    <img style="padding-bottom:2.2em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/Stellar.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
-              
-                </div>
-            </div>
-              <!-- Feature -->
-              <div class="column is-3">
-                  <div class="feature">
-                      <img style="padding-bottom:2em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/hyperledger.png" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-               
-                  </div>
-              </div>
-              <!-- Feature -->
-              <div class="column is-3">
-                  <div >
-                      <img id="eth-logo"style="padding-bottom:1em; width:60%; filter: brightness(0) invert(1);" src="../static/dist/img/logo/ethereum.png"  alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
-                      
-                  </div>
-              </div>
-          </div>
-          
-          <!-- Play video button -->
-
-      </div>
-      <!-- Content wrapper -->
-  </div>
+ 
   <!-- /Container -->
 </section>
 <!-- /Icon Features section -->

@@ -78,7 +78,7 @@ TABLE OF CONTENTS
 
     h4 {
         margin-top: 10px;
-        font-family: 'Cabin', sans-serif;
+        font-family: 'Open Sans', sans-serif;
     }
 
     p {
@@ -159,7 +159,7 @@ TABLE OF CONTENTS
 
         //link element
         a {
-            font-family: 'Cabin', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             display: inline-block;
             width: 24.4%;
             padding: .75rem 0;
@@ -238,7 +238,7 @@ TABLE OF CONTENTS
                 div {
                     position: relative;
                     text-align: right;
-                    font-family: 'Cabin', sans-serif;
+                    font-family: 'Open Sans', sans-serif;
                     font-size: .65rem;
                     text-transform: uppercase;
 
@@ -335,7 +335,7 @@ TABLE OF CONTENTS
 
                 span {
                     &:first-child {
-                        font-family: 'Cabin', sans-serif;
+                        font-family: 'Open Sans', sans-serif;
                     }
 
                     &.item-content {
@@ -363,7 +363,7 @@ ul#countdown {
     color: #fff;
     border-width: 1px 0;
     overflow: hidden;
-    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 500;
 
     //Left pulled

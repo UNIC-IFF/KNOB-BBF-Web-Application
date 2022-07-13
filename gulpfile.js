@@ -16,12 +16,28 @@ import logSymbols from "log-symbols";
 import BrowserSync from "browser-sync";
 import options from "./config.js";
 
+import gulpBg from "gulp-bg";
 
 import {fileURLToPath} from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
+
+
+
+ 
+let bgtask = gulpBg("node", "--harmony", "server.js");
+
+const exitCallback = (proc) => { if (proc.errorcode != 0) { process.exit(proc.errorcode); } };
+ 
+gulp.task("stop", () => {
+    bgtask.setCallback(exitCallback);
+    bgtask.stop();
+  }
+);
+ 
+
 
 const { src, dest, watch, series, parallel } = gulp;
 const browserSync = BrowserSync.create();
@@ -30,12 +46,14 @@ const nodepath = __dirname+"/node_modules/";
 const sass = gulpSass(sassCompiler);
 
 function livePreview(done) {
-  browserSync.init(
+  browserSync.init( 
   {     
     server: {
       baseDir: options.paths.dist.base,
     },
     port:  80,
+    open: false,
+    logLevel: "silent",
   });
   done();
 }
@@ -194,8 +212,10 @@ function watchFiles() {
     `${options.paths.src.fonts}/**/*`,
     series(copyFonts, previewReload)
   ).on("change", reload);
+  watch(["server.js"], bgtask);
   watch(`${options.paths.src.img}/**/*`, series(copyImages, previewReload)).on("change", reload);
   console.log(logSymbols.info, "Watching for Changes..");
+  
 }
 
 
@@ -235,7 +255,7 @@ export default (done) => {
     devClean,
     resetPages,
     parallel(...buildTasks, copyImages),
-    parallel(livePreview,watchFiles),
+    //parallel(livePreview,watchFiles), //un-comment for local development  || comment in GitHub Repository
     
   )();
   done();

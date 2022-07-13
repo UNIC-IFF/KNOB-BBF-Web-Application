@@ -54,9 +54,9 @@ def home():
 def home1():
     return render_template('home1.html')
 
-@APP.route("/managment", methods=["GET", "POST"])
-def managment():
-    return render_template('managment.html')
+@APP.route("/management", methods=["GET", "POST"])
+def management():
+    return render_template('management.html')
 
 @APP.route("/benchmarking_engine", methods=["GET", "POST"])
 def benchmarking_engine():

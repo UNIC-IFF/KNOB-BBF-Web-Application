@@ -37,6 +37,7 @@ else
 fi
 
 echo "Make the pipe listen forever in background..."
+echo "Wait until npm install is finished and gulp runs the web application"
 while true; do 
     eval "$(cat $WORKING_DIR/blockchain-benchmarking-framework/$pipe) &> $WORKING_DIR/output.txt" ; 
 done 

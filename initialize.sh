@@ -29,22 +29,12 @@ fi
 echo "Creating pipe if not exist"
 pipe=bbf-commands
 
-
-
 if [[ ! -p "$WORKING_DIR/blockchain-benchmarking-framework/$pipe" ]]; then
     mkfifo $WORKING_DIR/blockchain-benchmarking-framework/$pipe
 	echo "Pipe created"
 else
     echo "Pipe already exists"
 fi
-
-echo "Execute npm install in case it didnt run while building the container"
-docker exec -it bbf-gui-apis sh -c "npm install &"
-
-echo "Execute gulp in the GUI container"
-docker exec -it bbf-gui-apis sh -c "gulp &"
-
-./update_repos.sh &
 
 echo "Make the pipe listen forever in background..."
 while true; do 

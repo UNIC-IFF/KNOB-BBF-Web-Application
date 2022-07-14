@@ -218,20 +218,6 @@ function watchFiles() {
   
 }
 
-
-
-
-
-/*
-// Build all files and watches for changes
-gulp.task('build:watch', ['build', 'watch']);
-
-// Build all files, run the server, start BrowserSync and watch for file changes
-gulp.task('default', function () {
-  runSequence('build', 'runServer', 'browserSync', 'watch');
-});
-*/
-
 const buildTasks = [
   devClean,
   resetPages,

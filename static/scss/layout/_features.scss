@@ -100,8 +100,7 @@ TABLE OF CONTENTS
 //Feature content
 .side-feature-content {
     .title {
-        display: flex;
-        justify-content: flex-start;
+        display: block;
         align-items: center;
     }
 
@@ -116,7 +115,7 @@ TABLE OF CONTENTS
         //light modifier
         &.is-light {
             color: $white;
-            opacity: 0.8;
+  
         }
 
         //light blue modifier
@@ -170,20 +169,20 @@ TABLE OF CONTENTS
         }
 
         //Settings for underline
-        .tab-1.is-active {
-            margin: 0;
+        .tab-xrpl.is-active ~ .slider{
+            margin-left: 75%;
         }
 
-        .tab-2.is-active ~ .slider {
+        .tab-geth.is-active ~ .slider {
             margin-left: 25%;
         }
 
-        .tab-3.is-active ~ .slider {
+        .tab-stellar-docker-testnet.is-active ~ .slider {
             margin-left: 50%;
         }
 
-        .tab-4.is-active ~ .slider {
-            margin-left: 75%;
+        .tab-besu-poa.is-active ~ .slider {
+            margin-left: 0%;
         }
 
         //Flying underline
@@ -209,7 +208,7 @@ TABLE OF CONTENTS
 
     //Active state
     &.is-active {
-        display: block;
+        display: inherit;
     }
 
     //Side image
@@ -306,6 +305,11 @@ TABLE OF CONTENTS
     .text-content {
         p {
             animation-delay: .15s;
+            padding: 10px 0;
+            color: $white;
+            font-family: 'Cabin', sans-serif;
+            font-weight: 300;
+            
         }
 
         //Bullet list

@@ -76,10 +76,10 @@
 <!-- App section -->
 <section class="section is-darkest is-medium ">
     <!-- Container -->
-    <div class="container">
+    <div id="video1" class="container">
        
 
-        <div class="columns is-vcentered">
+        <div class="columns is-vcentered ">
             
 
             <!-- Feature content -->
@@ -97,9 +97,9 @@
             </div>
 
             <!-- Feature image -->
-            <div id="background-video" class="column is-7 is-offset-1" style="padding-top:2.5">
-                    <iframe width="560" height="315" src="../static/dist/img/media/bc-becnh-framework.mp4" type="video/mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-                </iframe>
+            <div   class="column is-7 is-offset-1" style="padding-top:3em;">
+                    <iframe  width="560" height="315" src="../static/dist/img/media/bc-becnh-framework.mp4"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+            </iframe>
             </div>
         </div>
 
@@ -569,5 +569,12 @@
     });
 
 </script>
+<script src="https://raw.githubusercontent.com/rosszurowski/vanilla-fitvids/master/dist/fitvids.min.js"></script>
+<script>
+
+      // Target your .container, .wrapper, .post, etc.
+      fitVids("#video1");
+    
+  </script>
 
 {%endblock%}

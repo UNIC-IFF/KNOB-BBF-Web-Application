@@ -212,7 +212,6 @@ function watchFiles() {
     `${options.paths.src.fonts}/**/*`,
     series(copyFonts, previewReload)
   ).on("change", reload);
-  watch(["server.js"], bgtask);
   watch(`${options.paths.src.img}/**/*`, series(copyImages, previewReload)).on("change", reload);
   console.log(logSymbols.info, "Watching for Changes..");
   
@@ -241,7 +240,7 @@ export default (done) => {
     devClean,
     resetPages,
     parallel(...buildTasks, copyImages),
-    //parallel(livePreview,watchFiles), //un-comment for local development  || comment in GitHub Repository
+    parallel(livePreview,watchFiles) //un-comment for local development  || comment in GitHub Repository
     
   )();
   done();

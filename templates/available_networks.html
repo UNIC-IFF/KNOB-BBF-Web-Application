@@ -12,10 +12,8 @@
      <section class="section is-medium ">
       <!-- Container -->
       <div class="container">
-          <!-- Divider -->
-          <div class="divider is-centered"></div>
           <!-- Title & subtitle -->
-          <h2 class="title is-light is-semibold has-text-centered is-spaced">Join our ICO Now</h2>
+          <h2 class="title is-light is-semibold has-text-centered is-spaced">Available Networks </h2>
           <h4 class="subtitle is-6 is-light has-text-centered is-compact">Viderer malorum sadipscing cum ei. Eu impetus perfecto sit, no sea labore detraxit. Primis mediocrem necessitatibus an vis. Ut sea pertinax perpetua, eruditi volumus quaestio ex mel, has ei tota homero.</h4>
 
           <!-- Content wrapper -->
@@ -29,7 +27,7 @@
                       
                       <div class="flying-tabs">
                         {%for i in li%}
-                          <div onclick="showReqDetails('{{i}}')" @click="switchTabs($event)" class="flying-child tab-{{i}}" data-tab="tab-{{i}}" :class="{
+                          <div onclick="showReqDetails('{{i}}')" @click="switchTabs($event)" id="{{i}}" class="flying-child tab-{{i}}" data-tab="tab-{{i}}" :class="{
                               'is-active': activeTab === 'tab-{{i}}',
                               '': activeTab != 'tab-{{i}}'
                           }"><a onclick="showReqDetails('{{i}}')" href="javascript:void(0);">{{i}}</a></div>
@@ -43,7 +41,7 @@
                   <div class="flying-tabs-content">
                       <!-- Tab 1 -->
                       {%for i in li%}
-                      <div  class="tab-content" :class="{
+                      <div id="{{i}}1" class="tab-content" :class="{
                               'is-active': activeTab === 'tab-{{i}}',
                               '': activeTab != 'tab-{{i}}'
                           }">
@@ -81,38 +79,26 @@
             <div>
                 <span class="item-title">Step 1</span>
                 <span class="item-content">
-                    First you need to configure the monitoring engine. This step is one-time step and works for all the blockcchain networks. 
-                    The following button will redirect you to the proper page where you should click the Configure Button under the Monitoring tab.
+                    First you need to configure and start the monitoring engine. This step is one-time step and works for all the blockcchain networks. 
+                    The following button will redirect you to the proper page where you should click the Start Button under the Monitoring tab.
                 </span>
                 <span class="more">
                     
                   <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                    <span class="text">Configure Monitoring Engine</span>
+                    <span class="text">Start Monitoring Engine</span>
                     <span class="front-gradient"></span>
                   </a>
                   </span>
             </div>
         </li>
+        
         <li>
             <div>
                 <span class="item-title">Step 2</span>
                 <span class="item-content">
-                    Second you have to press the START button under Monitoring tab to start the benchmarking engine such as Grafana and Dozzle
-                    (MARIE MHPWS NA TA SYGXWNEYAME AYTA TA STEPS CONFIGURE START AFOU GINETAI 1 FORA YPOXREWTIKA?)
-                </span>
-                <span class="more">
-                  <a href="{{url_for('monitoring')}}" class="button k-button k-secondary  has-gradient is-bold" target="_blank">
-                    <span class="text">Start Monitoring Engine</span>
-                    <span class="front-gradient"></span>
-                  </a>
-                </span>
-            </div>
-        </li>
-        <li>
-            <div>
-                <span class="item-title">Step 3</span>
-                <span class="item-content">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                 At this point the Monitoring engine is working and it is waiting to monitor the traffic in the blockchain network. 
+                 Thus, it is important to configure and start a selected blockchain network. The following button will redirect you to the proper page where you
+                 will be able to configure your prefered blockchain. 
                 </span>
                 <span class="more">
                   <a href="{{url_for('benchmarking_engine')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
@@ -124,105 +110,140 @@
         </li>
         <li>
             <div>
-                <span class="item-title">ICO phase 2</span>
-                <time>April 20th</time> 
+                <span class="item-title">Step 3</span>
+               
                 <span class="item-content">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                   At this stage you have to start the blockchain network you selected previously. It is important to start the blockchain network if you want to move to the next steps.
+                   You can configure and start more than two networks at the same time or your can stop one and the others will be still running. If you want to start or re-start the network go to the proper page by using the following button.
                 </span>
                 <span class="more">
-                    <i data-feather="file-text"></i>
-                    <a href="#">Read Whitepaper</a>
+                     <a href="{{url_for('benchmarking_engine')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                        <span class="text">Start a Blockchain Network</span>
+                        <span class="front-gradient"></span>
+                      </a>
                 </span>
             </div>
         </li>
         <li>
             <div>
-                <span class="item-title">Development starts</span>
-                <time>May 9th</time> 
+                <span class="item-title">Step 4</span>
                 <span class="item-content">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    We have developed our own traffic generator where the network generates random transactions in random generated accounts. You have to select a number of random accounts to be generated and number of transactions
+                    by using the following button. This will redirect you to the proper page.
                 </span>
                 <span class="more">
-                    <i data-feather="file-text"></i>
-                    <a href="#">Read Techpaper</a>
+                    <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                        <span class="text">Start Traffic Generator</span>
+                        <span class="front-gradient"></span>
+                      </a>
                 </span>
             </div>
         </li>
         <li>
             <div>
-                <span class="item-title">Krypton Meetup CA</span>
-                <time>June 30th</time> 
+                <span class="item-title">Step 5</span>
                 <span class="item-content">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    This step is optional. In this step you can check the logs from the previous generated transaction. Keep the generated accounts and type them in the proper field in the Monitoring page by using the followin button.
+                    In the Monitoring page you will also fine the server_info functionality. 
                 </span>
                 <span class="more">
-                    <i data-feather="map-pin"></i>
-                    <a href="#">More details</a>
+                    <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                        <span class="text">Node / Public Key</span>
+                        <span class="front-gradient"></span>
+                      </a>
                 </span>
             </div>
         </li>
         <li>
             <div>
-                <span class="item-title">Krypton Wallet Release</span>
-                <time>July 25th</time> 
+                <span class="item-title">Step 6</span>
                 <span class="item-content">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    This step is optional. In this step you can check the grafana and docker logs by using the following button which will redirect you to the proper page.
                 </span>
                 <span class="more">
-                    <i data-feather="file-text"></i>
-                    <a href="#">Read Whitepaper</a>
+                    <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                        <span class="text">Logs / Grafana</span>
+                        <span class="front-gradient"></span>
+                      </a>
                 </span>
             </div>
         </li>
         <li>
             <div>
-                <span class="item-title">Chain Alpha Release</span>
-                <time>August 12th</time> 
+                <span class="item-title">Step 6a</span>
                 <span class="item-content">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    If you chosed to use the Grafan then you need to configure it. In order to configure it you have complete the following steps:
+                     <ul>
+                        <li>
+                            1 2 3 4...
+                        </li>
+
+                     </ul>
                 </span>
                 <span class="more">
-                    <i data-feather="file-text"></i>
-                    <a href="#">Read Techpaper</a>
+                    <a href="{{url_for('grafana')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                        <span class="text">Grafana Configuration</span>
+                        <span class="front-gradient"></span>
+                      </a>
                 </span>
             </div>
         </li>
         <li>
             <div>
-                <span class="item-title">Token Sale</span>
-                <time>September 10th</time> 
+                <span class="item-title">Step 7</span>
                 <span class="item-content">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    In this step you can check the running networks and also get some more user-friendly information about the blockchain networks.  
                 </span>
                 <span class="more">
-                    <i data-feather="file-text"></i>
-                    <a href="#">Read Whitepaper</a>
+                    <a href="{{url_for('management')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                        <span class="text">Docker APIs</span>
+                        <span class="front-gradient"></span>
+                      </a>
                 </span>
             </div>
         </li>
         <li>
             <div>
-                <span class="item-title">Security Audit</span>
-                <time>October 15th</time> 
+                <span class="item-title">Step 8</span>
                 <span class="item-content">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    You can stop any time any running network. You can stop it in case you do not need it anymore or if you want to free CPU and RAM. 
+                    Follow the instructions under the STOP tab.
                 </span>
                 <span class="more">
-                    <i data-feather="file-text"></i>
-                    <a href="#">Read Whitepaper</a>
+                    <a href="{{url_for('benchmargking_engine')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                        <span class="text">Stop Network</span>
+                        <span class="front-gradient"></span>
+                      </a>
                 </span>
             </div>
         </li>
         <li>
             <div>
-                <span class="item-title">Chain Beta Release</span>
-                <time>November 25th</time> 
+                <span class="item-title">Step 9</span>
                 <span class="item-content">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    Stoping a network will enable you to restart it later, but this does not mean that it is removed from the disk. If you want to clean 
+                    some space you need to clean the stopped network. Cleaning a network means it will need to re-configure it later.
+                    The following button will redirect you to proper page.
                 </span>
                 <span class="more">
-                    <i data-feather="file-text"></i>
-                    <a href="#">Read Techpaper</a>
+                    <a href="{{url_for('benchmargking_engine')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                        <span class="text">Clean Network</span>
+                        <span class="front-gradient"></span>
+                      </a>
+                </span>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span class="item-title">Step 10</span>
+                <span class="item-content">
+                    As final step you can stop the monitoring engine (stop Grafana, Dozzle etc.) and free the resources.
+                </span>
+                <span class="more">
+                    <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                        <span class="text">Stop Monitoring</span>
+                        <span class="front-gradient"></span>
+                      </a>
                 </span>
             </div>
         </li>
@@ -252,12 +273,18 @@
     "besu-poa" : "Hyperledger Besu",
     "geth": "Go Ethereum",
   };
-    
        function showReqDetails(i){
         $(`#showReq${i}`).html(`${data[i]}`); 
         $(`#showName${i}`).html(`${names[i]}`); 
     }
+    $( document ).ready(function() {
+        $("#besu-poa").addClass("is-active");
+        $(`#showReqbesu-poa`).html(`${data["besu-poa"]}`); 
+        $("#besu-poa1").addClass("is-active");
+        $(`#showNamebesu-poa`).html(`${names["besu-poa"]}`);     
+    });
 
+   
 
 </script>   
 {%endblock%}

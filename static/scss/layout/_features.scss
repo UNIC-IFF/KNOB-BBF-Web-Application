@@ -136,7 +136,7 @@ TABLE OF CONTENTS
 
 //Container
 .flying-tabs-container {
-    max-width: 560px;
+    max-width: 720px;
     margin: 0 auto;
 
     //tabs
@@ -146,6 +146,7 @@ TABLE OF CONTENTS
             display: inline;
             text-align: center;
             cursor: pointer;
+            color: #1ee0d5;
 
             &:hover a {
                 color: lighten(#1e004f, 15%);
@@ -163,7 +164,7 @@ TABLE OF CONTENTS
             width: 24.4%;
             padding: .75rem 0;
             text-decoration: none;
-            color: #4700bc;
+            color: #1ee0d5;
             pointer-events: none;
             transition: all .3s;
         }

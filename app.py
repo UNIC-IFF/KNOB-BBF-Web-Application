@@ -50,9 +50,7 @@ def init():
 @APP.route("/home", methods=["GET", "POST"])
 def home():
     return render_template('home.html')
-@APP.route("/home1", methods=["GET", "POST"])
-def home1():
-    return render_template('home1.html')
+
 
 @APP.route("/management", methods=["GET", "POST"])
 def management():

@@ -14,10 +14,11 @@
       <div class="container">
           <!-- Title & subtitle -->
           <h2 class="title is-light is-semibold has-text-centered is-spaced">Available Networks </h2>
-          <h4 class="subtitle is-6 is-light has-text-centered is-compact">Viderer malorum sadipscing cum ei. Eu impetus perfecto sit, no sea labore detraxit. Primis mediocrem necessitatibus an vis. Ut sea pertinax perpetua, eruditi volumus quaestio ex mel, has ei tota homero.</h4>
+          <h4 class="subtitle is-6 is-light has-text-centered is-compact">Our solution supports XRPL, Hyperledger Besu, Geth and Stellar. Check below for all the available functionalities and instructions!</h4>
 
           <!-- Content wrapper -->
-          <div class="content-wrapper is-large">
+          <div class="content-wrapper is-large" style="display:flex;
+          flex-direction:column;">
 
               <!-- Flying tabs wrapper -->
               <div x-data="initTabs()" x-init="setupCountdown()" class="flying-wrapper">
@@ -41,11 +42,11 @@
                   <div class="flying-tabs-content">
                       <!-- Tab 1 -->
                       {%for i in li%}
-                      <div id="{{i}}1" class="tab-content" :class="{
+                       <div id="{{i}}1" class="tab-content" :class="{
                               'is-active': activeTab === 'tab-{{i}}',
                               '': activeTab != 'tab-{{i}}'
                           }">
-                          <div class="columns " style="display:block;">
+                            <div class="columns " style="display:block;">
                               <!-- ICO Terms -->
                              
                                   <div class="text-content  has-text-centered ">
@@ -56,8 +57,23 @@
                                  
                                           </div>
                                   </div>
-                              </div>
-               
+                            </div>
+                            <span  class="buttons column is-10" style="float:right; padding-top:10vh;">
+                                <a href="{{url_for('management')}}" target="_blank" class="button k-button k-primary rounded raised has-gradient is-fat is-bold">
+                                 Manage this Network
+                                </a> 
+                                <a href="{{url_for('monitoring')}}"  target="_blank" class="button k-button k-primary rounded raised has-gradient front-gradient  is-fat is-bold">
+                                                             Monitor this Network
+
+                              </a>
+                              <a href="{{url_for('benchmarking_engine')}}" target="_blank" class="button k-button k-secondary rounded raised has-gradient is-fat is-bold">
+                                Let's do some benchmarks  
+                            </a>
+                        </span>
+                            <div class="column is-7 is-offset-4 " style="margin-top:10vh;">
+                                    <img id="logos"  src="../static/dist/img/logo/{{i}}.png" width="60%" height="60%" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                            </div>
+
                       </div>
                       <!-- /Tab 1 -->
                       {%endfor%}
@@ -73,7 +89,27 @@
   <!-- /ICO section -->
 
 
-  <section x-data="initRoadmap()" x-init="setupRoadmap()" id="roadmap" class="main-timeline">
+  <section x-data="initRoadmap()" x-init="setupRoadmap()" id="roadmap" class="main-timeline" style="padding-top:-10%">
+    <div class="hero-body has-text-centered">
+        <div class="columns">
+        
+            <div class="column is-6 is-offset-3">
+                <div class="divider is-centered"> </div>
+                <h2 class="title is-2 is-light is-semibold is-spaced main-title">How to use the BBF</h2>
+                <h5 class="subtitle is-5 is-light is-thin">
+                    The following steps introduce a step-by-step procedure of the Blockchain Benchmarking Framework (BBF) usage. It is important to follow the step-guide and not skip any step.
+                    Each step will redirect you to the proper page where you will found more information for each functionality.
+                </h5>
+                <!-- CTA -->
+                <p>
+                    <a href="#roadmap" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                        <span class="text">More details</span>
+                        <span class="front-gradient"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
     <ul>
         <li>
             <div>

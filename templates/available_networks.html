@@ -9,7 +9,7 @@
 
     </section>
      <!-- ICO section -->
-     <section class="section is-medium ">
+     <section class="section " style="padding-top:10vh">
       <!-- Container -->
       <div class="container">
           <!-- Title & subtitle -->
@@ -49,7 +49,7 @@
                             <div class="columns " style="display:block;">
                               <!-- ICO Terms -->
                              
-                                  <div class="text-content  has-text-centered ">
+                                  <div class="text-content  has-text-centered " style="padding-top:3vh">
                                       <h4 id="showName{{i}}" class="title is-light animated preFadeInUp fadeInUp">NAME</h4>
                                           <div class="animated preFadeInUp fadeInUp">
 
@@ -58,7 +58,7 @@
                                           </div>
                                   </div>
                             </div>
-                            <span  class="buttons column is-10" style="float:right; padding-top:10vh;">
+                            <span  class="buttons column is-10" style="float:right; padding-top:4vh;">
                                 <a href="{{url_for('management')}}" target="_blank" class="button k-button k-primary rounded raised has-gradient is-fat is-bold">
                                  Manage this Network
                                 </a> 
@@ -89,24 +89,19 @@
   <!-- /ICO section -->
 
 
-  <section x-data="initRoadmap()" x-init="setupRoadmap()" id="roadmap" class="main-timeline" style="padding-top:-10%">
+  <section x-data="initRoadmap()" x-init="setupRoadmap()" id="roadmap" class="main-timeline" style="padding-top:-5vw; margin-top:0" >
     <div class="hero-body has-text-centered">
-        <div class="columns">
+        <div class="columns" >
         
             <div class="column is-6 is-offset-3">
                 <div class="divider is-centered"> </div>
                 <h2 class="title is-2 is-light is-semibold is-spaced main-title">How to use the BBF</h2>
-                <h5 class="subtitle is-5 is-light is-thin">
+                <h5 class="subtitle is-5 is-light is-thin" style="text-align:justify;">
                     The following steps introduce a step-by-step procedure of the Blockchain Benchmarking Framework (BBF) usage. It is important to follow the step-guide and not skip any step.
-                    Each step will redirect you to the proper page where you will found more information for each functionality.
+                    Each step will redirect you to the proper page where you will find more information for each functionality.
                 </h5>
                 <!-- CTA -->
-                <p>
-                    <a href="#roadmap" class="button k-button k-primary raised has-gradient is-fat is-bold">
-                        <span class="text">More details</span>
-                        <span class="front-gradient"></span>
-                    </a>
-                </p>
+         
             </div>
         </div>
     </div>
@@ -114,15 +109,15 @@
         <li>
             <div>
                 <span class="item-title">Step 1</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                     First you need to configure and start the monitoring engine. This step is one-time step and works for all the blockcchain networks. 
                     The following button will redirect you to the proper page where you should click the Start Button under the Monitoring tab.
                 </span>
                 <span class="more">
-                    
-                  <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                    <span class="text">Start Monitoring Engine</span>
-                    <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+
+                  <a href="{{url_for('monitoring')}}"  target="_blank">
+                    Start Monitoring Engine
                   </a>
                   </span>
             </div>
@@ -131,15 +126,16 @@
         <li>
             <div>
                 <span class="item-title">Step 2</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                  At this point the Monitoring engine is working and it is waiting to monitor the traffic in the blockchain network. 
                  Thus, it is important to configure and start a selected blockchain network. The following button will redirect you to the proper page where you
                  will be able to configure your prefered blockchain. 
                 </span>
                 <span class="more">
-                  <a href="{{url_for('benchmarking_engine')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                    <span class="text">Configure a Blockchain Network</span>
-                    <span class="front-gradient"></span>
+                        <i data-feather="file-text"></i>
+                  <a href="{{url_for('benchmarking_engine')}}" target="_blank">
+                    Configure a Blockchain Network
+                
                   </a>
                 </span>
             </div>
@@ -148,14 +144,15 @@
             <div>
                 <span class="item-title">Step 3</span>
                
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                    At this stage you have to start the blockchain network you selected previously. It is important to start the blockchain network if you want to move to the next steps.
                    You can configure and start more than two networks at the same time or your can stop one and the others will be still running. If you want to start or re-start the network go to the proper page by using the following button.
                 </span>
                 <span class="more">
-                     <a href="{{url_for('benchmarking_engine')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                        <span class="text">Start a Blockchain Network</span>
-                        <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+                     <a href="{{url_for('benchmarking_engine')}}" target="_blank">
+                       Start a Blockchain Network
+                        
                       </a>
                 </span>
             </div>
@@ -163,14 +160,14 @@
         <li>
             <div>
                 <span class="item-title">Step 4</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                     We have developed our own traffic generator where the network generates random transactions in random generated accounts. You have to select a number of random accounts to be generated and number of transactions
                     by using the following button. This will redirect you to the proper page.
                 </span>
                 <span class="more">
-                    <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                        <span class="text">Start Traffic Generator</span>
-                        <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+                    <a href="{{url_for('monitoring')}}"  target="_blank">
+                       Start Traffic Generator
                       </a>
                 </span>
             </div>
@@ -178,14 +175,14 @@
         <li>
             <div>
                 <span class="item-title">Step 5</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                     This step is optional. In this step you can check the logs from the previous generated transaction. Keep the generated accounts and type them in the proper field in the Monitoring page by using the followin button.
                     In the Monitoring page you will also fine the server_info functionality. 
                 </span>
                 <span class="more">
-                    <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                        <span class="text">Node / Public Key</span>
-                        <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+                    <a href="{{url_for('monitoring')}}" target="_blank">
+                     Node / Public Key
                       </a>
                 </span>
             </div>
@@ -193,13 +190,13 @@
         <li>
             <div>
                 <span class="item-title">Step 6</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                     This step is optional. In this step you can check the grafana and docker logs by using the following button which will redirect you to the proper page.
                 </span>
                 <span class="more">
-                    <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                        <span class="text">Logs / Grafana</span>
-                        <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+                    <a href="{{url_for('monitoring')}}"  target="_blank">
+                       Logs / Grafana
                       </a>
                 </span>
             </div>
@@ -207,7 +204,7 @@
         <li>
             <div>
                 <span class="item-title">Step 6a</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                     If you chosed to use the Grafan then you need to configure it. In order to configure it you have complete the following steps:
                      <ul>
                         <li>
@@ -217,9 +214,9 @@
                      </ul>
                 </span>
                 <span class="more">
-                    <a href="{{url_for('grafana')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                        <span class="text">Grafana Configuration</span>
-                        <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+                    <a href="{{url_for('grafana')}}" target="_blank">
+                     Grafana Configuration
                       </a>
                 </span>
             </div>
@@ -227,13 +224,13 @@
         <li>
             <div>
                 <span class="item-title">Step 7</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                     In this step you can check the running networks and also get some more user-friendly information about the blockchain networks.  
                 </span>
                 <span class="more">
-                    <a href="{{url_for('management')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                        <span class="text">Docker APIs</span>
-                        <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+                    <a href="{{url_for('management')}}"  target="_blank">
+                       Docker APIs
                       </a>
                 </span>
             </div>
@@ -241,14 +238,14 @@
         <li>
             <div>
                 <span class="item-title">Step 8</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                     You can stop any time any running network. You can stop it in case you do not need it anymore or if you want to free CPU and RAM. 
                     Follow the instructions under the STOP tab.
                 </span>
                 <span class="more">
-                    <a href="{{url_for('benchmarking_engine')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                        <span class="text">Stop Network</span>
-                        <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+                    <a href="{{url_for('benchmarking_engine')}}" target="_blank">
+                       Stop Network
                       </a>
                 </span>
             </div>
@@ -256,15 +253,15 @@
         <li>
             <div>
                 <span class="item-title">Step 9</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                     Stoping a network will enable you to restart it later, but this does not mean that it is removed from the disk. If you want to clean 
                     some space you need to clean the stopped network. Cleaning a network means it will need to re-configure it later.
                     The following button will redirect you to proper page.
                 </span>
                 <span class="more">
-                    <a href="{{url_for('benchmarking_engine')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                        <span class="text">Clean Network</span>
-                        <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+                    <a href="{{url_for('benchmarking_engine')}}" target="_blank">
+                    Clean Network
                       </a>
                 </span>
             </div>
@@ -272,13 +269,13 @@
         <li>
             <div>
                 <span class="item-title">Step 10</span>
-                <span class="item-content">
+                <span class="item-content" style="text-align:justify;">
                     As final step you can stop the monitoring engine (stop Grafana, Dozzle etc.) and free the resources.
                 </span>
                 <span class="more">
-                    <a href="{{url_for('monitoring')}}" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                        <span class="text">Stop Monitoring</span>
-                        <span class="front-gradient"></span>
+                    <i data-feather="file-text"></i>
+                    <a href="{{url_for('monitoring')}}" target="_blank">
+                      Stop Monitoring
                       </a>
                 </span>
             </div>
@@ -292,16 +289,16 @@
     let data = 
     	{
        "xrpl":  `XRPL uses a consensus protocol, in which designated servers called validators come to an agreement on the order and outcome of XRP transactions every 3-5 seconds.
-       All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed right away. All transactions are public, with strong cryptography to guarantee the integrity of the system.
+       All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed right away. All transactions are public, with strong cryptography to guarantee the integrity of the system. 
        
-       Anyone can operate a validator; currently, over 150 validators are active on the ledger, operated by universities, exchanges, businesses, and individuals. Additionally, the consensus protocol ensures the blockchain becomes more decentralized over time as the validator pool grows.`      ,
-     "besu-poa" :`Hyperledger Besu is an Ethereum client designed to be enterprise-friendly for both public and private permissioned network use cases. It can also be ran on test networks such as Rinkeby, Ropsten, and Görli. Hyperledger Besu includes several consensus algorithms including PoW, and PoA (IBFT, IBFT 2.0, Etherhash, and Clique). Its comprehensive permissioning schemes are designed specifically for use in a consortium environment.`
+       Anyone can operate a validator; currently, over 150 validators are active on the ledger, operated by universities, exchanges, businesses, and individuals. Additionally, the consensus protocol ensures the blockchain becomes more decentralized over time as the validator pool grows. <a href="https://xrpl.org/xrp-ledger-overview.html" target="_blank"> Find More. </a>`      ,
+     "besu-poa" :`Hyperledger Besu is an Ethereum client designed to be enterprise-friendly for both public and private permissioned network use cases. It can also be ran on test networks such as Rinkeby, Ropsten, and Görli. Hyperledger Besu includes several consensus algorithms including PoW, and PoA (IBFT, IBFT 2.0, Etherhash, and Clique). Its comprehensive permissioning schemes are designed specifically for use in a consortium environment. <a href="https://www.hyperledger.org/blog/2019/08/29/announcing-hyperledger-besu" target="_blank"> Find More. </a>`
 
       , "stellar-docker-testnet": `At the lowest level, Stellar is a system for tracking ownership. Like accountants have for centuries, it uses a ledger to do so, but Stellar’s innovation is that there is no actual accountant. Instead there’s a network of independent computers each checking and rechecking the work of the others. Stellar is a system without a central authority—meaning no one can stop the network or secretly adjust the numbers to his liking—yet even without a central authority the ledgers are verified and updated, every five seconds.
 
-      A unique algorithm, called the Stellar Consensus Protocol (SCP), keeps everything in sync. There are many ways to get agreement across a decentralized system—Bitcoin's visionary proof-of-work method was the first and is still the most famous. But, like many first drafts, proof-of-work left room for improvement. SCP strives to be better by being configurable, fast, and highly energy efficient. If you're interested in the deep details, you can read the peer-reviewed paper, published by SOSP, the oldest and most prestigious systems conference, for complete technical details.`
+      A unique algorithm, called the Stellar Consensus Protocol (SCP), keeps everything in sync. There are many ways to get agreement across a decentralized system—Bitcoin's visionary proof-of-work method was the first and is still the most famous. But, like many first drafts, proof-of-work left room for improvement. SCP strives to be better by being configurable, fast, and highly energy efficient. If you're interested in the deep details, you can read the peer-reviewed paper, published by SOSP, the oldest and most prestigious systems conference, for complete technical details.  <a href="https://www.stellar.org/learn/intro-to-stellar" target="_blank"> Find More. </a>`
     ,
-       "geth": `Ethereum is a technology for building apps and organizations, holding assets, transacting and communicating without being controlled by a central authority. There is no need to hand over all your personal details to use Ethereum - you keep control of your own data and what is being shared. Ethereum has its own cryptocurrency, Ether, which is used to pay for certain activities on the Ethereum network.`
+       "geth": `Ethereum is a technology for building apps and organizations, holding assets, transacting and communicating without being controlled by a central authority. There is no need to hand over all your personal details to use Ethereum - you keep control of your own data and what is being shared. Ethereum has its own cryptocurrency, Ether, which is used to pay for certain activities on the Ethereum network. <a href="https://ethereum.org/en/what-is-ethereum/" target="_blank"> Find More. </a>`
       };
   let names= {
     "xrpl":"XRPL",

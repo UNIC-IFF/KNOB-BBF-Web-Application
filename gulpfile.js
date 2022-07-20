@@ -242,7 +242,7 @@ export default (done) => {
     devClean,
     resetPages,
     parallel(...buildTasks, copyImages),
-    parallel(livePreview,watchFiles) //un-comment for local development  || comment in GitHub Repository
+    //parallel(livePreview,watchFiles) //un-comment for local development  || comment in GitHub Repository
     
   )();
   done();

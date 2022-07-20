@@ -311,9 +311,7 @@ body {
     #box-left{
         margin-left:8%
     }
-    #box-left p{
-        margin-left:13%
-    }
+   
     }
 }
 
@@ -683,8 +681,17 @@ body {
     .available_networks-image img {
         height: 220px;
     }
-
-
+    @media screen and (max-width: 720px) {
+    #bt{
+        max-width: 50vw;
+        width: auto;
+        margin-left: 15%;
+    
+    }
+    #logos{
+        margin-left: 15%;
+    }
+}
     .main-timeline {
         outline: none !important;
 

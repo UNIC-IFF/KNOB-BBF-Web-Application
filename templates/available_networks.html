@@ -21,7 +21,7 @@
           flex-direction:column;">
 
               <!-- Flying tabs wrapper -->
-              <div x-data="initTabs()" x-init="setupCountdown()" class="flying-wrapper">
+              <div x-data="initTabs()" class="flying-wrapper">
                   <!-- Tabs container -->
                   <div class="flying-tabs-container">
                       <!-- Tabs -->
@@ -58,15 +58,15 @@
                                           </div>
                                   </div>
                             </div>
-                            <span  class="buttons column is-10" style="float:right; padding-top:4vh;">
-                                <a href="{{url_for('management')}}" target="_blank" class="button k-button k-primary rounded raised has-gradient is-fat is-bold">
+                            <span  class="buttons column is-10" style="float:right; display:inline-block; align-items:center; padding-top:4vh;">
+                                <a href="{{url_for('management')}}" id="bt" target="_blank" class="button k-button k-primary rounded raised has-gradient is-fat is-bold">
                                  Manage this Network
                                 </a> 
-                                <a href="{{url_for('monitoring')}}"  target="_blank" class="button k-button k-primary rounded raised has-gradient front-gradient  is-fat is-bold">
+                                <a href="{{url_for('monitoring')}}"  id="bt" target="_blank" class="button k-button k-primary rounded raised has-gradient front-gradient  is-fat is-bold">
                                                              Monitor this Network
 
                               </a>
-                              <a href="{{url_for('benchmarking_engine')}}" target="_blank" class="button k-button k-secondary rounded raised has-gradient is-fat is-bold">
+                              <a href="{{url_for('benchmarking_engine')}}" id="bt" target="_blank" class="button k-button k-secondary rounded raised has-gradient is-fat is-bold">
                                 Let's do some benchmarks  
                             </a>
                         </span>

@@ -1,5 +1,4 @@
 """The Endpoints to manage the Geth Actions"""
-from email import header
 import os
 from routes.docker_api import get_running_networks, remove_network
 from flask import  abort, Blueprint
@@ -112,7 +111,9 @@ def put_configure(network, NUM_OF_NODES):
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
          abort(404)
-    print('Configure 5 Nodes') #later we will let the user from the interface to choose this number 
+    if network == "besu-poa":
+            NUM_OF_NODES_BN= 1
+            return pd.DataFrame(control_command(PATH,network,f'configure -bn {NUM_OF_NODES_BN} -vn {NUM_OF_NODES}')).to_json(orient='split',indent= 2, index=False) 
     return pd.DataFrame(control_command(PATH,network,f'configure -n {NUM_OF_NODES}')).to_json(orient='split',indent= 2, index=False)
 
 
@@ -127,7 +128,6 @@ def put_configure_besu(network, NUM_OF_NODES_BN, NUM_OF_NODES_VN):
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
          abort(404)
-    print('Configure 5 Nodes') #later we will let the user from the interface to choose this number 
     return pd.DataFrame(control_command(PATH,network,f'configure -bn {NUM_OF_NODES_BN} -vn {NUM_OF_NODES_VN}')).to_json(orient='split',indent= 2, index=False)    
 
 
@@ -147,6 +147,4 @@ def stop(network):
 #begin with this action for the framework
 def show_list(): 
     INIT_PATH="blockchain-benchmarking-framework/"+"control.sh -list"
-    l=pd.DataFrame(control_command(INIT_PATH," ",'--list')).to_json(orient='split',indent= 2, index=False)   
-
     return pd.DataFrame(control_command(INIT_PATH," ",'--list')).to_json(orient='split',indent= 2, index=False)

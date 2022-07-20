@@ -28,6 +28,7 @@ def monitoring(network):
         if "error" not in check:
             return json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack start'))
         else:
+            abort(404)
             return json.dumps({"Error with configure"})
     else:
         return json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack stop')) 

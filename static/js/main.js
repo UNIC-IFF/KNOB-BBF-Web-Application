@@ -14,7 +14,7 @@ document.onreadystatechange = function () {
     const changeImages = switchDemoImages(env);
 
     //Switch backgrounds
-    const changeBackgrounds = insertBgImages();
+   const changeBackgrounds = insertBgImages();
 
     //Feather Icons
     const featherIcons = feather.replace();

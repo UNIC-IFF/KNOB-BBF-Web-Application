@@ -126,4 +126,4 @@ if __name__ == '__main__':
 
     PORT = int(os.environ.get('PORT', 80))
 
-    APP.run(host='0.0.0.0', port=80, debug=True, extra_files=['./static/swagger.json'])
+    APP.run(host='0.0.0.0', port=443, debug=True, extra_files=['./static/swagger.json'])

@@ -15,11 +15,10 @@ import source from "vinyl-source-stream";
 import logSymbols from "log-symbols";
 import BrowserSync from "browser-sync";
 import options from "./config.js";
+import Iconify from '@iconify/iconify';
 
 import gulpBg from "gulp-bg";
-
 import {fileURLToPath} from 'url';
-
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
@@ -51,7 +50,7 @@ function livePreview(done) {
     server: {
       baseDir: options.paths.dist.base,
     },
-    port:  80,
+    port:  443,
     open: false,
     logLevel: "silent",
     reloadOnRestart: true,
@@ -63,7 +62,7 @@ function livePreview(done) {
 function setupBulma() {
   console.log("\n\t" + logSymbols.info, "Installing Bulma Files..\n");
   return src([nodepath + "bulma/*.sass", nodepath + "bulma/**/*.sass"]).pipe(
-    dest("static/sass/")
+    dest("./sass/")
   );
 }
 
@@ -91,7 +90,7 @@ function javascriptBuild() {
       // Source the bundle
       .pipe(source("bundle.js"))
       // Then write the resulting files to a folder
-      .pipe(dest(`static/dist/js`))
+      .pipe(dest(`./dist/js`))
   );
 }
 
@@ -100,8 +99,8 @@ function javascriptBuild() {
 
 function copyFonts() {
   console.log(logSymbols.info, "Copying fonts to dist folder.");
-  return src(["static/fonts/*"])
-    .pipe(dest("static/dist/fonts/"))
+  return src(["./fonts/*"])
+    .pipe(dest("./dist/fonts/"))
     .pipe(browserSync.stream());
 }
 
@@ -117,7 +116,7 @@ function devClean() {
 //Compile Scss code
 function compileSCSS() {
   console.log(logSymbols.info, "Compiling App SCSS..");
-  return src(["static/scss/main.scss"])
+  return src(["./scss/main.scss"])
     .pipe(
       sass({
         outputStyle: "compressed",
@@ -127,18 +126,18 @@ function compileSCSS() {
       }).on("error", sass.logError)
     )
     .pipe(autoprefixer("last 2 versions"))
-    .pipe(dest("static/dist/css"))
+    .pipe(dest("./dist/css"))
     .pipe(browserSync.stream());
 }
 
 //Concat JS
 function concatJs() {
   console.log(logSymbols.info, "Compiling Vendor Js..");
-  return src(["static/js/*"])
+  return src(["./js/*"])
     .pipe(sourcemaps.init())
     .pipe(concat("app.js"))
     .pipe(sourcemaps.write("./"))
-    .pipe(dest("static/dist/js"))
+    .pipe(dest("./dist/js"))
     .pipe(browserSync.stream());
 }
 
@@ -151,12 +150,12 @@ function concatCssPlugins() {
     nodepath + "plyr/dist/plyr.css",
     nodepath + "codemirror/lib/codemirror.css",
     nodepath + "codemirror/theme/shadowfox.css",
-    "static/vendor/css/*",
+    "./vendor/css/*",
   ])
     .pipe(sourcemaps.init())
     .pipe(concat("app.css"))
     .pipe(sourcemaps.write("./"))
-    .pipe(dest("static/dist/css"))
+    .pipe(dest("./dist/css"))
     .pipe(browserSync.stream());
 }
 
@@ -168,19 +167,7 @@ function resetPages(done) {
   done();
 }
 
-/*
-//Triggers Browser reload
-function previewReload(done) {
-  console.log(logSymbols.info, "Reloading Browser Preview.");
-  browserSync.init(
-    [paths.src.css + "/*.css", paths.src.js + "*.js", paths.templates + '*.html'],
-    {
-      proxy:  "localhost:5000"
-    }
-  ).reload();
-  done();
-}
-*/
+
 
 //Copy images
 function copyImages() {
@@ -200,11 +187,7 @@ function optimizeImages() {
 
 
 function watchFiles() {
-  watch(
-    `${options.paths.src.base}/**/*.html`,
-    series( previewReload)
-  ).on("change", reload);
-  watch(["static/scss/**/*", "static/scss/*"], compileSCSS);
+  watch(["./scss/**/*", "./scss/*"], compileSCSS);
   watch(
     `${options.paths.src.js}/**/*.js`,
     series(javascriptBuild, previewReload)

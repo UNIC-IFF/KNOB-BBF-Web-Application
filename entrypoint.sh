@@ -1,13 +1,13 @@
 #!/bin/bash
 
 echo "Running npm install..."
-npm install
+cd static && npm install
 
 echo "Running npm install gulp-cli -g..."
-npm install gulp-cli -g
+cd static && npm install gulp-cli -g
 
 echo "Running gulp..."
-gulp
+cd static && gulp
 
 
 echo "Running python /usr/src/app/app.py..."

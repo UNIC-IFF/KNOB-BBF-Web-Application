@@ -18,14 +18,13 @@ TABLE OF CONTENTS
 @import 'abstracts/theme-default';
 @import 'abstracts/colors';
 @import 'abstracts/animations';
-@import '../../node_modules/@creativebulma/bulma-collapsible/src/sass/index.sass';
-@import "../../node_modules/bulma/bulma.sass";
-
+@import "../node_modules/bulma-responsive-tables/bulma-responsive-tables.scss";
+@import "../node_modules/bulma/bulma.sass";
 
 
 @import 'components/buttons';
-@import 'components/forms';
 @import 'components/hamburger';
+@import 'components/forms';
 @import 'layout/_layout';
 @import 'layout/features';
 @import 'layout/timeline';

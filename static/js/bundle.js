@@ -6219,7 +6219,7 @@ var _backtotop = require("./backtotop/backtotop");
 window.initNavbar = _navbar.initNavbar;
 window.initHero = _hero.initHero;
 window.initTabs = _tabs.initTabs;
-window.initCountdown = _countdown.initCountdown;
+window.initCountdown = _countdown.initSteps;
 window.initRoadmap = _roadmap.initRoadmap;
 window.initLike = _like.initLike;
 window.initBackToTop = _backtotop.initBackToTop;
@@ -6342,7 +6342,7 @@ exports.initTabs = initTabs;
 
 function initTabs() {
   return {
-    activeTab: 'tab-1',
+    activeTab: 'tab-besu-poa',
     switchTabs: function switchTabs(e) {
       var tab = e.target.getAttribute('data-tab');
       this.activeTab = tab;

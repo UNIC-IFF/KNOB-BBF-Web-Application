@@ -1,40 +1,78 @@
-export function initCountdown() {
+export function initSteps() {
   return {
-    setupCountdown() {
-      // Set the date we're counting down to
-      var countDownDate = new Date("Oct 24, 2021 07:00:00").getTime();
-
-      // Update the count down every 1 second
-      var x = setInterval(function () {
-        // Get todays date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        var d = document;
-        var daysElement = d.querySelector("#days-count");
-        var hoursElement = d.querySelector("#hours-count");
-        var minutesElement = d.querySelector("#minutes-count");
-        var secondsElement = d.querySelector("#seconds-count");
-
-        // Time calculations for days, hours, minutes and seconds
-        daysElement.textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
-        hoursElement.textContent = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        minutesElement.textContent = Math.floor(
-          (distance % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        secondsElement.textContent = Math.floor(
-          (distance % (1000 * 60)) / 1000
-        );
-
-        // If the count down is finished, write some text
-        if (distance < 0) {
-          clearInterval(x);
-        }
-      }, 1000);
+    setupSteps() {
+     /**
+ * Define a function to navigate betweens form steps.
+ * It accepts one parameter. That is - step number.
+ */
+const navigateToFormStep = (stepNumber) => {
+  /**
+   * Hide all form steps.
+   */
+  document.querySelectorAll(".form-step").forEach((formStepElement) => {
+      formStepElement.classList.add("d-none");
+  });
+  /**
+   * Mark all form steps as unfinished.
+   */
+  document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
+      formStepHeader.classList.add("form-stepper-unfinished");
+      formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
+  });
+  /**
+   * Show the current form step (as passed to the function).
+   */
+  document.querySelector("#step-" + stepNumber).classList.remove("d-none");
+  /**
+   * Select the form step circle (progress bar).
+   */
+  const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
+  /**
+   * Mark the current form step as active.
+   */
+  formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+  formStepCircle.classList.add("form-stepper-active");
+  /**
+   * Loop through each form step circles.
+   * This loop will continue up to the current step number.
+   * Example: If the current step is 3,
+   * then the loop will perform operations for step 1 and 2.
+   */
+  for (let index = 0; index < stepNumber; index++) {
+      /**
+       * Select the form step circle (progress bar).
+       */
+      const formStepCircle = document.querySelector('li[step="' + index + '"]');
+      /**
+       * Check if the element exist. If yes, then proceed.
+       */
+      if (formStepCircle) {
+          /**
+           * Mark the form step as completed.
+           */
+          formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
+          formStepCircle.classList.add("form-stepper-completed");
+      }
+  }
+};
+/**
+* Select all form navigation buttons, and loop through them.
+*/
+document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
+  /**
+   * Add a click event listener to the button.
+   */
+  formNavigationBtn.addEventListener("click", () => {
+      /**
+       * Get the value of the step.
+       */
+      const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
+      /**
+       * Call the function to navigate to the target form step.
+       */
+      navigateToFormStep(stepNumber);
+  });
+});
     },
   };
 }

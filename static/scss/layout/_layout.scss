@@ -28,6 +28,7 @@ body {
 ========================================================================== */
 
 .home-wrapper {
+    
     //background: url(../img/bg/gradient-left-darker.png) repeat-y top left, url(../img/bg/gradient-right-darker.png) repeat-y top right, #1c004c;
     .hero{
         background: url(../img/bg/gradient-left-darker.png) repeat-y top left, url(../img/bg/gradient-right-darker.png) repeat-y top right, #1c004c;  
@@ -1201,9 +1202,56 @@ body {
 
 .benchmarking_engine-wrapper {
     background: url(../img/bg/gradient-left-darker.png) no-repeat top left, url(../img/bg/gradient-right-darker.png) no-repeat top right, #1c004c;
-}
+    .b-table {
+        .table thead td, .table thead th {
+            color:whitesmoke;
 
-.benchmarking_engine-wrapper {
+         
+
+        }
+        
+        table{
+        background-color: transparent;
+        color: $white;
+        tr {   
+        
+        
+           
+              &:hover {
+                background-color: transparent!important;
+                opacity: 0.8;
+              }
+            
+        
+        }
+       
+        thead{
+            color: $white; 
+        }
+        tbody, td, tfoot, th, thead, tr:hover{
+            background-color: inherit;
+        }
+        tr.detail{
+            background-color: transparent;
+            color: $white;
+            border-radius: 0%;
+            border-style: hidden;
+            border-width: 0ch;
+            
+        }
+    
+        
+        tr.detail:hover{
+            background-color: $light-blue;
+        }
+        .detail-container{
+            background-color: transparent;
+        }
+        }
+    }
+   
+    
+
     .benchmarking_engine-image img {
         height: 550px;
     }

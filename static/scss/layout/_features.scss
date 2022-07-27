@@ -130,6 +130,206 @@ TABLE OF CONTENTS
     }
 }
 
+
+
+
+.steps-container{
+    //credits: https://levelup.gitconnected.com/create-a-multi-step-form-using-html-css-and-javascript-30aca5c062fc
+        margin: 0 auto;
+        font-family: "Cabin", sans-serif;
+        
+  .steps{    
+ 
+
+    #multi-step-form-container {
+        margin-top: 5rem;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pl-0 {
+        padding-left: 0;
+    }
+
+    .submit-btn {
+        border: 1px solid #0e9594;
+        background-color: #0e9594;
+    }
+    .mt-3 {
+        margin-top: 2rem;
+    }
+    #mt-3{
+        margin-top:10px;
+    }
+    .d-none {
+        display: none;
+    }
+    .form-step {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        padding: 3rem;
+        border-style: groove;
+        border-color: #fff;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .font-normal {
+        font-weight: normal;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    ul.form-stepper {
+        counter-reset: section;
+        margin-bottom: 3rem;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    ul.form-stepper .form-stepper-circle {
+        position: relative;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    ul.form-stepper .form-stepper-circle span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .form-stepper-horizontal {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    ul.form-stepper > li:not(:last-of-type) {
+        margin-bottom: 0.625rem;
+        -webkit-transition: margin-bottom 0.4s;
+        -o-transition: margin-bottom 0.4s;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+        transition: margin-bottom 0.4s;
+    }
+    .form-stepper-horizontal > li:not(:last-of-type) {
+        margin-bottom: 0 !important;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .form-stepper-horizontal li {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        -webkit-box-align: flex-start;
+        -ms-flex-align: flex-start;
+        align-items: flex-start;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .form-stepper-horizontal li:not(:last-child):after {
+        position: relative;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        height: 1px;
+        content: "";
+        top: 32%;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .form-stepper-horizontal li:after {
+        background-color: #dee2e6;
+    }
+    .form-stepper-horizontal li.form-stepper-completed:after {
+        background-color: #4da3ff;
+    }
+    .form-stepper-horizontal li:last-child {
+        flex: unset;
+    }
+    ul.form-stepper li a .form-stepper-circle {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin-right: 0;
+        line-height: 1.7rem;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.38);
+        border-radius: 50%;
+    }
+    .form-stepper .form-stepper-active .form-stepper-circle {
+        background-color: #4361ee !important;
+        color: #fff;
+    }
+    .form-stepper .form-stepper-active .label {
+        color: #4361ee !important;
+    }
+    .form-stepper .form-stepper-active .form-stepper-circle:hover {
+        background-color: #4361ee !important;
+        color: #fff !important;
+    }
+    .form-stepper .form-stepper-unfinished .form-stepper-circle {
+        background-color: #f8f7ff;
+    }
+    .form-stepper .form-stepper-completed .form-stepper-circle {
+        background-color: #0e9594 !important;
+        color: #fff;
+    }
+    .form-stepper .form-stepper-completed .label {
+        color: #0e9594 !important;
+    }
+    .form-stepper .form-stepper-completed .form-stepper-circle:hover {
+        background-color: #0e9594 !important;
+        color: #fff !important;
+    }
+    .form-stepper .form-stepper-active span.text-mutedd {
+        color: #fff !important;
+    }
+    .form-stepper .form-stepper-completed span.text-mutedd {
+        color: #fff !important;
+    }
+    .form-stepper .label {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        color: white;
+    }
+    .form-stepper a {
+        cursor: default;
+        
+    }
+    .mt-3 {
+        margin-top: 2rem;
+    }
+ }
+
+}
+
+
+
+
 /* ==========================================================================
 3. Flying tabs
 ========================================================================== */
@@ -382,7 +582,6 @@ ul#countdown {
     //Modified for ICO card
     &.is-ico {
         .label {
-            color: #f9f9f9;
             font-size: 10px;
         }
     }
@@ -419,7 +618,6 @@ ul#countdown {
 
         //Label
         .label {
-            color: #adafb2;
             font-size: 12px;
             font-weight: 400;
             text-transform: uppercase;

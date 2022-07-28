@@ -71,9 +71,9 @@
                 </div>
                 <!-- Content wrapper -->
               </div>
-              <div id="steps" class="container" style="display:none;">
+              <div id="steps" class="container" >
               <div class="divider  is-centered"> </div>
-                <h2 class="title is-light is-semibold has-text-centered is-spaced">Steps </h2>
+                <h2 class="title is-light is-semibold has-text-centered is-spaced">5 Steps to Success </h2>
                 <!-- Flying tabs wrapper -->
               <div  class="flying-wrapper">
                 <!-- Tabs container -->
@@ -135,15 +135,18 @@
                                 <section id="step-1" class="form-step">
                                     <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to Start a Network</h2>
                                     <!-- Step 1 input fields -->
+                                    <div class="container steps"  >
+
                                     <div class="columns is-vcentered">
                                         <div class="column is-3">
                                           <div class="archives-widget">
                                             <div class="select" tabindex="1">
                                                 <input class="selectopt" name="test" type="radio" id="opt1" checked>
                                                 <label for="opt1" class="option">Select a Network</label>
-                                                <input class="selectopt" name="test" type="radio" id="opt2">
-                                                <label for="opt2" class="option">January</label>
-                                               
+                                                  {% for i in li%}
+                                                <input class="selectopt" name="test" type="radio" id="opt-{{i}}">
+                                                <label for="opt-{{i}}" class="option">{{i}}</label>
+                                                  {%endfor%}
                                             </div>
                                         </div>
                                       </div>
@@ -152,7 +155,7 @@
                                             <div class="column is-6">
                                             <form class="form">                                          
                                               <div class="control-material is-secondary">      
-                                                <input class="material-input " type="number" min="0" oninput="validity.valid||(value='');" required>
+                                                <input class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
                                                 <span class="material-highlight"></span>
                                                 <span class="bar"></span>
                                                 <label>Num of Nodes</label>
@@ -170,51 +173,118 @@
                                       </div>
                                       
                                   </div>
-                                   
+                                </div>
                                 </section>
                                 <!-- Step 2 Content, default hidden on page load. -->
                                 <section id="step-2" class="form-step d-none">
-                                    <h2 class="font-normal is-light is-3 is-semibold title">Social Profiles</h2>
-                                    <!-- Step 2 input fields -->
-                                    <div class="mt-3 is-light is-5 is-semibold title" id="mt-3">
-                                        Step 2 input fields goes here..
+                                  <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to Start a Network</h2>
+                                  <!-- Step 1 input fields -->
+                                  <div class="container steps">
+                                  <div class="columns is-vcentered">
+                                        <div class="column is-2">
+                                          <figure class="media is-white">
+                                            <div class="accepted-currencies">
+                                            <i class="cf cf-eth"></i>
+                                            </div>
+                                          </figure>
+                                        </div>
+                                          <div class="column is-4" style=" margin-bottom:-4vh; width:20%;">
+                                            <!-- Form -->
+                                                <form class="form">                                          
+                                                      <div class="control-material is-secondary">      
+                                                        <input class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
+                                                        <span class="material-highlight"></span>
+                                                        <span class="bar"></span>
+                                                        <label>Num of Nodes</label>
+                                                    </div>
+                                          </div>
+                                        <div class="column is-3" style="margin-left:8vw;">
+                                          <button class="button k-button is-primary is-fat rounded"> Start! </button>
+                                        </div>
+                                         </form>
+                                        <div class="column is-4">
+                                          <div class="mt-3" id="mt-3">
+                                            <button class="button k-button k-primary rounded raised has-gradient  front-gradient   is-bold btn-navigate-form-step" type="button" step_number="3">Start Monitoring</button>
+                                        </div>
                                     </div>
-                                    <div class="mt-3" id="mt-3">
-                                        <button class="button k-button k-secondary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="1">Prev</button>
-                                        <button class="button k-button k-primary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="3">Next</button>
-                                    </div>
+                                    
+                                </div>
                                 </section>
                                 <!-- Step 3 Content, default hidden on page load. -->
                                 <section id="step-3" class="form-step d-none">
-                                    <h2 class="font-normal">Personal Details</h2>
-                                    <!-- Step 3 input fields -->
-                                    <div class="mt-3">
-                                        Step 3 input fields goes here..
-                                    </div>
-                                    <div class="mt-3">
-                                        <button class="button k-button k-secondary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                                        <button class="button k-button k-primary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="4">Next</button>
-                                    </div>
+                                  <h2 class="title is-light is-2 is-semibold has-text-centered ">Just Start it!</h2>
+                                  <!-- Step 3 input fields -->
+                                  <div class="container steps">
+                                      <div class="columns is-offset-3">
+                                            <div class="column is-8">
+                                          
+                                                  <div class="has-text-right">
+                                                      <a class="button k-button k-secondary raised has-gradient is-fat is-bold rounded" style="margin-right:2.8vw">
+                                                        <span class="text">Start Monitoring</span>
+                                                        <span class="front-gradient"></span>
+                                                    </a>
+                                                  </div>
+                                            </div>
+                                          <div class="column is-3">
+                                            <h4 class="title is-light is-4 is-white is-bold has-text-centered"> Done! </h4>
+                                          </div>
+                                   </div>
+                                  </div>
+                                        <div class="mt-3">
+                                            <button class="button k-button grey-button rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="2">Prev</button>
+                                            <button class="button k-button k-primary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="4">Next</button>
+                                        </div>
                                 </section>
                                 <section id="step-4" class="form-step d-none">
-                                  <h2 class="font-normal">Personal Details</h2>
-                                  <!-- Step 3 input fields -->
-                                  <div class="mt-3">
-                                      Step 4 input fields goes here..
-                                  </div>
-                                  <div class="mt-3">
-                                      <button class="button k-button k-secondary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="3">Prev</button>
-                                      <button class="button k-button k-primary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="5">Next</button>
-                                  </div>
+                                  <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to Start a Network</h2>
+                                  <!-- Step 1 input fields -->
+                                  <div class="container steps" >
+                                    <div class="columns is-vcentered ">
+                                          <div class="column is-2">
+                                            <figure class="media is-white">
+                                              <div class="accepted-currencies">
+                                              <i class="cf cf-eth"></i>
+                                              </div>
+                                            </figure>
+                                          </div>
+                                            <div class="column is-5" style=" margin-bottom:-4vh; width:20%;">
+                                              <!-- Form -->
+                                                  <form class="form">                                          
+                                                        <div class="control-material is-secondary">      
+                                                          <input class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
+                                                          <span class="material-highlight"></span>
+                                                          <span class="bar"></span>
+                                                          <label>Num of Accounts</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="column is-5" style=" margin-bottom:-4vh; width:20%;">
+
+                                                      <div class="control-material is-secondary">      
+                                                        <input class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
+                                                        <span class="material-highlight"></span>
+                                                        <span class="bar"></span>
+                                                        <label>Num of Txs</label>
+                                                    </div>
+                                                  </div>
+                                          <div class="column is-3" style="margin-left:4vw;">
+                                            <button class="button k-button is-primary is-fat rounded"> Start Traffic Generator! </button>
+                                          </div>
+                                          </form>
+                                          <div class="column is-3">
+                                            <div class="mt-3" id="mt-3">
+                                              <button class="button k-button k-primary rounded raised has-gradient  front-gradient   is-bold btn-navigate-form-step" type="button" step_number="5">Done</button>
+                                          </div>
+                                    
+                                      </div>
+                              </div>
                               </section>
                               <section id="step-5" class="form-step d-none">
-                                <h2 class="font-normal">Personal Details</h2>
+                                <h2 class="font-normal title is-bold is-light is-2"> See it was easy! Start a different network or go back and start more traffic generations.  </h2>
                                 <!-- Step 3 input fields -->
+                                <div class="container steps"></div>  
                                 <div class="mt-3">
-                                    Step 5 input fields goes here..
-                                </div>
-                                <div class="mt-3">
-                                    <button class="button k-button k-secondary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="4">Prev</button>
+                                    <button class="button k-button k-primary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="4">Start Traffic Generation</button>
+                                    <button class="button k-button k-secondary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="1">Configure another Network</button>
                                 </div>
                             </section>
                             </form>

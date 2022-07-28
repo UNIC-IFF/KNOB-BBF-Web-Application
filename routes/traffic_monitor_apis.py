@@ -7,7 +7,7 @@ import pandas as pd
 NUM_OF_NODES=5
 MONITORING_APIS = Blueprint('MONITORING_APIS', __name__)
 BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
-INIT_PATH="blockchain-benchmarking-framework/"
+INIT_PATH="../blockchain-benchmarking-framework/"
 
 def get_blueprint():
     """Return the blueprint for the main app module"""

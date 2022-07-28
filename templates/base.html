@@ -75,11 +75,11 @@
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'available_networks' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('available_networks') }}">{{ gettext("Available Networks") }}</a>
                                 </div>
+                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'FAQ' %} active{% endif %}">
+                                    <a class="is-centered-responsive" href="{{ url_for('home') }}#FAQ">FAQ</a>
+                                </div>
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'management' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('management') }}">{{ gettext("Management") }}</a>
-                                </div>
-                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'benchmarking_engine' %} active{% endif %}">
-                                    <a class="is-centered-responsive" href="{{ url_for('benchmarking_engine') }}">{{ gettext("Benchmarking Engine") }}</a>
                                 </div>
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'benchmarking_engine' %} active{% endif %}">
                                     <a class="button-85 " href="{{ url_for('benchmarking_engine') }}">Launch App</a>
@@ -132,11 +132,11 @@
                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'available_networks' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('available_networks') }}">{{ gettext("Available Networks") }}</a>
                                 </div>
+                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'FAQ' %} active{% endif %}">
+                                    <a class="is-centered-responsive" href="{{ url_for('home') }}#FAQ">FAQ</a>
+                                </div>
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'management' %} active{% endif %}">
                                     <a class="is-centered-responsive" href="{{ url_for('management') }}">{{ gettext("Management") }}</a>
-                                </div>
-                                <div class="navbar-item is-nav-link {%- if request.endpoint == 'benchmarking_engine' %} active{% endif %}">
-                                    <a class="is-centered-responsive" href="{{ url_for('benchmarking_engine') }}">{{ gettext("Benchmarking Engine") }}</a>
                                 </div>
                                 <div class="navbar-item is-nav-link {%- if request.endpoint == 'benchmarking_engine' %} active{% endif %}">
                                     <a class="button-85 " href="{{ url_for('benchmarking_engine') }}">Launch App</a>
@@ -177,10 +177,7 @@
                 <!-- Absolute image -->
                 <img class="solar-system" src="../static/dist/img/bg/solar.svg" alt="">
             </footer>    <!-- Back To Top Button -->
-            <div x-data="initBackToTop()" x-on:scroll.window="scroll($event)" @click="goTop($event)" id="backtotop"><a href="javascript:" :class="{
-                'visible': scrolled,
-                '': !scrolled
-            }"></a></div>
+            
             <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
             <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
 

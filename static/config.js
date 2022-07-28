@@ -2,10 +2,10 @@
 
 export default {
   config: {
-    port: 5000,
+    port: 443,
   },
   paths: {
-    root: './',
+    root: '../',
     src: {
       base: "./",
       css: "./css",

@@ -7,7 +7,7 @@ import pandas as pd
 from readerwriterlock import rwlock
 import time
 NUM_OF_NODES=5
-PATH="blockchain-benchmarking-framework/control.sh "
+PATH="../blockchain-benchmarking-framework/control.sh "
 GETH_API = Blueprint('traffic_api', __name__)
 BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
 INIT_PATH="blockchain-benchmarking-framework/ "
@@ -16,7 +16,7 @@ INIT_PATH="blockchain-benchmarking-framework/ "
 
 def control_command(PATH,network, command): #
     # send command to hostpipe
-    fi= os.open("blockchain-benchmarking-framework/bbf-commands", os.O_WRONLY)
+    fi= os.open("../blockchain-benchmarking-framework/bbf-commands", os.O_WRONLY)
     
     lock= rwlock.RWLockFairD()
     lock_w=lock.gen_wlock()
@@ -27,16 +27,16 @@ def control_command(PATH,network, command): #
         finally:
             lock_w.release()
     while True:
-        if os.path.exists("output.txt"):
+        if os.path.exists("../output.txt"):
         
-                file1 = os.stat('output.txt') # initial file size
+                file1 = os.stat('../output.txt') # initial file size
                 file1_size = file1.st_size
                 time.sleep(0.5)
-                file2 = os.stat('output.txt') # updated file size
+                file2 = os.stat('../output.txt') # updated file size
                 file2_size = file2.st_size
                 comp = file2_size - file1_size # compares sizes
                 if comp == 0:
-                    with open("output.txt", 'r') as file:
+                    with open("../output.txt", 'r') as file:
                         out=file.read().splitlines()
                         for line in out:
                                 if "Error"  in line:

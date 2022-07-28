@@ -24,6 +24,7 @@
     "setup": "gulp setup"
   },
   "dependencies": {
+    "gulp-install": "1.1.0",
     "@iconify/iconify": "^2.2.1",
     "@ryangjchandler/fern": "^0.1.0",
     "aos": "^3.0.0-beta.6",

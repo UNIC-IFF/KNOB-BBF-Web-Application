@@ -7,31 +7,35 @@ import pandas as pd
 NUM_OF_NODES=5
 MONITORING_APIS = Blueprint('MONITORING_APIS', __name__)
 BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
-INIT_PATH="../blockchain-benchmarking-framework/"
+INIT_PATH="blockchain-benchmarking-framework/"
 
 def get_blueprint():
     """Return the blueprint for the main app module"""
     return MONITORING_APIS
 
-@MONITORING_APIS.route('/request/<string:network>/mon', methods=['GET', 'POST', 'DELETE'])
+@MONITORING_APIS.route('/request/<string:network>/mon', methods=['DELETE'])
 #begin with this action for the framework
-def monitoring(network):
+def stop_monitoring(network):
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
          abort(404)
+    if request.method == 'DELETE': #configure the monitoring 
+        return json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack stop'))
+    else:
+        abort(404)
+
+
+@MONITORING_APIS.route('/request/mon', methods=['GET'])
+#begin with this action for the framework
+def start_monitoring():
     if request.method == 'GET': #configure the monitoring 
-        network= " " #the network is not specified in this command      
-        return json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack configure')) 
-    elif request.method == 'POST': #start the monitoring
         network= " " #the network is not specified in this command 
         check= control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack configure')
         if "error" not in check:
             return json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack start'))
         else:
             abort(404)
-            return json.dumps({"Error with configure"})
-    else:
-        return json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack stop')) 
+            return json.dumps({"Error with configure"})  
 
 @MONITORING_APIS.route('/traffic/<string:network>/traffic/<int:num_of_nodes>/<int:num_of_txs>', methods=['GET'])
 #begin with this action for the framework

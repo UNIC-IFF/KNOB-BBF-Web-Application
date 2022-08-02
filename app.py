@@ -3,7 +3,6 @@ import argparse
 import os
 from flask import Flask, jsonify, make_response, render_template, redirect, request
 from flask_cors import CORS
-from flask_babel import gettext
 from flask_swagger_ui import get_swaggerui_blueprint
 from routes import request_api, traffic_monitor_apis, docker_api
 from flask_babel import Babel
@@ -46,9 +45,9 @@ def management():
 
 @APP.route("/benchmarking_engine", methods=["GET", "POST"])
 def benchmarking_engine():
-    if request.method in ['GET','POST']:
-            if request.method == 'GET':
-                li=json.loads(request_api.show_list())
+    if request.method in ['GET']:
+     li=json.loads(request_api.show_list())
+
 
     return render_template('benchmarking_engine.html', li=list(flatten(li["data"][2:])))
 
@@ -110,10 +109,6 @@ def handle_500_error(_error):
 
 
 if __name__ == '__main__':
-    cwd = os.getcwd()  # Get the current working directory (cwd)
-    files = os.listdir(cwd)  # Get all the files in that directory
-    print("Files in %r: %s" % (cwd, files))
-
     PARSER = argparse.ArgumentParser(
         description="Blockchain Benchmarking Framework Flask API")
 

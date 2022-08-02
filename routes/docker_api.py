@@ -35,7 +35,7 @@ def get_blueprint():
 
 
 
-@GETH_API.route("/docker/managment/running_networks", methods=['GET'])
+@GETH_API.route("/docker/management/running_networks", methods=['GET'])
 def get_running_networks():
     """Return the available networks"""
     import os 
@@ -54,7 +54,22 @@ def get_running_networks():
     return json.dumps(list(Active_Networks))
 
 
-@GETH_API.route('/docker/managment/stats', methods=['GET'])
+@GETH_API.route("/docker/management/is_monitoring_configured", methods=['GET'])
+def is_monitoring_configured():
+    """Return the available networks"""
+    import os 
+    #print(os.system("docker stats $(docker ps -q)"))
+    client = docker.DockerClient(base_url='unix:///var/run/docker.sock')
+    c=client.containers.list(all=True)
+    a=[container.name for container in c]
+    if "containers_logs_ui" in a and "prometheus" in a and "alertmanager" in a and "dc_stats_exp" in a and "statsdgraphite" in a and \
+     "pushgateway" in a and "grafana" in a:
+        return json.dumps("True")      
+
+    return json.dumps(a)
+
+
+@GETH_API.route('/docker/management/stats', methods=['GET'])
 #begin with this action for the framework
 def docker_stats():
    container_Stats=[]
@@ -88,7 +103,7 @@ def docker_stats():
 
 
 
-@GETH_API.route('/docker/managment/list', methods=['GET'])
+@GETH_API.route('/docker/management/list', methods=['GET'])
 #returns the container list information
 def docker_list():
    client = docker.from_env()

@@ -21,7 +21,7 @@
     }
   ],
   "paths": {
-    "/docker/managment/running_networks": {
+    "/docker/management/running_networks": {
       "get": {
         "tags": [
           "Running_Networks"
@@ -35,6 +35,25 @@
             "description": "OK",
             "schema": {
               "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+    },
+    "/docker/management/is_monitoring_configured": {
+      "get": {
+        "tags": [
+          "Check_If_Monitoring_Configured"
+        ],
+        "summary": "Returns a flag if the monitoring is configured or not",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/flag"
             }
           }
         }
@@ -254,48 +273,28 @@
         }
       }
     },
+    "/request/mon": {
+      "get": {
+        "tags": [
+          "Monitoring"
+        ],
+        "parameters":[{
+          "in": "path"
+          
+        }],
+        "summary": "Returns Monitoring logs for configure action",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+    },
   
   "/request/{network}/mon": {
-    "get": {
-      "tags": [
-        "Monitoring"
-      ],
-      "parameters":[{
-        "in": "path",
-        "name":"network",         
-         "description": "Choose the prefered Blockchain Network",
-         "schema":{"$ref":"#/components/schemas/network"}  
-      }],
-      "summary": "Returns Monitoring logs for configure action",
-      "responses": {
-        "200": {
-          "description": "OK",
-          "schema": {
-            "$ref": "#/components/schemas/Array"
-          }
-        }
-      }
-    },
-    "post": {
-      "tags": [
-        "Monitoring"
-      ],
-      "parameters":[{
-        "in": "path",
-        "name":"network",         
-         "description": "Choose the prefered Blockchain Network",
-         "schema":{"$ref":"#/components/schemas/network"}  
-      }],
-      "summary": "Returns Monitoring logs for start action",
-      "responses": {
-        "200": {
-          "description": "OK",
-          "schema": {
-            "$ref": "#/components/schemas/Array"
-          }
-        }
-      }
-    },
     "delete": {
       "summary": "Stop Monitoring",
       "tags": [
@@ -440,7 +439,7 @@
     }
   },
 
-  "/docker/managment/stats": {
+  "/docker/management/stats": {
     "get": {
       "tags": [
         "Return current docker stats"
@@ -457,7 +456,7 @@
     }
   },
 
-  "/docker/managment/list": {
+  "/docker/management/list": {
     "get": {
       "tags": [
         "Return current docker stats"
@@ -481,6 +480,10 @@
         "properties":{
           "type":"string",
           "format":"string"  }       
+      },
+      
+      "flag":{
+        "type":"boolean"
       },
       "public_key": {
         "type":"string",

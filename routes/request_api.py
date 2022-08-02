@@ -7,7 +7,7 @@ import pandas as pd
 from readerwriterlock import rwlock
 import time
 NUM_OF_NODES=5
-PATH="../blockchain-benchmarking-framework/control.sh "
+PATH="blockchain-benchmarking-framework/control.sh "
 GETH_API = Blueprint('traffic_api', __name__)
 BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
 INIT_PATH="blockchain-benchmarking-framework/ "

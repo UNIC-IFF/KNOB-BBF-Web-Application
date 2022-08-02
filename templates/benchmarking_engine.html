@@ -4,54 +4,59 @@
 {% block title %}Benchmarking Engine{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
             <!-- Hero Image and Title -->
             <div class="hero-body">
-                <div class="container">
-                    <div class="columns is-vcentered">
+                <div class="container" style=" margin-top: 5vh;">
     
                         <!-- Landing page Title -->
-                        <div class="column is-5 is-offset-1 landing-caption">
-                            <div class="divider"></div>
-                            <h1 class="title is-1 is-light is-semibold is-spaced main-title">News & Media</h1>
-                            <h2 class="subtitle is-6 is-light is-thin">
-                                Cryptocurrency brought to the next level. Join our ICO for supercharged rates.
-                            </h2>
-    
-                        </div>
-                        <!-- Hero image -->
-                        <div class="column is-6">
-                            <figure class="image">
-                                <img src="../static/img/illustrations/media.svg" alt="">
-                            </figure>
-                        </div>
-                    </div>
-                </div>
+                            <h1 class="title is-1  is-light is-semibold has-text-centered is-spaced">Blockchain Benchmarking Framework </h1>
+                            
+                  </div>
             </div>
+            <div class="divider is-spaced is-centered is-large"> </div>
         </section>
     
         <section class="section" >
             <div class="container">
               <div class="column is-5">
 
-                 
+     
+                
                   <!-- Content wrapper -->
                   <div class="content-wrapper is-large">
                     <div class="columns is-vcentered">
                         <!-- Feature -->
                         <div class="column is-9">
                             <div class="feature">
-                              <a id="slideSteps" class="button k-button k-secondary is-bold raised has-gradient is-fat slanted">
+                              <a id="slideSteps" class="button k-button k-secondary is-bold raised has-gradient is-fat ">
                                 <span class="text">Configure a Network</span>
                                 <span class="front-gradient"></span>
                             </a>
                             </div>
+                            <div class="w3-container">
+                                <div id="id01" class="w3-modal">
+                                  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+                                    <div class="w3-container w3-black">
+                                      <h2 class="title is-light is-2 is-semibold has-text-centered ">Please start the Monitoring Engine before configure a network</h2>
+                                      <h4 class="title is-light is-4 is-semibold has-text-centered ">This is required only once</h4>
+                                              <div class=" has-text-centered ">
+                                              <a id="start_monitoring" style="margin-left:0.1vw;"  class="button k-button k-secondary raised has-gradient is-fat is-bold" onclick="document.getElementById('id01').style.display='none'">
+                                                <span class="text">Start Monitoring</span>
+                                                <span class="front-gradient"></span>
+                                            </a>
+                                            </div>
+                                      </div>
+                                  </div>
+                            </div>
+                          </div>
                         </div>
                         <!-- Feature -->
                         <div class="column is-10">
                             <div class="feature">
                               <a href="/swagger" class="button k-button k-primary raised has-gradient is-bold is-fat">
-                                <span class="text">Advanced UI</span>
+                                <span class="text">VIEW API</span>
                                 <span class="front-gradient"></span>
                             </a>
                             </div>
@@ -91,7 +96,7 @@
                                         <span class="form-stepper-circle">
                                             <span>1</span>
                                         </span>
-                                        <div class="label">Configure a Network</div>
+                                        <div class="label">Deploy Network</div>
                                     </a>
                                 </li>
                                 <!-- Step 2 -->
@@ -103,59 +108,31 @@
                                         <div class="label text-mutedd">Start a Network</div>
                                     </a>
                                 </li>
-                                <!-- Step 3 -->
-                                <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
-                                    <a class="mx-2">
-                                        <span class="form-stepper-circle text-mutedd">
-                                            <span>3</span>
-                                        </span>
-                                        <div class="label text-mutedd">Start Monitoring</div>
-                                    </a>
-                                </li>
-                                <li class="form-stepper-unfinished text-center form-stepper-list" step="4">
-                                  <a class="mx-2">
-                                      <span class="form-stepper-circle">
-                                          <span>4</span>
-                                      </span>
-                                      <div class="label">Traffic Generator</div>
-                                  </a>
-                              </li>
-                              <li class="form-stepper-unfinished text-center form-stepper-list" step="5">
-                                <a class="mx-2">
-                                    <span class="form-stepper-circle">
-                                        <span>5</span>
-                                    </span>
-                                    <div class="label">You are Ready!</div>
-                                </a>
-                            </li>
-                            </ul>
+                              </ul>
                             <!-- Step Wise Form Content -->
-                            <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
                                 <!-- Step 1 Content -->
                                 <section id="step-1" class="form-step">
                                     <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to Start a Network</h2>
                                     <!-- Step 1 input fields -->
                                     <div class="container steps"  >
+                                      <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="post">
 
                                     <div class="columns is-vcentered">
                                         <div class="column is-3">
                                           <div class="archives-widget">
-                                            <div class="select" tabindex="1">
-                                                <input class="selectopt" name="test" type="radio" id="opt1" checked>
-                                                <label for="opt1" class="option">Select a Network</label>
+                                              <select id="selected" class="select is-small" style="background-color:transparent; color:white; font-size:16px;">
+                                                <option id="opt1" class="option">Select a Network</option>
                                                   {% for i in li%}
-                                                <input class="selectopt" name="test" type="radio" id="opt-{{i}}">
-                                                <label for="opt-{{i}}" class="option">{{i}}</label>
+                                                <option name='{{i}}' id="opt-{{i}}" class="option">{{i}}</option>
                                                   {%endfor%}
-                                            </div>
+                                                </select>
                                         </div>
                                       </div>
                                           <div class="column is-4" style="padding-left:3vw; margin-bottom:-4vh;">
                                             <!-- Form -->
                                             <div class="column is-6">
-                                            <form class="form">                                          
-                                              <div class="control-material is-secondary">      
-                                                <input class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
+                                                <div class="control-material is-secondary">      
+                                                <input id="num_of_nodes" class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
                                                 <span class="material-highlight"></span>
                                                 <span class="bar"></span>
                                                 <label>Num of Nodes</label>
@@ -163,12 +140,14 @@
                                           </div>
                                           </div>
                                           <div class="column is-3">
-                                            <button class="button k-button is-primary is-fat rounded"> Configure! </button>
+                                            <button id="btn1" class="button k-button is-primary is-fat rounded" > Configure! </button>
                                         </div>
                                       </form>
-                                      <div class="column is-4">
+                                      <div class="column is-3">
                                         <div class="mt-3" id="mt-3">
-                                          <button class="button k-button k-primary rounded raised has-gradient  front-gradient   is-bold btn-navigate-form-step" type="button" step_number="2">Start Network</button>
+                                          <h4 id="wait1" class="title hidden title is-5  is-light"> Wait till process finish.... </h4>
+
+                                          <button id="to-step-2" name="configure_" class="button k-button k-primary rounded raised has-gradient  front-gradient   is-bold btn-navigate-form-step hidden" type="button" step_number="2">Start Network</button>
                                       </div>
                                       </div>
                                       
@@ -184,60 +163,38 @@
                                         <div class="column is-2">
                                           <figure class="media is-white">
                                             <div class="accepted-currencies">
-                                            <i class="cf cf-eth"></i>
+                                            <i id="icon1" class="cf cf-eth"></i>
                                             </div>
                                           </figure>
                                         </div>
                                           <div class="column is-4" style=" margin-bottom:-4vh; width:20%;">
                                             <!-- Form -->
-                                                <form class="form">                                          
+                                                <form class="form" >                                          
                                                       <div class="control-material is-secondary">      
-                                                        <input class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
+                                                        <input id="num_of_nodes2" class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
                                                         <span class="material-highlight"></span>
                                                         <span class="bar"></span>
                                                         <label>Num of Nodes</label>
                                                     </div>
                                           </div>
                                         <div class="column is-3" style="margin-left:8vw;">
-                                          <button class="button k-button is-primary is-fat rounded"> Start! </button>
+                                          <button id="btn2" name="start_" class="button k-button is-primary is-fat rounded">   Start! </button>
                                         </div>
                                          </form>
-                                        <div class="column is-4">
+                                        <div class="column is-3">
                                           <div class="mt-3" id="mt-3">
-                                            <button class="button k-button k-primary rounded raised has-gradient  front-gradient   is-bold btn-navigate-form-step" type="button" step_number="3">Start Monitoring</button>
+                                            <h4 id="wait2"  class="title is-5 has-text-center  is-light hidden"> Wait till process finish.... </h4>
+                                            <button class="button k-button k-primary rounded raised has-gradient  front-gradient   is-bold btn-navigate-form-step" type="button" step_number="1">Deploy Another Network</button>
                                         </div>
                                     </div>
                                     
                                 </div>
                                 </section>
-                                <!-- Step 3 Content, default hidden on page load. -->
-                                <section id="step-3" class="form-step d-none">
-                                  <h2 class="title is-light is-2 is-semibold has-text-centered ">Just Start it!</h2>
-                                  <!-- Step 3 input fields -->
-                                  <div class="container steps">
-                                      <div class="columns is-offset-3">
-                                            <div class="column is-8">
-                                          
-                                                  <div class="has-text-right">
-                                                      <a class="button k-button k-secondary raised has-gradient is-fat is-bold rounded" style="margin-right:2.8vw">
-                                                        <span class="text">Start Monitoring</span>
-                                                        <span class="front-gradient"></span>
-                                                    </a>
-                                                  </div>
-                                            </div>
-                                          <div class="column is-3">
-                                            <h4 class="title is-light is-4 is-white is-bold has-text-centered"> Done! </h4>
-                                          </div>
-                                   </div>
-                                  </div>
-                                        <div class="mt-3">
-                                            <button class="button k-button grey-button rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                                            <button class="button k-button k-primary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="4">Next</button>
-                                        </div>
-                                </section>
+                                <!-- 
+                                
                                 <section id="step-4" class="form-step d-none">
                                   <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to Start a Network</h2>
-                                  <!-- Step 1 input fields -->
+                                 Step 1 input fields 
                                   <div class="container steps" >
                                     <div class="columns is-vcentered ">
                                           <div class="column is-2">
@@ -248,8 +205,8 @@
                                             </figure>
                                           </div>
                                             <div class="column is-5" style=" margin-bottom:-4vh; width:20%;">
-                                              <!-- Form -->
-                                                  <form class="form">                                          
+                                              
+                                                  <form class="form" method="post" >                                          
                                                         <div class="control-material is-secondary">      
                                                           <input class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
                                                           <span class="material-highlight"></span>
@@ -277,17 +234,8 @@
                                     
                                       </div>
                               </div>
-                              </section>
-                              <section id="step-5" class="form-step d-none">
-                                <h2 class="font-normal title is-bold is-light is-2"> See it was easy! Start a different network or go back and start more traffic generations.  </h2>
-                                <!-- Step 3 input fields -->
-                                <div class="container steps"></div>  
-                                <div class="mt-3">
-                                    <button class="button k-button k-primary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="4">Start Traffic Generation</button>
-                                    <button class="button k-button k-secondary rounded raised has-gradient front-gradient   is-bold btn-navigate-form-step" type="button" step_number="1">Configure another Network</button>
-                                </div>
-                            </section>
-                            </form>
+                              </section> -->
+                            
                         </div>
                     </div>
     
@@ -296,11 +244,11 @@
             </div>
         </section>
 
-        <section class="section">
+        <section id="array"  class="section hidden" style="margin-top:0; padding-top:0; ">
             <div class="container">
               <div class="b-table">
                 <div class="table-wrapper has-mobile-cards">
-                  <table class="table is-fullwidth is-hoverable is-fullwidth">
+                  <table id="myTable" class="table is-fullwidth is-hoverable is-fullwidth">
                     <thead>
                     <tr>
                       <th class="is-chevron-cell"></th>
@@ -308,31 +256,11 @@
                       <th>Network name</th>
                       <th>Network status</th>
                       <th>Actions</th>
+                      <th>Traffic Generation</th>
                     </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="is-chevron-cell">
-                          <a role="button" id="button" >
-                            <span id="icon" class="iconify-inline icon "><i class="mdi mdi-chevron-right mdi-24px"></i></span>
-                          </a>
-                        </td>
-                        <td class="is-image-cell">
-                          <i class="cf cf-eth"></i>
-                        </td>
-                        <td data-label="Network name">Rebecca Bauch</td>
-                        <td data-label="Network status">Daugherty-Daniel</td>
-                        <td class="is-actions-cell">
-                          <div class="buttons is-center">
-                            <button class="button is-small is-primary" type="button">
-                              <span class="icon"><i class="mdi mdi-eye"></i></span>
-                            </button>
-                            <button id="startstop" class="button is-small is-danger jb-modal" data-target="sample-modal" type="button">
-                              <span class="icon"><i id="stopstopicon" class="mdi mdi-trash-can"></i></span>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
+                      
                         <tr>
                           <div class="content" id="wrapper" style="display:hidden;">
                             <td colspan="8">
@@ -437,37 +365,183 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
     });
 });
 </script>
+
+
 <script>
+  function toggles(network){
+    $(`#startstop${network}`).toggleClass('is-success is-danger')
+    $(`#clean${network}`).toggleClass('appear hidden')
+    $(`#stopstopicon${network}`).toggleClass('mdi-arrow-right-drop-circle mdi-trash-can')
+    
 
-  $(document).ready(function(){
-    $("#button").click(function(){
-      
-      $(".detail-container").slideToggle("slow");
-      $("#icon").toggleClass(' is-expanded')
-    });
+  };
+
+  function something(network){
+    view();
+  };
 
 
-  });
+  function view(network){
+    $(".detail-container").slideToggle("slow");
+    $("#icon").toggleClass(' is-expanded')
+  };
 
-
-  $(document).ready(function(){
-  $("#startstop").click(function(){
-    $("#startstop").toggleClass('is-danger is-success')
-    $("#stopstopicon").toggleClass('mdi-trash-can mdi-arrow-right-drop-circle')
-
-  });
   $("#slideSteps").click(function(){
-    $("#steps").slideToggle("slow");
-
+    fetch('/docker/management/is_monitoring_configured')
+    .then((response) => response.json())
+    .then(function(data) {
+      if(data == "True") {
+        $("#steps").slideToggle("slow");
+      }
+      else{
+        document.getElementById('id01').style.display='block'
+      };
+   
+    });
   });
-});
- 
-
 
 
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+  $("#start_monitoring").click(function(){
+    fetch('/request/mon')
+    .then((response) => response.json())
+    .then(function(data) {
+    console.log(data);
+    });
+  });
+</script>
 
+
+<script>
+
+
+  const buttonForm = document.getElementById("btn1");
+  
+  buttonForm.addEventListener("click",(event) => {
+    event.preventDefault();
+    configureNetwork();
+
+     });
+  
+ 
+     const buttonForm2 = document.getElementById("btn2");
+  
+     buttonForm2.addEventListener("click",(event) => {
+       event.preventDefault();
+       startNetwork();
+        });
+     
+
+
+        function AddRows(network) {
+          var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+          var row = table.insertRow(0);
+          row.id = `network-${network}`;
+          var cel0=row.insertCell(0);
+          cel0.innerHTML = `<a role="button" onclick="view('${network}')"  >
+            <span id="icon" class="iconify-inline icon "><i class="mdi mdi-chevron-right mdi-24px"></i></span>
+          </a>`;
+          var cel= row.insertCell(1);
+          cel.innerHTML=`  <i id="icon${network}" class="cf cf-eth"></i>`;
+          changeicon(network,`icon${network}`);
+          var cell1 = row.insertCell(2);
+          cell1.innerHTML=network;
+          var cell2 = row.insertCell(3);
+          cell2.innerHTML="Configured";
+          var cel3= row.insertCell(4);
+          cel3.className="is-actions-cell";
+          cel3.innerHTML=` 
+          <div class="buttons is-center">
+          <button id="viewgraph${network}" onclick="view()" class="button is-small is-primary" type="button">
+            <span class="icon"><i class="mdi mdi-eye"></i></span>
+          </button>
+          <button id="startstop${network}" onclick="startNetwork('${network}')" class="button is-small is-success jb-modal" data-target="sample-modal" type="button">
+            <span class="icon"><i id="stopstopicon${network}" class="mdi mdi-arrow-right-drop-circle"></i></span>
+          </button>
+          <button  id="clean${network}" class="button is-small is-danger jb-modal appear" data-target="sample-modal" type="button">
+            <span class="icon"><i  class="mdi mdi-close-box"></i></span>
+          </button>
+        </div>`; 
+        var cel4= row.insertCell(5);
+        cel4.innerHTML=`<button   class="button k-button is-primary is-small is-semibold" type="button">
+          Traffic Generation
+        </button>`;
+          
+        };
+
+        function startNetwork(){
+          var value = event.value;
+          var num_of_nodes=document.getElementById('num_of_nodes2').value;
+          console.log(network);
+          let url = `/request/${network}/start/${num_of_nodes}`;
+          $("#wait2").toggleClass('hidden appear');
+          toggles(network);
+          fetch(url, {
+          method: "POST",
+          })
+          .then(data => {
+            console.log("ok")
+            $("#wait2").toggleClass('appear hidden');
+
+            if (!data.ok) {
+              throw new Error("HTTP error " + data.status);
+          }
+            return data.json()})
+          .then((response) => {
+            console.log(response);
+            })
+          .catch((err) => console.error(err));
+
+        };
+
+        function configureNetwork(){
+          network  = document.getElementById('selected').value;
+          if (network ==="Select a Network"){
+            alert("Please select a valid network!");
+          }
+          var num_of_nodes=document.getElementById('num_of_nodes').value;
+          let url = `/request/${network}/configure/${num_of_nodes}`;
+          $("#wait1").toggleClass('hidden appear');
+      
+          fetch(url, {
+          method: "POST",
+          })
+          .then(data => {
+            console.log("ok")
+      
+            if (!data.ok) {
+              throw new Error("HTTP error " + data.status);
+          }
+            return data.json()})
+          .then((response) => {
+           console.log(response);
+           $("#wait1").toggleClass('appear hidden');
+           $("#to-step-2").toggleClass('hidden appear');
+           $("#array").toggleClass('hidden appear');
+           AddRows(network);
+           changeicon(network,"icon1");
+           changeicon(network,`icon${network}`);
+           })
+          .catch((err) => console.error(err));
+        };
+
+        function changeicon(network, icon){
+          if (network==="xrpl"){
+            document.getElementById(icon).className="cf cf-xrp";
+          };
+          if (network==="stellar-docker-testnet"){
+            document.getElementById(icon).className="cf cf-xlm";
+          };
+          if (network==="besu-poa"){
+            document.getElementById(icon).className="cf cf-xyo";
+          };
+          if (network==="geth"){
+            document.getElementById(icon).className="cf cf-eth";
+          };
+        };
+
+</script>
 
 <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
 {%endblock%}

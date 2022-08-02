@@ -12,6 +12,6 @@ COPY . /usr/src/app
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 #Expose Port
-EXPOSE 80
+EXPOSE 443
 
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]

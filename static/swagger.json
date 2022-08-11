@@ -86,6 +86,33 @@
         }
       }
     },
+     
+    "/request/{network}/path": {
+      "get": {
+        "tags": [
+          "Control"
+        ],
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        "summary": "Returns Nodes that are active for the current network",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+    },
     
       "/request/{network}/start/{NUM_OF_NODES}": {
       "post": {
@@ -294,20 +321,13 @@
       }
     },
   
-  "/request/{network}/mon": {
+  "/request/mon-stop": {
     "delete": {
       "summary": "Stop Monitoring",
       "tags": [
         "Monitoring"
       ],
-      
-      "parameters":[{
-        "in": "path",
-        "name":"network",         
-        "required": true,
-         "description": "Choose the prefered Blockchain Network",
-         "schema":{"$ref":"#/components/schemas/network"}  
-      }],
+
       "produces": [
         "application/json"
       ],
@@ -343,16 +363,16 @@
         },
         {
           "in": "path",
-          "name":"num_of_nodes",         
+          "name":"num_of_wallets",         
           "required": true,
-          "description": "Choose the prefered Blockchain Network",
+          "description": "Choose number of wallets to be generated",
           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
         },
         {
           "in": "path",
-          "name":"num_of_txs",         
+          "name":"num_of_tokens",         
           "required": true,
-          "description": "Choose the prefered Blockchain Network",
+          "description": "Choose number of tokens to be generated",
           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
         }],
         "summary": "Returns Traffic log",
@@ -390,8 +410,31 @@
       }
     }
   },
+  "/traffic/wallets/{network}": {
+    "get": {
+      "tags": [
+        "Traffic"
+      ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+        "description": "Choose the prefered Blockchain Network",
+        "schema":{"$ref":"#/components/schemas/network"}  
+      }],
+      "summary": "Returns Wallets/ Public Keys",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
   "/traffic/{network}/acc/{public_key}": {
-    "post": {
+    "get": {
       "tags": [
         "Traffic"
       ],

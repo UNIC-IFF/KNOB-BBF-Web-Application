@@ -45,8 +45,8 @@ def management():
 
 @APP.route("/benchmarking_engine", methods=["GET", "POST"])
 def benchmarking_engine():
-    if request.method in ['GET']:
-     li=json.loads(request_api.show_list())
+    li=[]
+    li=json.loads(request_api.show_list())
 
 
     return render_template('benchmarking_engine.html', li=list(flatten(li["data"][2:])))

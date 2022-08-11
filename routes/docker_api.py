@@ -1,9 +1,10 @@
 import json
 import re
 import docker
-from flask import   Blueprint
+from flask import   Blueprint, jsonify
 import datetime
 import pandas as pd
+
 
 GETH_API = Blueprint('docker_api', __name__)
 BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
@@ -57,7 +58,6 @@ def get_running_networks():
 @GETH_API.route("/docker/management/is_monitoring_configured", methods=['GET'])
 def is_monitoring_configured():
     """Return the available networks"""
-    import os 
     #print(os.system("docker stats $(docker ps -q)"))
     client = docker.DockerClient(base_url='unix:///var/run/docker.sock')
     c=client.containers.list(all=True)
@@ -65,8 +65,8 @@ def is_monitoring_configured():
     if "containers_logs_ui" in a and "prometheus" in a and "alertmanager" in a and "dc_stats_exp" in a and "statsdgraphite" in a and \
      "pushgateway" in a and "grafana" in a:
         return json.dumps("True")      
-
-    return json.dumps(a)
+    print(a)
+    return json.dumps("False")
 
 
 @GETH_API.route('/docker/management/stats', methods=['GET'])
@@ -95,11 +95,11 @@ def docker_stats():
       memory_utilization = round(memory_usage/limit * 100, 3)
      #--------------------------- UpTime ----------------------------------
       date= (pd.to_datetime(datetime.datetime.now(datetime.timezone.utc))-pd.to_datetime(i['read']))
-      container_Stats.append({"Container_name":i['name'], "Network_Stats":i['networks'], "memory_usage_percentage":memory_utilization, "CPU_ucsage_percent":percent, "Uptime":str(date)})
+      container_Stats.append({"Container_name":i['name'][1:], "Network_Stats":i['networks'], "memory_usage_percentage":memory_utilization, "CPU_ucsage_percent":percent, "Uptime":str(date)})
      else:
             continue
 
-   return json.dumps(container_Stats)
+   return jsonify(sorted(container_Stats, key=lambda d: d['Container_name']))
 
 
 
@@ -109,14 +109,15 @@ def docker_list():
    client = docker.from_env()
    container_dict=[]
    for container in client.containers.list():
-        container_dict.append({"Container_name": container.name,"Container_ID":container.short_id,"Container_status": container.status,"Container_image":re.search(r"\'(.*?)\'",str(container.image)).group(1) })
-
-   return json.dumps(container_dict)
+        container_dict.append({"Container_name": container.name[1:],"Container_ID":container.short_id,"Container_status": container.status,"Container_image":re.search(r"\'(.*?)\'",str(container.image)).group(1) })
+   return jsonify(container_dict)
 
 def docker_logs():
    client = docker.from_env()
    container_logs={}
    for container in client.containers.list():
     a =pd.DataFrame(container.logs(timestamps=False,tail=40).decode("utf8").splitlines(), index=None, columns=None)
-    container_logs[container.name]= a.to_html(header=False,index=False, table_id="table-logs", classes="table-striped table-dark table-responsive w-100 d-block d-md-table")
+    container_logs[container.name[1:]]= a.to_html(header=False,index=False, table_id="table-logs", classes="table-striped table-dark table-responsive w-100 d-block d-md-table")
    return  container_logs
+
+

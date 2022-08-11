@@ -16,9 +16,7 @@ pandas
 datetime
 pathlib
 regex
-itsdangerous
 Jinja2
-click
 flask-babel
 readerwriterlock
 isort==4.2.5

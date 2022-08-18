@@ -24,22 +24,22 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
         'app_name': "Blockchain-Benchmarking-Framework-Flask-API"
     }
 )
-
+'''
 def flatten(listOfLists):
     "Flatten one level of nesting"
     return chain.from_iterable(listOfLists)
-
+'''
 
 @APP.route("/", methods=["GET", "POST"])
 def init():
     return redirect('home')
 
-@APP.route("/home", methods=["GET", "POST"])
+@APP.route("/home", methods=["GET"])
 def home():
     return render_template('home.html')
 
 
-@APP.route("/management", methods=["GET", "POST"])
+@APP.route("/management", methods=["GET"])
 def management():
     return render_template('management.html')
 
@@ -48,20 +48,19 @@ def benchmarking_engine():
     li=[]
     li=json.loads(request_api.show_list())
 
-
-    return render_template('benchmarking_engine.html', li=list(flatten(li["data"][2:])))
-
+    return render_template('benchmarking_engine.html', li=list(li[2:]))
 
 
-@APP.route("/available_networks", methods=["GET", "POST"])
+
+@APP.route("/available_networks", methods=["GET"])
 def available_networks():
     
     li=json.loads(request_api.show_list())
     
-    return render_template('available_networks.html', li=list(flatten(li["data"][2:])))
+    return render_template('available_networks.html', li=list(li["data"][2:]))
 
 
-@APP.route("/monitoring", methods=["GET", "POST"])
+@APP.route("/monitoring", methods=["GET"])
 def monitoring():
     return render_template('monitoring.html')
 
@@ -69,7 +68,7 @@ def monitoring():
 def dozzle():
     return render_template('dozzle.html') 
 
-@APP.route("/grafana", methods=["GET", "POST"])
+@APP.route("/grafana", methods=["GET"])
 def grafana():
     return render_template('grafana.html')      
 

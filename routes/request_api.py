@@ -1,10 +1,9 @@
 """The Endpoints to manage the Geth Actions"""
 import os
 import json
-from routes.docker_api import get_running_networks, remove_network
-from flask import  abort, Blueprint
+from routes.docker_api import  remove_network, get_running_networks
+from flask import  abort, Blueprint, jsonify
 from  difflib import get_close_matches as gcm
-import pandas as pd
 from readerwriterlock import rwlock
 import time
 import fnmatch
@@ -13,12 +12,12 @@ NUM_OF_NODES=5
 PATH="blockchain-benchmarking-framework/control.sh "
 GETH_API = Blueprint('traffic_api', __name__)
 BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
-INIT_PATH="blockchain-benchmarking-framework/ "
+INIT_PATH="blockchain-benchmarking-framework/"
 OUTPUT_FILE="../output.txt"
+Time2W=1
 
 
-
-def control_command(PATH,network, command, OUTPUT_FILE): #
+def control_command(PATH,network, command, OUTPUT_FILE, Time2W): #
     # send command to hostpipe
     fi= os.open("../blockchain-benchmarking-framework/bbf-commands", os.O_WRONLY)
     
@@ -36,7 +35,7 @@ def control_command(PATH,network, command, OUTPUT_FILE): #
         
                 file1 = os.stat(OUTPUT_FILE) # initial file size
                 file1_size = file1.st_size
-                time.sleep(0.5)
+                time.sleep(Time2W)
                 file2 = os.stat(OUTPUT_FILE) # updated file size
                 file2_size = file2.st_size
                 comp = file2_size - file1_size # compares sizes
@@ -47,7 +46,7 @@ def control_command(PATH,network, command, OUTPUT_FILE): #
                     break
 
                 else:
-                    time.sleep(1)
+                    time.sleep(Time2W)
         else:
             time.sleep(1)
     return out
@@ -72,8 +71,9 @@ def path_exists(network):
         print("NOT CONFIGURED")
         return json.dumps("NOT CONFIGURED")        
     else:
-        dictData = json.loads(get_status(network))
-        if any(s for s in dictData["data"]):
+        dictData = json.loads(get_running_networks())
+        print(s for s in dictData)
+        if any(s for s in dictData):
             if network == "xrpl":
                 count = len(fnmatch.filter(os.listdir(dir_path), f'{network}*')) - 1
             print("Started", count)
@@ -96,13 +96,13 @@ def get_status(network):
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
          abort(404)
-    st=control_command(PATH,network,'status', OUTPUT_FILE)
+    st=control_command(PATH,network,'status', OUTPUT_FILE, Time2W)
     s=[]
     for i in range(3, len(st)-1):
         s.append(st[i])
-    return pd.DataFrame(s).to_json(orient='split',indent= 2, index=False)
+    return json.dumps(s)
 
-@GETH_API.route('/request/<string:network>/start/<int:NUM_OF_NODES>', methods=['POST'])
+@GETH_API.route('/request/<string:network>/start/<int:NUM_OF_NODES>', methods=['GET'])
 def post_start(network, NUM_OF_NODES):
     """Return all book requests
     @return: 200: an array of all Start logs as a \
@@ -113,10 +113,10 @@ def post_start(network, NUM_OF_NODES):
     if network not in BLOCKCHAINS:
          abort(404)
     print(f'Start {NUM_OF_NODES} Nodes') #later we will let the user from the interface to choose this number 
-    return pd.DataFrame(control_command(PATH,network,f'start -n {NUM_OF_NODES}',OUTPUT_FILE)).to_json(orient='split',indent= 2, index=False)
+    return jsonify(control_command(PATH,network,f'start -n {NUM_OF_NODES}',OUTPUT_FILE,Time2W))
 
 
-@GETH_API.route('/request/<string:network>/clean', methods=['DELETE'])
+@GETH_API.route('/request/<string:network>/clean', methods=['GET'])
 def clean(network):
     """Return all book requests
     @return: 200: an array of all Start logs as a \
@@ -126,7 +126,7 @@ def clean(network):
     if network not in BLOCKCHAINS:
          abort(404)
     print('CLEAN') #later we will let the user from the interface to choose this number 
-    return pd.DataFrame(control_command(PATH,network,'clean',OUTPUT_FILE)).to_json(orient='split',indent= 2, index=False)
+    return jsonify(control_command(PATH,network,'clean',OUTPUT_FILE,Time2W))
 
 @GETH_API.route('/request/<string:network>/configure/<int:NUM_OF_NODES>', methods=['POST'])
 def put_configure(network, NUM_OF_NODES):
@@ -140,8 +140,8 @@ def put_configure(network, NUM_OF_NODES):
          abort(404)
     if network == "besu-poa":
             NUM_OF_NODES_BN= 1
-            return pd.DataFrame(control_command(PATH,network,f'configure -bn {NUM_OF_NODES_BN} -vn {NUM_OF_NODES}',OUTPUT_FILE)).to_json(orient='split',indent= 2, index=False) 
-    return pd.DataFrame(control_command(PATH,network,f'configure -n {NUM_OF_NODES}', OUTPUT_FILE)).to_json(orient='split',indent= 2, index=False)
+            return jsonify(control_command(PATH,network,f'configure -bn {NUM_OF_NODES_BN} -vn {NUM_OF_NODES}',OUTPUT_FILE,Time2W)) 
+    return jsonify(control_command(PATH,network,f'configure -n {NUM_OF_NODES}', OUTPUT_FILE,Time2W))
 
 
 @GETH_API.route('/request/<string:network>/configure/<int:NUM_OF_NODES_BN>/<int:NUM_OF_NODES_VN>', methods=['POST'])
@@ -155,23 +155,22 @@ def put_configure_besu(network, NUM_OF_NODES_BN, NUM_OF_NODES_VN):
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
          abort(404)
-    return pd.DataFrame(control_command(PATH,network,f'configure -bn {NUM_OF_NODES_BN} -vn {NUM_OF_NODES_VN}',OUTPUT_FILE)).to_json(orient='split',indent= 2, index=False)    
+    return jsonify(control_command(PATH,network,f'configure -bn {NUM_OF_NODES_BN} -vn {NUM_OF_NODES_VN}',OUTPUT_FILE,Time2W))
 
-
-@GETH_API.route('/request/<string:network>/stop', methods=['DELETE'])
+@GETH_API.route('/request/<string:network>/stop', methods=['GET'])
 def stop(network):
     """ Stop the Nodes and network    """
     
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
          abort(404)
-    print('stop nodes') #later we will let the user from the interface to choose this number with configure
+    print('stop nodes', network) #later we will let the user from the interface to choose this number with configure
     remove_network(str(network))
-    return pd.DataFrame(control_command(PATH,network,'stop',OUTPUT_FILE)).to_json(orient='split',indent= 2, index=False)
+    return json.dumps(control_command(PATH,network,'stop',OUTPUT_FILE,Time2W))
 
 
 @GETH_API.route('/request/list', methods=['GET'])
 #begin with this action for the framework
 def show_list(): 
     INIT_PATH="blockchain-benchmarking-framework/"+"control.sh -list"
-    return pd.DataFrame(control_command(INIT_PATH," ",'--list',OUTPUT_FILE)).to_json(orient='split',indent= 2, index=False)
+    return json.dumps(control_command(INIT_PATH," ",'--list',OUTPUT_FILE,Time2W))

@@ -115,7 +115,7 @@
     },
     
       "/request/{network}/start/{NUM_OF_NODES}": {
-      "post": {
+      "get": {
         "tags": [
           "Control"
         ],
@@ -235,7 +235,7 @@
       }
     },
     "/request/{network}/stop": {
-      "delete": {
+      "get": {
         "summary": "Stop the network and nodes",
         "tags": [
           "Control"
@@ -268,7 +268,7 @@
       }
     },
     "/request/{network}/clean": {
-      "delete": {
+      "get": {
         "summary": "Clean the network and nodes",
         "tags": [
           "Control"
@@ -348,8 +348,7 @@
     }
   },
 
-  "/traffic/{network}/traffic/{num_of_nodes}/{num_of_txs}": {
-  
+  "/traffic/{network}/traffic/{num_of_wallets}/{num_of_tokens}": {
       "get": {
         "tags": [
           "Traffic"

@@ -42,7 +42,7 @@
                                       <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                                      <br>
                                       <h2 class="title is-light is-2 is-semibold has-text-centered ">Please start the Monitoring Engine before configure a network</h2>
-                                      <h4 class="title is-light is-4 is-semibold has-text-centered ">This is required only once</h4>
+                                      <h4 class="title is-light is-4 is-semibold has-text-centered ">This is required only once. <span style="color:red;"> Then press again  the configure  button <span> </h4>
                                               <div class=" has-text-centered ">
                                               <a id="start_monitoring" style="margin-left:0.1vw;"  class="button k-button k-secondary raised has-gradient is-fat is-bold" onclick="document.getElementById('id01').style.display='none'">
                                                 <span class="text">Start Monitoring</span>
@@ -80,7 +80,7 @@
               </div>
               <div id="steps" class="container hidden" >
               <div class="divider  is-centered"> </div>
-                <h2 class="title is-light is-semibold has-text-centered is-spaced">2 Steps to Success </h2>
+                <h2 class="title is-light is-semibold has-text-centered is-spaced" style="margin-bottom:-2rem;">Configure a Network </h2>
                 <!-- Flying tabs wrapper -->
               <div  class="flying-wrapper">
                 <!-- Tabs container -->
@@ -90,9 +90,9 @@
                     <div class="steps" style="display:grid!important;">
                         
                         <div id="multi-step-form-container">
-                            <!-- Form Steps / Progress Bar -->
+                            <!-- Form Steps / Progress Bar 
                             <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
-                                <!-- Step 1 -->
+                               
                                 <li class="form-stepper-active text-center form-stepper-list" step="1">
                                     <a class="mx-2">
                                         <span class="form-stepper-circle">
@@ -101,7 +101,7 @@
                                         <div  class="label">Configure a Network</div>
                                     </a>
                                 </li>
-                                <!-- Step 2 -->
+                                 
                                 <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
                                     <a class="mx-2">
                                         <span class="form-stepper-circle text-mutedd">
@@ -110,7 +110,7 @@
                                         <div class="label text-mutedd">Start a Network</div>
                                     </a>
                                 </li>
-                              </ul>
+                              </ul>-->
                             <!-- Step Wise Form Content -->
                                 <!-- Step 1 Content -->
                                 <section id="step-1" class="form-step">
@@ -147,19 +147,20 @@
                                       </form>
                                       <div class="column is-3">
                                         <div class="mt-3" id="mt-3">
-                                          <h4 id="wait1" class="title hidden title is-5  is-light"> Wait till process finish.... </h4>
+                                          <div id="wait1" class=" loader  appear has-text-centered is-centered" style="display:none;"> </div>
+                                          <div id="wait1t" class="hidden  has-text-centered is-centered is-light is-semibold">Loading...</div>
 
-                                          <button id="to-step-2" name="configure_" class="button k-button k-primary rounded raised has-gradient  front-gradient   is-bold btn-navigate-form-step hidden" type="button" step_number="2">Start Network</button>
+                                          <span id="sta" class="title hidden title is-6  is-light hidden" style="padding-right:40%" >Start a Network by clicking the start button on the panel below</span>
                                       </div>
                                       </div>
                                       
                                   </div>
                                 </div>
                                 </section>
-                                <!-- Step 2 Content, default hidden on page load. -->
+                                <!-- Step 2 Content, default hidden on page load. 
                                 <section id="step-2" class="form-step d-none">
                                   <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to Start a Network</h2>
-                                  <!-- Step 1 input fields -->
+                                  //Step 1 input fields 
                                   <div class="container steps">
                                   <div class="columns is-vcentered">
                                         <div class="column is-2">
@@ -170,7 +171,7 @@
                                           </figure>
                                         </div>
                                           <div class="column is-4" style=" margin-bottom:-4vh; width:20%;">
-                                            <!-- Form -->
+                                            //Form 
                                                 <form class="form" >                                          
                                                       <div class="control-material is-secondary">      
                                                         <input id="num_of_nodes2" class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
@@ -191,7 +192,7 @@
                                     </div>
                                     
                                 </div>
-                                </section>
+                                </section> -->
                                
                             
                         </div>
@@ -219,6 +220,8 @@
                     </tr>
                     </thead>
                     <tbody >
+                      <h4 class="title is-4 is-light is-semibold has-text-centered is-centered"> Network Control Panel </h4>
+                      <div class="divider is-centered has-text-centered is-large is-long"> </div>
 
                                 <div class="w3-container">
                                   <div id="id02" class="w3-modal">
@@ -249,13 +252,14 @@
                                                          </div>
                                                        </div>
                                                <div class="column is-3" style="margin-left:4vw;">
-                                                 <button id='start_traffic' =class="button k-button is-primary is-fat rounded"> Start Traffic Generator! </button>
+                                                 <button id='start_traffic' class="button k-button is-primary is-fat rounded"> Start Traffic Generator! </button>
                                                </div>
                                                <div class="column is-3">
                                                  <div class="mt-3" id="mt-3">
-                                                  <h5 id="wait_traffic" class="is-light is-semibold title is-6"> Wait till finished... </h5>
+                                                  <div id="wait2" class=" loader  appear has-text-centered is-centered" style="display:none;"> </div>
+                                                  <div id="wait2t" class="hidden  has-text-centered is-centered is-light is-semibold">Loading...</div>
 
-                                                  <h5 id="finished_traffic" class="is-light is-semibold title is-6"> Finished! Now visit Monitoring page or check Traffic logs by pressing the view icon. </h5>
+                                                  <h5 id="finished_traffic" class="is-light is-semibold title is-6 hidden"> Finished! <br> Now visit Monitoring page or check Traffic logs by pressing the view icon. </h5>
                                                </div>
                                          
                                            </div>
@@ -265,7 +269,7 @@
                               </div>
 
                               
-                      
+                      <!-- 
                         <tr>
                           <div class="content" id="wrapper" style="display:hidden;">
                             <td colspan="8">
@@ -275,11 +279,8 @@
                                 <div class="content-wrapper is-large" style="display:flex;
                                 flex-direction:column;">
                       
-                                    <!-- Flying tabs wrapper -->
                                     <div x-data="initTabs()" class="flying-wrapper">
-                                        <!-- Tabs container -->
                                         <div class="flying-tabs-container">
-                                            <!-- Tabs -->
                                             
                                             <div class="flying-tabs"  >
                                                 <div style="margin-left:25%; border: 2px solid;   border-radius: 5px; padding: 5px 0 5px 0 ;" onclick="node('xrpl')" @click="switchTabs($event)" class="flying-child tab-geth" data-tab="tab-geth" :class="{
@@ -295,18 +296,14 @@
                                             </div>
                                         </div>
                       
-                                        <!-- Tabs content wrapper -->
                                         <div class="flying-tabs-content">
-                                            <!-- Tab 1 -->
                                             
                                                   <div class="columns " style="display:block;">
-                                                    <!-- ICO Terms -->
                                                    
                                                         <div id="trf-box" class="text-content  has-text-centered " style="padding-top:3vh">
                                                           
                                                   </div>
                                             
-                                            <!-- /Tab 1 -->
                                             
                                         </div>
                                     </div>
@@ -317,6 +314,7 @@
                             </td>
                         </div>
                         </tr>
+                        !-->
                     </tbody>
                   </table>
                 </div>
@@ -404,11 +402,16 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
 
 <script >
   renderjson.set_max_string_length(150);
-  function node(networkk){
-    $("#slider1").removeClass("hidden");
-    fetch(`/traffic/${networkk}/node`)
-    .then((response) => response.json())
-    .then(function(data) {
+  async function node(networkk) {
+        
+	    const response = await 
+      fetch(`/traffic/${networkk}/node`);
+       
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
       document.getElementById("trf-box").innerHTML=`   <h4 class="title is-light is-4 animated preFadeInUp fadeInUp">${networkk}</h4>
       <div class="divider is-centered"></div>
       <h5 class="title is-light is-5 animated preFadeInUp fadeInUp">Service Info</h5>
@@ -426,16 +429,20 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
       <div id="loader-text" class="appear  has-text-centered is-centered is-light is-semibold">Loading...</div>`;
       
       document.getElementById("test").appendChild(renderjson(data));
-     
-    });
+      fetchStats(); 
+      };
 
-    fetch(`/docker/management/stats`)
-    .then((response) => response.json())
-    .then(function(data) {
-      console.log(data[0] )
+   async function fetchStats() {      
+    const response = await 
+    fetch(`/docker/management/stats`);
+     
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+      console.log(data )
       $('#loader').toggleClass("appear hidden");
       $('#loader-text').toggleClass("appear hidden");
-
 
       $.each(data, function(index, value) {
         $(`
@@ -473,32 +480,9 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
       
       document.getElementById(`net${index}`).appendChild(renderjson(value.Network_Stats));
     });
-      
-    });
-   
    };
-
     
-    
-
-    function show_traf_box(network){
-      $("#slider1").removeClass("hidden");
-
-      fetch(`traffic/wallets/${network}`)
-        .then((response) => response.json())
-        .then(function(data) {
-          $.each(data, function(index, value) {
-            $(`
-            <a class=" has-text-cetered" onclick="get_acc_info('${network}','${value}')">
-              <div class="card text-white bg-dark mb-3" style="max-width: 28rem;>
-              <a class="card-header" > <h6 class="title is-light is-bold is-6"> ${value} </h6> </a>
-            </div>
-          </a>
-          `).appendTo('TA');
-          });
-        
-        });
-
+    async function show_traf_box(network){
       document.getElementById('trf-box').innerHTML=`
       <h4 class="title is-light animated preFadeInUp fadeInUp has-text-cetered">${network}</h4>
       <span  class="buttons column is-12" style="float:right; animation-delay: .3s; display:inline-block; align-items:center;  padding-top:4vh;">
@@ -522,12 +506,28 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
               </div>
         </div>
       </div>
-      
-      
       ` ;
+      const response = await 
+      fetch(`traffic/wallets/${network}`);
+       
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
+          $.each(data, function(index, value) {
+            $(`
+            <a id="acc_${index}" class=" has-text-cetered" onclick="get_acc_info('${network}','${value}')">
+              <div class="card text-white bg-dark mb-3" style="max-width: 28rem;>
+              <a class="card-header" > <h6 class="title is-light is-bold is-6"> ${value} </h6> </a>
+            </div>
+          </a>
+          `).appendTo('TA');
+          });
 
+      
 
-    }
+    };
 
     function get_acc_info(net,acc){
         fetch(`/traffic/${net}/acc/${acc}`)
@@ -537,14 +537,12 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
           <h4 class="title is-light is-5 has-text-centered is-vcentered"> Account Logs </h4>
           <br> <br>
           <div class="columns is-4 ">
-
               <span id="jsonacc" class="text-content is-light" style="text-align:justify; display:inline; margin-top:-1.5%"></span>
-    
           </div>`;
           document.getElementById("jsonacc").appendChild(renderjson(data));
 
     });
-  }
+  };
   
 </script> 
 
@@ -571,8 +569,6 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
         
         }
         changeicon(networks[networkk],`icon${networks[networkk]}`);
-
-
       }
      
     });
@@ -588,11 +584,10 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 
 <script>
   function toggles(network){
-    $(`#startstop${network}`).toggleClass('is-success is-danger')
+    $(`#start${network}`).toggleClass('appear hidden')
+    $(`#stop_${network}`).toggleClass('hidden appear')
     $(`#clean${network}`).toggleClass('appear hidden')
-    $(`#stopstopicon${network}`).toggleClass('mdi-arrow-right-drop-circle mdi-trash-can')
     
-
   };
 
 
@@ -603,33 +598,37 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 
 
 
-
 </script>
 <script type="text/javascript">
 
   $("#start_monitoring").click(function(){
+    $(`#btn1`).prop('disable',true);
     fetch('/request/mon')
     .then((response) => response.json())
     .then(function(data) {
     console.log(data);
+    $(`#btn1`).prop('disable',false);
+
     });
+
   });
 
    function start_traffic(net){
-    $("#finished_traffic").toggleClass('appear hidden');
     document.getElementById('id02').style.display='block'
     $("#start_traffic").click(function(){
-
       var numWa  = document.getElementById('numWa').value;
       var numTok =document.getElementById('numTok').value;
-      $("#wait_traffic").toggleClass('hidden appear');
+      document.getElementById("wait2").style.display = "flex";
+      $("#wait2t").toggleClass('hidden appear');
 
-      fetch(`/request/${net}/traffic/${numWa}/${numTok}`)
+      fetch(`/traffic/${net}/traffic/${numWa}/${numTok}`)
       .then((response) => response.json())
       .then(function(data) {
-        $("#wait_traffic").toggleClass(' appear hidden');
-        $("#finished_traffic").toggleClass(' hidden appear');
-      console.log(data);
+        console.log(data);
+
+        document.getElementById("wait2").style.display = "none";
+        $("#wait2t").toggleClass('appear hidden');
+        $("#finished_traffic").toggleClass('hidden appear');
       });
       
     });
@@ -637,7 +636,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
   };
 
   function generate_traffic(net,numWa, numTok){
-    fetch(`/request/${net}/traffic/${numWa}/${numTok}`)
+    fetch(`/traffic/${net}/traffic/${numWa}/${numTok}`)
     .then((response) => response.json())
     .then(function(data) {
     console.log(data);
@@ -648,8 +647,18 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
     fetch(`/request/${networkk}/clean`)
     .then((response) => response.json())
     .then(function(data) {
+      console.log(data);
       $(`#network-${networkk}`).remove();
+    });
+  };
 
+  function stop(networkk){
+    fetch(`/request/${networkk}/stop`)
+    .then((response) => response.json())
+    .then(function(data) {
+      console.log(data);
+      toggles(networkk);
+      document.getElementById(`status_${networkk}`).innerHTML="Configured";
     });
   };
  
@@ -677,15 +686,6 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
         });
     });
   
- 
-     const buttonForm2 = document.getElementById("btn2");
-  
-     buttonForm2.addEventListener("click",(event) => {
-       event.preventDefault();
-       startNetwork();
-        });
-     
-
 
         function AddRows(network, status, num_) {
           var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
@@ -701,44 +701,88 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
           var cell1 = row.insertCell(2);
           cell1.innerHTML=network;
           var cell11 = row.insertCell(3);
-          cell11.innerHTML=`<p> ${num_} </p>`;
+          cell11.id=`numnodes${network}`;
+          cell11.innerHTML=`<span value="${num_}"> ${num_} </span>`;
           var cell2 = row.insertCell(4);
+          cell2.id=`status_${network}`;
           cell2.innerHTML=status;
-          cell2.id=`status${network}`;
           var cel3= row.insertCell(5);
           cel3.className="is-actions-cell";
           cel3.innerHTML=` 
           <div class="buttons is-center">
-          <button id="viewgraph${network}" onclick="view()" class="button is-small is-primary" type="button">
+          <button title="View advanced options for the network" id="viewgraph${network}" onclick="view()" class="button is-small is-primary" type="button">
             <span class="icon"><i class="mdi mdi-eye"></i></span>
           </button>
-          <button id="startstop${network}" onclick="startNetwork('${network}')" class="button is-small is-success jb-moda appear" data-target="sample-modal" type="button">
-            <span class="icon"><i id="stopstopicon${network}" class="mdi mdi-arrow-right-drop-circle"></i></span>
+          <button title="Start the Network" id="start${network}" onclick="startNetwork('${network}',${num_})" class="button is-small is-success jb-moda appear" data-target="sample-modal" type="button">
+            <span class="icon"><i id="starticon${network}" class="mdi mdi-arrow-right-drop-circle"></i></span>
           </button>
-          <button id="clean${network}"  onclick="clean('${network}')" class="button is-small is-danger jb-modal appear" data-target="sample-modal" type="button">
+          <button title="Stop the Network" id="stop_${network}" onclick="stop('${network}')" class="button is-small is-danger jb-moda hidden" data-target="sample-modal" type="button">
+            <span class="icon"><i id="stopicon${network}" class="mdi mdi-trash-can"></i></span>
+          </button>
+          <button title="Delete the network" id="clean${network}"  onclick="clean('${network}')" class="button is-small is-danger jb-modal appear" data-target="sample-modal" type="button">
             <span class="icon"><i  class="mdi mdi-close-box"></i></span>
           </button>
         </div>`; 
         var cel4= row.insertCell(6);
         cel4.innerHTML=`<button id="traffic${network}"  onclick="start_traffic('${network}')"  class="button k-button is-primary is-small is-semibold hidden" type="button">
           Traffic Generation
-        </button>`;
-          
-        };
+        </button>`
+        // Panel 
+        var row1 = table.insertRow(1);
+        row1.id = `panel-${network}`;
 
-        function startNetwork(){
+        var pcel0=row1.insertCell(0);
+        pcel0.setAttribute("colspan", "8");
+        pcel0.innerHTML=` <div class="detail-container" style="display:none;">
+          <div class="content-wrapper is-large" style="display:flex;
+          flex-direction:column;">
+
+              <!-- Flying tabs wrapper -->
+              <div x-data="initTabs()" class="flying-wrapper">
+                  <!-- Tabs container -->
+                  <div class="flying-tabs-container">
+                      <!-- Tabs -->
+                      
+                      <div class="flying-tabs"  >
+                          <div style="margin-left:25%; border: 2px solid;   border-radius: 5px; padding: 5px 0 5px 0 ;" onclick="node('${network}')" @click="switchTabs($event)" class="flying-child tab-geth" data-tab="tab-geth" :class="{
+                              'is-active': activeTab === 'tab-geth',
+                              '': activeTab != 'tab-geth'
+                          }"><a id="node${network}" onclick="node('${network}')" href="javascript:void(0);">Network Details</a></div>
+                          <div  style=" border: 2px solid;   border-radius: 5px; padding:5px 0 5px 0 ;"  onclick="show_traf_box('${network}')" @click="switchTabs($event)" class="flying-child tab-stellar-docker-testnet " data-tab="tab-stellar-docker-testnet" :class="{
+                            'is-active': activeTab === 'tab-stellar-docker-testnet',
+                            '': activeTab != 'tab-stellar-docker-testnet'
+                        }"><a id="traff${network}" onclick="show_traf_box('${network}')" href="javascript:void(0);">Traffic Details</a></div>
+                          <div id="slider1"  class="slider hidden" >  </div>
+                          
+                      </div>
+                  </div>
+
+                  <!-- Tabs content wrapper -->
+                  <div class="flying-tabs-content">
+                      <!-- Tab 1 -->
+                      
+                            <div class="columns " style="display:block;">
+                              <!-- ICO Terms -->
+                             
+                                  <div id="trf-box" class="text-content  has-text-centered " style="padding-top:3vh">
+                                    
+                            </div>
+                      
+                      <!-- /Tab 1 -->
+                      
+                  </div>
+              </div>
+
+        
+  </div>`;   
+};
+
+        function startNetwork(network, num_of_nodes){
           var value = event.value;
-          var num_of_nodes=document.getElementById('num_of_nodes2').value;
-          let url = `/request/${network}/start/${num_of_nodes}`;
-          $("#wait2").toggleClass('hidden appear');
           toggles(network);
-          fetch(url, {
-          method: "POST",
-          })
+          fetch(`/request/${network}/start/${num_of_nodes}`)
           .then(data => {
-            console.log("started")
-            $(`#status${network}`).innerHTML="Started";
-            $("#wait2").toggleClass('appear hidden');
+            document.getElementById(`status_${network}`).innerHTML="Started";
             $(`#traffic${network}`).toggleClass('hidden appear');
             if (!data.ok) {
               throw new Error("HTTP error " + data.status);
@@ -758,7 +802,8 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
           }
           num_of_nodes=document.getElementById('num_of_nodes').value;
           let url = `/request/${network}/configure/${num_of_nodes}`;
-          $("#wait1").toggleClass('hidden appear');
+          document.getElementById("wait1").style.display = "flex";
+          $("#wait1t").toggleClass('hidden appear');
       
           fetch(url, {
           method: "POST",
@@ -772,8 +817,9 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
             return data.json()})
           .then((response) => {
            console.log(response);
-           $("#wait1").toggleClass('appear hidden');
-           $("#to-step-2").toggleClass('hidden appear');
+           document.getElementById("wait1").style.display = "none";
+           $("#wait1t").toggleClass('appear hidden');
+           $("#sta").toggleClass('hidden appear');
            $("#array").toggleClass('hidden appear');
            AddRows(network, "Configured", num_of_nodes);
            changeicon(network,"icon1");

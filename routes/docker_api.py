@@ -11,6 +11,7 @@ BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
 
 Active_Networks=set()
 def remove_network(network):
+    get_running_networks()
     Active_Networks.remove(network)
 
 

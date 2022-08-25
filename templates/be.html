@@ -8,13 +8,14 @@
 
             <!-- Hero Image and Title -->
             <div class="hero-body">
-                <div class="container" style=" margin-top: 5vh; margin-bottom:-5vh">
+                <div class="container" style=" margin-top: 5vh;">
     
                         <!-- Landing page Title -->
                             <h1 class="title is-1  is-light is-semibold has-text-centered is-spaced">Blockchain Benchmarking Framework </h1>
                             
                   </div>
             </div>
+            <div class="divider is-spaced is-centered is-large"> </div>
         </section>
     
         <section class="section" >
@@ -28,9 +29,9 @@
                     <div class="columns is-vcentered">
                         <!-- Feature -->
                         <div class="column is-9">
-                            <div class="feature" style="float:right;">
+                            <div class="feature">
                               <a  id="deploy" title="Toggle down the system where you cant configure and start a network" class="button k-button k-secondary is-bold raised has-gradient is-fat ">
-                                <span class="text" >Deploy a Network</span>
+                                <span class="text" >Deploy Network</span>
                                 <span class="front-gradient"></span>
                             </a>
                             </div>
@@ -43,7 +44,7 @@
                                       <h2 class="title is-light is-2 is-semibold has-text-centered ">Please start the Monitoring Engine before configure a network</h2>
                                       <h4 class="title is-light is-4 is-semibold has-text-centered ">This is required only once. <span style="color:red;"> Then press again  the configure  button <span> </h4>
                                               <div class=" has-text-centered ">
-                                              <a id="start_monitoring" style="margin-left:0.1vw; "  class="button k-button k-secondary raised has-gradient is-fat is-bold" onclick="document.getElementById('id01').style.display='none'">
+                                              <a id="start_monitoring" style="margin-left:0.1vw;"  class="button k-button k-secondary raised has-gradient is-fat is-bold" onclick="document.getElementById('id01').style.display='none'">
                                                 <span class="text">Start Monitoring</span>
                                                 <span class="front-gradient"></span>
                                             </a>
@@ -54,18 +55,18 @@
                           </div>
                         </div>
                         <!-- Feature -->
-                        <div class="column is-11">
+                        <div class="column is-10">
                             <div class="feature">
-                              <a href="/swagger"  title="For more advanced users. Redirects to swagger API control panel"  class="button k-button k-primary raised has-gradient is-bold is-fat">
+                              <a href="/swagger"  title="For more advanced users. Redirects to swagger API control panel" class="button k-button k-primary raised has-gradient is-bold is-fat">
                                 <span class="text" >VIEW API</span>
                                 <span class="front-gradient"></span>
                             </a>
                             </div>
                         </div>
                         <!-- Feature -->
-                        <div class="column is-9">
+                        <div class="column is-10">
                             <div class="feature">
-                              <a href="{{url_for("monitoring")}}" style="float:left;" title="Redirect to Monitoring page to check benchmarks after traffic generation" class="button k-button k-primary raised has-gradient is-bold is-fat ">
+                              <a href="{{url_for("monitoring")}}" title="Redirect to Monitoring page to check benchmarks after traffic generation" class="button k-button k-primary raised has-gradient is-bold is-fat ">
                                 <span class="text" >Monitoring</span>
                                 <span class="front-gradient"></span>
                             </a>
@@ -77,9 +78,9 @@
                 </div>
                 <!-- Content wrapper -->
               </div>
-              <div id="steps" class="container hidden"  style="margin-top:-5vh; ">
+              <div id="steps" class="container hidden" >
               <div class="divider  is-centered"> </div>
-                <h2 class="title is-light is-semibold has-text-centered is-spaced" style="margin-bottom:-2rem;">Deploy a Network </h2>
+                <h2 class="title is-light is-semibold has-text-centered is-spaced" style="margin-bottom:-2rem;">Configure a Network </h2>
                 <!-- Flying tabs wrapper -->
               <div  class="flying-wrapper">
                 <!-- Tabs container -->
@@ -129,7 +130,7 @@
                                           <div id="wait1t" class="hidden title is-6 has-text-centered is-centered is-light is-semibold">Loading...</div>
                                           <span id="stamon" class="title hidden title is-6  is-light hidden" style="padding-right:40%" >Ready to Configure a Network!</span>
 
-                                          <span id="sta" class="title hidden title is-6  is-light hidden" style="padding-right:40%" >Start a Network by clicking the start button (green) on the panel below</span>
+                                          <span id="sta" class="title hidden title is-6  is-light hidden" style="padding-right:40%" >Start a Network by clicking the start button on the panel below</span>
                                       </div>
                                       </div>
                                       
@@ -270,11 +271,11 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
       }
       const data = await response.json();
       console.log(data);
-      document.getElementById(`trf-box${networkk}`).innerHTML=`   <h4 class="title is-light is-4 animated preFadeInUp fadeInUp" style="margin-left:1.3rem;">${networkk}</h4>
+      document.getElementById("trf-box").innerHTML=`   <h4 class="title is-light is-4 animated preFadeInUp fadeInUp">${networkk}</h4>
       <div class="divider is-centered"></div>
       <h5 class="title is-light is-5 animated preFadeInUp fadeInUp">Service Info</h5>
       <div class="animated preFadeInUp fadeInUp" style="width:70rem;  text-align:left; overflow:auto;">
-          <span id='test${networkk}' class="text-content is-light" style="display:inline;"></span>
+          <span id="test" class="text-content is-light" style="display:inline;"></span>
       </div>
       <h6 class="title is-light is-5 animated preFadeInUp fadeInUp">Docker Container Statistics</h6>
       <div class="divider is-centered"></div>
@@ -286,7 +287,7 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
       <div id="loader" class="loader  appear has-text-centered is-centered"> </div>
       <div id="loader-text" class="appear  has-text-centered is-centered is-light is-semibold">Loading...</div>`;
       
-      document.getElementById(`test${networkk}`).appendChild(renderjson(data));
+      document.getElementById("test").appendChild(renderjson(data));
       fetchStats(); 
       };
 
@@ -341,8 +342,8 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
    };
     
     async function show_traf_box(network){
-      document.getElementById(`trf-2${network}`).innerHTML=`
-      <h4 class="title is-light is-4 animated preFadeInUp fadeInUp has-text-cetered" style="margin-left:1.3rem;">${network}</h4>
+      document.getElementById('trf-box').innerHTML=`
+      <h4 class="title is-light animated preFadeInUp fadeInUp has-text-cetered">${network}</h4>
       <span  class="buttons column is-12" style="float:right; animation-delay: .3s; display:inline-block; align-items:center;  padding-top:4vh;">
         <a href="/" id="bt" target="_blank" class="button k-button k-primary rounded raised has-gradient is-fat is-bold" onclick="javascript:event.target.port=9091">
          Check Transactions' Logs
@@ -352,14 +353,14 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
      
       <div class="container is-centered has-text-cetered" style="display:inline; margin-right:50rem">
         
-        <div class="columns container" tyle="margin-left:-10rem">
+        <div class="columns container">
           <TA class="is-offset-1 column is-3"  style="height:500px; width:36%; overflow:hidden; overflow-y:auto;   -webkit-overflow-scrolling: touch;          ">
             <h4 class="title is-light is-5 is-vcentered"> Click on of the following generated accounts </h4>
             <br> 
           </TA>
                
 
-              <div id='trf-box2${network}' class="is-offset-1 column is-3" style="height:60%; width:70%; overflow:auto;   -webkit-overflow-scrolling: touch; ">
+              <div id="trf-box2" class="is-offset-1 column is-3" style="height:60%; width:70%; overflow:auto;   -webkit-overflow-scrolling: touch; ">
                 <h4 class="title is-light is-5 has-text-centered is-vcentered"> Account Logs </h4>
               </div>
         </div>
@@ -391,13 +392,13 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
         fetch(`/traffic/${net}/acc/${acc}`)
         .then((response) => response.json())
         .then(function(data) {
-          document.getElementById(`trf-box2${net}`).innerHTML=`
+          document.getElementById("trf-box2").innerHTML=`
           <h4 class="title is-light is-5 has-text-centered is-vcentered"> Account Logs </h4>
           <br> <br>
           <div class="columns is-4 ">
-              <span id="jsonacc${net}" class="text-content is-light" style="text-align:justify; display:inline; margin-top:-1.5%"></span>
+              <span id="jsonacc" class="text-content is-light" style="text-align:justify; display:inline; margin-top:-1.5%"></span>
           </div>`;
-          document.getElementById(`jsonacc${net}`).appendChild(renderjson(data));
+          document.getElementById("jsonacc").appendChild(renderjson(data));
 
     });
   };
@@ -594,8 +595,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
           </button>
         </div>`; 
         var cel4= row.insertCell(6);
-        cel4.innerHTML=`<h6 id="trtext${network}" class="is-6 title is-semibold is-light appear"> Press start to generate traffic </h6>
-        <button id="traffic${network}"  onclick="start_traffic('${network}')"  class="button k-button is-primary is-small is-semibold hidden" type="button">
+        cel4.innerHTML=`<button id="traffic${network}"  onclick="start_traffic('${network}')"  class="button k-button is-primary is-small is-semibold hidden" type="button">
           Traffic Generation
         </button>`
         // add modal traffic generator
@@ -657,37 +657,97 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
             <div class="tab flying-wrapper">
               <div class="flying-tabs-container">
                 <div class="flying-tabs" >
-              <button class="tablinks "   onclick="openCity(event, 'Network_Details${network}'); node('${network}');" id="node${network}">Network Details</button>
-              <button id="traff${network}"  class="tablinks " onclick="openCity(event, 'Traffic_Details${network}'); show_traf_box('${network}');">Traffic Details</button>
+              <button class="tablinks "   onclick="openCity(event, 'Network_Details'); node('${network}');" id="node${network}">Network Details</button>
+              <button id="traff${network}"  class="tablinks " onclick="openCity(event, 'Traffic_Details'); show_traf_box('${network}');">Traffic Details</button>
               
             </div>
             <div id="slider1"  class="slider hidden" >  </div>
 
-              <div id="Network_Details${network}" class="tabcontent">
+              <div id="Network_Details" class="tabcontent">
                 <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
                 <div class="columns " style="display:block;">
                   <!-- ICO Terms -->
+                  dasdasdasdsad
                  
-                      <div id="trf-box${network}" class="text-content  has-text-centered " style="padding-top:3vh">
+                      <div id="trf-box" class="text-content  has-text-centered " style="padding-top:3vh">
                         
                 </div>
               </div>
               </div>
   
              
-              <div id="Traffic_Details${network}" class="tabcontent">
+              <div id="Traffic_Details" class="tabcontent">
                 <span id="traff${network}"  onclick="this.parentElement.style.display='none'; show_traf_box('${network}');" class="topright">&times</span>
                 <div class="columns " style="display:block;">
                   <!-- ICO Terms -->
                  
-                      <div id="trf-2${network}" class="text-content  has-text-centered " style="padding-top:3vh">
+                      <div id="trf-2" class="text-content  has-text-centered " style="padding-top:3vh">
+                        dsadasdasd
                         
                 </div>
               </div>
             </div>
             </div>
 
-    
+            
+
+              <!-- Flying tabs wrapper -->
+              <div x-data="initTabs()" class="flying-wrapper">
+                  <!-- Tabs container -->
+                  <div class="flying-tabs-container">
+                      <!-- Tabs -->
+                      
+                      <div class="flying-tabs"  >
+                          <div style="margin-left:25%; border: 2px solid;   border-radius: 5px; padding: 5px 0 5px 0 ;" onclick="node('${network}')" @click="switchTabs($event)" class="flying-child tab-geth" data-tab="tab-geth" :class="{
+                              'is-active': activeTab === 'tab-geth',
+                              '': activeTab != 'tab-geth'
+                          }"><a id="node${network}" onclick="node('${network}')" href="javascript:void(0);">Network Details</a></div>
+                          <div  style=" border: 2px solid;   border-radius: 5px; padding:5px 0 5px 0 ;"  onclick="show_traf_box('${network}')" @click="switchTabs($event)" class="flying-child tab-stellar-docker-testnet " data-tab="tab-stellar-docker-testnet" :class="{
+                            'is-active': activeTab === 'tab-stellar-docker-testnet',
+                            '': activeTab != 'tab-stellar-docker-testnet'
+                        }"><a id="traff${network}" onclick="show_traf_box('${network}')" href="javascript:void(0);">Traffic Details</a></div>
+                          <div id="slider1"  class="slider hidden" >  </div>
+                          
+                      </div>
+                  </div>
+
+                  <!-- Tabs content wrapper -->
+                  <div class="flying-tabs-content">
+                      <!-- Tab 1 -->
+                      <div class="tab-content" :class="{
+                        'is-active': activeTab === 'tab-geth',
+                        '': activeTab != 'tab-geth'
+                    }">
+                      
+                            <div class="columns " style="display:block;">
+                              <!-- ICO Terms -->
+                             
+                                  <div id="trf-box" class="text-content  has-text-centered " style="padding-top:3vh">
+                                    
+                            </div>
+                          </div>
+                      
+                      <!-- /Tab 1 -->
+
+                      <!-- Tab 2 -->
+                      <div class="tab-content" :class="{
+                              'is-active': activeTab === 'tab-stellar-docker-testnet',
+                              '': activeTab != 'tab-stellar-docker-testnet'
+                          }">
+
+                          <div class="columns " style="display:block;">
+                            <!-- ICO Terms -->
+                           
+                                <div id="trf-2" class="text-content  has-text-centered " style="padding-top:3vh">
+                                  
+                          </div>
+                        
+                      </div>
+                      <!-- /Tab 2 -->
+                      
+                  </div>
+              </div>
+
         
   </div>`;   
 };
@@ -709,8 +769,6 @@ function startNetwork(network, num_of_nodes){
   .then(data => {
     document.getElementById(`status_${network}`).innerHTML="Started";
     $(`#traffic${network}`).toggleClass('hidden appear');
-    $(`#trtext${network}`).toggleClass(' appear hidden');
-    
     if (!data.ok) {
       throw new Error("HTTP error " + data.status);
   }

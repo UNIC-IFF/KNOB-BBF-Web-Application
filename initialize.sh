@@ -15,7 +15,10 @@ then
 	echo "Requesting any updates..."
     if [ -z "$(ls -A $WORKING_DIR/blockchain-benchmarking-framework )" ]; then
         git clone "https://github.com/UNIC-IFF/blockchain-benchmarking-framework.git" 
-        git -C $WORKING_DIR/blockchain-benchmarking-framework submodule update --init --recursive 
+        git -C $WORKING_DIR/blockchain-benchmarking-framework submodule update --init --recursive
+        pip install -r  $WORKING_DIR/blockchain-benchmarking-framework/networks/xrpl/xrpl-unl-manager/requirements.txt
+        npm --prefix   $WORKING_DIR/blockchain-benchmarking-framework/networks/xrpl/xrpl_traffic_generator install
+
     else
         git -C $WORKING_DIR/blockchain-benchmarking-framework submodule update
     fi
@@ -36,7 +39,6 @@ else
     echo "Pipe already exists"
 fi
 
-echo "Make the pipe listen forever in background..."
 
 echo "Wait until npm install is finished and gulp runs the web application"
 while true; do 

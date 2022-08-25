@@ -1201,7 +1201,7 @@ body {
 
 
 .container .steps{
-   margin-top:100px; margin-bottom:100px;
+   margin-top:30px; margin-bottom:30px;
 }
 /* ==========================================================================
 7. Media page
@@ -1754,4 +1754,145 @@ body {
     }
 
     
+
+    //Container
+.flying-tabs-container {
+    max-width: 720px;
+    margin: 0 auto;
+
+    //tabs
+    .flying-tabs {
+        //tab-item
+        .tablinks{
+            text-align: center;
+            cursor: pointer;
+            color: #1ee0d5;
+
+            &:hover button {
+                color: lighten(#1e004f, 15%);
+            }
+
+            &.is-active button {
+                color: $white !important;
+            }
+        }
+
+        //link element
+        button {
+            font-family: 'Cabin', sans-serif;
+            display: inline-block;
+            width: 10rem;
+            border-radius: 10px;
+            padding: .75rem 0;
+           
+            color: #1ee0d5;
+            
+          
+            border: 2px solid ;
+            
+        }
+
+        //Settings for underline
+        .tab-xrpl.is-active ~ .slider{
+            margin-left: 75%;
+        }
+
+        .tab-geth.is-active ~ .slider {
+            margin-left: 25%;
+        }
+
+        .tab-stellar-docker-testnet.is-active ~ .slider {
+            margin-left: 50%;
+        }
+
+        .tab-besu-poa.is-active ~ .slider {
+            margin-left: 0%;
+        }
+
+        //Flying underline
+        .slider {
+            height: 2px;
+            border-radius: 10px;
+            width: 25%;
+            margin: 0;
+
+            @include primary-gradient-top;
+
+            border: none;
+            transition: .3s ease-in-out;
+        }
+    }
+}
+
+//Tab content
+.tabcontent {
+    display: none;
+    min-height: 60rem;
+    min-width: 70rem;
+    width: 100%;
+    margin-top: 40px;
+
+    //Active state
+    &.is-active {
+        display: inherit;
+    }
+
+   
+    }
+
+    //Text content
+    .text-content {
+        p {
+            animation-delay: .15s;
+            padding: 10px 0;
+            color: $white;
+            font-family: 'Cabin', sans-serif;
+            font-weight: 300;
+            
+        }
+
+        //Bullet list
+        .custom-bullet-list {
+            li::before {
+                content: "೦ ";
+                color: $secondary;
+            }
+
+            li {
+                padding: 10px 0;
+                color: $white;
+                font-family: 'Cabin', sans-serif;
+                font-weight: 300;
+
+                &:first-child {
+                    animation-delay: .15s;
+                }
+
+                &:nth-child(2) {
+                    animation-delay: .2s;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: .25s;
+                }
+
+                span {
+                    &:first-child {
+                        font-family: 'Cabin', sans-serif;
+                    }
+
+                    &.item-content {
+                        margin: 0 16px !important;
+                        font-size: 90%;
+                        font-family: 'Cabin', sans-serif;
+                        font-weight: 300;
+                        color: #e8e8e8;
+                    }
+                }
+            }
+        }
+    }
+
+
+
 }

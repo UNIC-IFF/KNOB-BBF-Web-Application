@@ -322,7 +322,7 @@
     },
   
   "/request/mon-stop": {
-    "delete": {
+    "get": {
       "summary": "Stop Monitoring",
       "tags": [
         "Monitoring"

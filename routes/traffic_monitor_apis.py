@@ -1,4 +1,5 @@
 import json
+from typing import NewType
 from routes.request_api import control_command, compile_network_name
 from flask import  abort, jsonify, request, Blueprint
 import pandas as pd
@@ -14,23 +15,21 @@ def get_blueprint():
     """Return the blueprint for the main app module"""
     return MONITORING_APIS
 
-@MONITORING_APIS.route('/request/mon-stop', methods=['DELETE'])
+@MONITORING_APIS.route('/request/mon-stop', methods=['GET'])
 #begin with this action for the framework
 def stop_monitoring():
     
-    if request.method == 'DELETE': #configure the monitoring 
-        network=""
-        return jsonify(control_command(INIT_PATH+"control.sh",network,' -mon prom-monitoring-stack stop',OUTPUT_FILE,Time2W))
-    else:
-        abort(404)
-
+    network=""
+   
+    return jsonify(control_command(INIT_PATH+"control.sh",network,' -mon prom-monitoring-stack stop',OUTPUT_FILE,Time2W))
+    
 
 @MONITORING_APIS.route('/request/mon', methods=['GET'])
 #begin with this action for the framework
 def start_monitoring():
     if request.method == 'GET': #configure the monitoring 
         network= " " #the network is not specified in this command 
-        check= json.dumps(control_command("cd ~- && "+INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack configure',OUTPUT_FILE,Time2W))
+        check= json.dumps(control_command(INIT_PATH+"control.sh",network,'-mon prom-monitoring-stack configure',OUTPUT_FILE,Time2W))
         if "error" not in check:
             return json.dumps(control_command(INIT_PATH+"control.sh",network,' -mon prom-monitoring-stack start',OUTPUT_FILE,Time2W))
         else:
@@ -66,5 +65,4 @@ def acc(network,public_key):
 #begin with this action for the framework1
 def wallets(network):
   path= f'cat blockchain-benchmarking-framework/networks/{network}/{network}_traffic_generator/output_data/accounts_to_pay.txt'
-  command=""
   return json.dumps(control_command(path,"","",OUTPUT_FILE,Time2W))

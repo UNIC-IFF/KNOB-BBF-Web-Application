@@ -68,10 +68,10 @@ def path_exists(network):
     count=5
 
     if not os.path.exists(f'../blockchain-benchmarking-framework/networks/{network}/docker-compose-testnet.yaml'):
-        print("NOT CONFIGURED")
         return json.dumps("NOT CONFIGURED")        
     else:
         dictData = json.loads(get_running_networks())
+        print(dictData)
         print(s for s in dictData)
         if any(s for s in dictData):
             if network == "xrpl":
@@ -79,7 +79,6 @@ def path_exists(network):
             print("Started", count)
             return json.dumps(f"Started, {count}")
         else:
-            print("Configured")
             if network == "xrpl":
                 count = len(fnmatch.filter(os.listdir(dir_path), f'{network}*'))-1        
             print(os.system("docker stats $(docker ps -q"))
@@ -172,5 +171,5 @@ def stop(network):
 @GETH_API.route('/request/list', methods=['GET'])
 #begin with this action for the framework
 def show_list(): 
-    INIT_PATH="blockchain-benchmarking-framework/"+"control.sh -list"
-    return json.dumps(control_command(INIT_PATH," ",'--list',OUTPUT_FILE,Time2W))
+    INIT_PATH="blockchain-benchmarking-framework/control.sh -list "
+    return json.dumps(control_command(INIT_PATH,"",'',OUTPUT_FILE,Time2W))

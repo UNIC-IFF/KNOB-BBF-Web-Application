@@ -45,7 +45,7 @@ def get_running_networks():
     client = docker.DockerClient(base_url='unix:///var/run/docker.sock')
     c=client.containers.list(all=True)
     a=[container.name for container in c]  
-    if ([i for i in a if i.startswith('xrpl')]):
+    if ([i for i in a if i.startswith('xrpl-v')]):
         Active_Networks.add("xrpl") 
     if ([i for i in a if i.startswith('geth')]):
         Active_Networks.add("geth") 

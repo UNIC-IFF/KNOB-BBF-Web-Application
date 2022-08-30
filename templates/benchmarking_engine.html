@@ -98,17 +98,17 @@
                                       <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="post">
 
                                     <div class="columns is-vcentered">
-                                        <div class="column is-3">
+                                        <div class="column is-4">
                                           <div class="archives-widget">
-                                              <select id="selected" class="select is-small" style="background-color:transparent; color:white; font-size:16px;">
-                                                <option id="opt1" class="option">Select a Network</option>
+                                              <select id="selected" class="select is-small has-text-centered" style="background-color:transparent; color:white; font-size:16px;">
+                                                <option id="opt1" class="option has-text-centered">Select a Network</option>
                                                   {% for i in li%}
-                                                <option name='{{i}}' value="{{i}}" id="opt-{{i}}" class="option">{{i}}</option>
+                                                <option name='{{i}}' value="{{i}}" id="opt-{{i}}" class="option has-text-centered">{{i}}</option>
                                                   {%endfor%}
                                                 </select>
                                         </div>
                                       </div>
-                                          <div class="column is-4" style="padding-left:3vw; margin-bottom:-4vh;">
+                                          <div class="column is-5" style="padding-left:7vw; margin-bottom:-4.5vh;">
                                             <!-- Form -->
                                             <div class="column is-6">
                                                 <div class="control-material is-secondary">      
@@ -120,18 +120,22 @@
                                           </div>
                                           </div>
                                           <div class="column is-3">
-                                            <button  id="btn1" class="button k-button is-primary is-fat rounded" > Configure! </button>
+                                            <button  id="btn1" class="button k-button is-primary is-fat rounded " > Configure! </button>
                                         </div>
                                       </form>
-                                      <div class="column is-3">
-                                        <div class="mt-3" id="mt-3">
-                                          <div id="wait1" class=" loader  appear has-text-centered is-centered" style="display:none;"> </div>
-                                          <div id="wait1t" class="hidden title is-6 has-text-centered is-centered is-light is-semibold">Loading...</div>
-                                          <span id="stamon" class="title hidden title is-6  is-light hidden" style="padding-right:40%" >Ready to Configure a Network!</span>
-
-                                          <span id="sta" class="title hidden title is-6  is-light hidden" style="padding-right:40%" >Start a Network by clicking the start button (green) on the panel below</span>
+                                      
                                       </div>
-                                      </div>
+                                      <br>
+                                      <row>
+                                        <div class=" has-text-centered">
+                                          <div class="mt-3" id="mt-3">
+                                            <div id="wait1" class=" loader  appear has-text-centered is-centered" style="display:none;"> </div>
+                                            <div id="wait1t" class="hidden title is-6 has-text-centered is-centered is-light is-semibold">Loading...</div>
+                                            <span id="stamon" class="title hidden title is-6  is-light hidden"  >Ready to Configure a Network!</span>
+  
+                                            <span id="sta" class="title hidden title is-6  is-light hidden"  >Start a Network by clicking the start button (green) on the panel below</span>
+                                        </div>
+                                      </row>
                                       
                                   </div>
                                 </div>
@@ -181,94 +185,28 @@
           </section> 
     </div>
 
-<script>
-    /**
- * Define a function to navigate betweens form steps.
- * It accepts one parameter. That is - step number.
- */
-const navigateToFormStep = (stepNumber) => {
-    /**
-     * Hide all form steps.
-     */
-    document.querySelectorAll(".form-step").forEach((formStepElement) => {
-        formStepElement.classList.add("d-none");
-    });
-    /**
-     * Mark all form steps as unfinished.
-     */
-    document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
-        formStepHeader.classList.add("form-stepper-unfinished");
-        formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
-    });
-    /**
-     * Show the current form step (as passed to the function).
-     */
-    document.querySelector("#step-" + stepNumber).classList.remove("d-none");
-    /**
-     * Select the form step circle (progress bar).
-     */
-    const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
-    /**
-     * Mark the current form step as active.
-     */
-    formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-    formStepCircle.classList.add("form-stepper-active");
-    /**
-     * Loop through each form step circles.
-     * This loop will continue up to the current step number.
-     * Example: If the current step is 3,
-     * then the loop will perform operations for step 1 and 2.
-     */
-    for (let index = 0; index < stepNumber; index++) {
-        /**
-         * Select the form step circle (progress bar).
-         */
-        const formStepCircle = document.querySelector('li[step="' + index + '"]');
-        /**
-         * Check if the element exist. If yes, then proceed.
-         */
-        if (formStepCircle) {
-            /**
-             * Mark the form step as completed.
-             */
-            formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
-            formStepCircle.classList.add("form-stepper-completed");
-        }
-    }
-};
-/**
- * Select all form navigation buttons, and loop through them.
- */
-document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
-    /**
-     * Add a click event listener to the button.
-     */
-    formNavigationBtn.addEventListener("click", () => {
-        /**
-         * Get the value of the step.
-         */
-        const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
-        /**
-         * Call the function to navigate to the target form step.
-         */
-        navigateToFormStep(stepNumber);
-    });
-});
-</script>
 
 
 
 <script >
   renderjson.set_max_string_length(150);
   async function node(networkk) {
-        
+    var data ="";
+    if (document.cookie.indexOf(`node${networkk}`) <= 0) {    
 	    const response = await 
       fetch(`/traffic/${networkk}/node`);
        
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json();
+       data = await response.json();
+       sessionStorage.setItem(`node${networkk}`, data);
+
+    }
+    else{
+       data= sessionStorage.getItem(`node${networkk}`);
+    }
+
       console.log(data);
       document.getElementById(`trf-box${networkk}`).innerHTML=`   <h4 class="title is-light is-4 animated preFadeInUp fadeInUp" style="margin-left:1.3rem;">${networkk}</h4>
       <div class="divider is-centered"></div>
@@ -290,15 +228,42 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
       fetchStats(); 
       };
 
-   async function fetchStats() {      
+   async function fetchStats() { 
+    const itemStr = sessionStorage.getItem('stats');
+    const item = JSON.parse(itemStr);
+    const now = new Date();
+    console.log(itemStr);
+    // compare the expiry time of the item with the current time
+    if (itemStr != null  ) {
+      if(now.getTime() > item.expiry){
+      // If the item is expired, delete the item from storage
+      localStorage.removeItem(key);
+      console.log("expired stats");
+    }
+  }
+    var data= ""; 
+    if (sessionStorage.getItem('stats')<=0) {    
     const response = await 
     fetch(`/docker/management/stats`);
      
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data = await response.json();
-      console.log(data )
+     data = await response.json();
+    var expDate = new Date();
+
+    expDate.setTime(expDate.getTime() + (5 * 60 ));
+    const item = {
+      data: data,
+      expiry: expDate,
+    };
+    sessionStorage.setItem('stats', JSON.stringify(item))
+
+  }
+  else {
+     data= item.data;
+  }
+      console.log(data);
       $('#loader').toggleClass("appear hidden");
       $('#loader-text').toggleClass("appear hidden");
 
@@ -344,7 +309,7 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
       document.getElementById(`trf-2${network}`).innerHTML=`
       <h4 class="title is-light is-4 animated preFadeInUp fadeInUp has-text-cetered" style="margin-left:1.3rem;">${network}</h4>
       <span  class="buttons column is-12" style="float:right; animation-delay: .3s; display:inline-block; align-items:center;  padding-top:4vh;">
-        <a href="/" id="bt" target="_blank" class="button k-button k-primary rounded raised has-gradient is-fat is-bold" onclick="javascript:event.target.port=9091">
+        <a href="http://bbf-gui.ddns.net:9091/" id="bt" target="_blank" class="button k-button k-primary rounded raised has-gradient is-fat is-bold" >
          Check Transactions' Logs
         </a> 
         
@@ -365,13 +330,21 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
         </div>
       </div>
       ` ;
-      const response = await 
-      fetch(`traffic/wallets/${network}`);
-       
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
+      var data="";
+      if (sessionStorage.getItem(`walllets${network}`) <= 0) {
+          
+          const response = await 
+          fetch(`traffic/wallets/${network}`);
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          data = await response.json();
+          sessionStorage.setItem(`walllets${network}`,JSON.stringify(data));
+        }
+      else{
+         data= JSON.parse(sessionStorage.getItem(`walllets${network}`));
+        }
       console.log(data);
           $.each(data, function(index, value) {
             $(`
@@ -381,12 +354,12 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
             </div>
           </a>
           `).appendTo('TA');
-          });
+          })
+        
+    
+      };
 
-      
-
-    };
-
+    
     function get_acc_info(net,acc){
         fetch(`/traffic/${net}/acc/${acc}`)
         .then((response) => response.json())
@@ -421,8 +394,10 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
       const myArray = data.split(",");
       if(myArray[0] == "Configured" || myArray[0] == "Started"  ) {
         AddRows(networks[networkk],myArray[0] ,myArray[1] );
+        document.getElementById(`loader${networks[networkk]}`).style.display="none";
         if(myArray[0] == "Started" ){
           $(`#traffic${networks[networkk]}`).toggleClass('hidden appear');
+          $(`#trtext${networks[networkk]}`).toggleClass('appear hidden');
            toggles(networks[networkk]);
         
         }
@@ -433,7 +408,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
    };
 
    $("#deploy").click(function(){
-    $("#steps").toggleClass('hidden appear');
+    $("#steps").slideToggle();
 
    });
 
@@ -450,8 +425,8 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 
 
   function view(network){
-    $(".detail-container").slideToggle("slow");
-    $("#icon").toggleClass(' is-expanded')
+    $(`#detail-container${network}`).slideToggle("slow");
+    $(`#iconn${network}`).toggleClass(' is-expanded')
   };
 
 
@@ -462,34 +437,40 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
   $("#start_monitoring").click(function(){
     document.getElementById("wait1").style.display = "flex";
     $("#wait1t").toggleClass('hidden appear');
-    document.getElementById("btn1").disabled = true;
+    document.getElementById("btn1").classList.add("is-loading");
     if (abort){
     fetch('/request/mon')
     .then((response) => response.json())
     .then(function(data) {
-      $("#stamon").toggleClass('hidden appear');
     console.log(data);
-    document.getElementById("btn1").disabled = false;
+    document.getElementById("btn1").classList.remove("is-loading");
     $("#wait1t").toggleClass('appear hidden');
     document.getElementById("wait1").style.display = "none";
+    $("#stamon").toggleClass('hidden appear');
     });
     }
   else{
     document.getElementById("btn1").disabled = false;
     $("#wait1t").toggleClass('appear hidden');
     document.getElementById("wait1").style.display = "none";
+    $("#stamon").toggleClass('hidden appear');
     return false;
   };
    
   });
 
    function start_traffic(net){
-    document.getElementById(`id02${net}`).style.display='block'
+    document.getElementById(`id02${net}`).style.display='block';
+    $(`#finished_traffic${net}`).hide();
     $(`#start_traffic${net}`).click(function(){
       var numWa  = document.getElementById(`numWa${net}`).value;
       var numTok =document.getElementById(`numTok${net}`).value;
       if (numWa === '' || numTok ===''){
         alert ("Num Of Wallets and Num of Tokens is required");
+        return false;
+      }
+      if ( numTok < 1000){
+        alert ("Number of Tokens is less than 1000");
         return false;
       }
       document.getElementById(`wait2${net}`).style.display = "flex";
@@ -498,11 +479,14 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
       fetch(`/traffic/${net}/traffic/${numWa}/${numTok}`)
       .then((response) => response.json())
       .then(function(data) {
+        document.getElementById(`finished_traffic${net}`).style.display='block';
         console.log(data);
         document.getElementById(`wait2${net}`).style.display = "none";
         $(`#wait2t${net}`).toggleClass('appear hidden');
         $(`#finished_traffic${net}`).toggleClass('hidden appear');
         document.getElementById(`start_traffic${net}`).disabled=false;
+        if (sessionStorage.getItem(`walllets${net}`) > 0){
+        sessionStorage.removeItem(`walllets${net}`);}
       });
     });
   };
@@ -512,9 +496,10 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
     .then((response) => response.json())
     .then(function(data) {
       console.log(data);
-      $(`#network-${networkk}`).remove();
-      $(`panel-${networkk}`).remove();
-      $(`id02${networkk}`).remove();
+      document.getElementById(`network-${networkk}`).remove();
+      document.getElementById(`panel-${networkk}`).remove();
+      document.getElementById(`id02${networkk}`).remove();
+      
     });
   };
 
@@ -551,7 +536,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
         }
         else{
           configureNetwork();
-          document.getElementById("btn1")=false;
+          document.getElementById("btn1").disabled=false;
         };
         });
     });
@@ -563,7 +548,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
           row.id = `network-${network}`;
           var cel0=row.insertCell(0);
           cel0.innerHTML = `<a role="button" onclick="view('${network}')"  >
-            <span id="icon" class="iconify-inline icon "><i class="mdi mdi-chevron-right mdi-24px"></i></span>
+            <span id="iconn${network}" class="iconify-inline icon "><i class="mdi mdi-chevron-right mdi-24px"></i></span>
           </a>`;
           var cel= row.insertCell(1);
           cel.innerHTML=`  <i id="icon${network}" class="cf cf-eth"></i>`;
@@ -580,7 +565,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
           cel3.className="is-actions-cell";
           cel3.innerHTML=` 
           <div class="buttons is-center">
-          <button title="View advanced options for the network" id="viewgraph${network}" onclick="view()" class="button is-small is-primary" type="button">
+          <button title="View advanced options for the network" id="viewgraph${network}" onclick="view('${network}')" class="button is-small is-primary" type="button">
             <span class="icon"><i class="mdi mdi-eye"></i></span>
           </button>
           <button title="Start the Network" id="start${network}" onclick="startNetwork('${network}',${num_})" class="button is-small is-success jb-moda appear" data-target="sample-modal" type="button">
@@ -592,7 +577,10 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
           <button title="Delete the network" id="clean${network}"  onclick="clean('${network}')" class="button is-small is-danger jb-modal appear" data-target="sample-modal" type="button">
             <span class="icon"><i  class="mdi mdi-close-box"></i></span>
           </button>
-        </div>`; 
+          <button id="loader${network}" class="button button-ghost-background jb-modal is-small is-loading" style="background-color:transparent; border-color:transparent;" > </button>
+
+        </div>
+        `; 
         var cel4= row.insertCell(6);
         cel4.innerHTML=`<h6 id="trtext${network}" class="is-6 title is-semibold is-light appear"> Press start to generate traffic </h6>
         <button id="traffic${network}"  onclick="start_traffic('${network}')"  class="button k-button is-primary is-small is-semibold hidden" type="button">
@@ -608,40 +596,45 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
             <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to Start a Network</h2>
              <div class="container steps" >
                <div class="columns is-vcentered ">
+                          <div style="margin-left:20%"></div>
                      
-                       <div class="column is-5" style=" margin-bottom:-4vh; width:20%;">
-                         
+                                 <div class="column is-5" style=" margin-bottom:-4vh; width:20%;">
                                    <div class="control-material is-secondary">      
                                      <input id="numWa${network}" class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
                                      <span class="material-highlight"></span>
                                      <span class="bar"></span>
-                                     <label>Num of Wallets</label>
-                                 </div>
-                               </div>
-                               <div class="column is-5" style=" margin-bottom:-4vh; width:20%;">
-
+                                     <label>Number of Wallets</label>
+                                    </div>
+                                  </div>
+                               <div class="column is-6" style=" margin-bottom:-4vh; width:20%;">
                                  <div class="control-material is-secondary">      
-                                   <input id="numTok${network}" class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
+                                   <input id="numTok${network}" class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required></input>
                                    <span class="material-highlight"></span>
                                    <span class="bar"></span>
-                                   <label>Num of Tokens</label>
+                                   <label>Number of Tokens</label>
                                </div>
                              </div>
                      <div class="column is-3" style="margin-left:4vw;">
                        <button id="start_traffic${network}" class="button k-button is-primary is-fat rounded"> Start Traffic Generator! </button>
                      </div>
-                     <div class="column is-3">
-                       <div class="mt-3" id="mt-3">
+                     <br>
+                    </div>
+                     <row>
+                     <div class="column has-text-centered">
+                       <div class="mt-3" >
                         <div id="wait2${network}" class=" loader  appear has-text-centered is-centered" style="display:none;"> </div>
                         <div id="wait2t${network}" class="hidden  has-text-centered is-centered is-light is-semibold">Loading...</div>
 
                         <h5 id="finished_traffic${network}" class="is-light is-semibold title is-6 hidden"> Finished! <br> Now visit Monitoring page or check Traffic logs by pressing the view icon. </h5>
                      </div>
+                    </row>
                
-                 </div>
-         </div>
+          
+                </div>
               </div>
           </div>
+        </div>
+</div>
         `;
 
         // Panel 
@@ -650,7 +643,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 
         var pcel0=row1.insertCell(0);
         pcel0.setAttribute("colspan", "8");
-        pcel0.innerHTML=` <div class="detail-container" style="display:none;">
+        pcel0.innerHTML=` <div id="detail-container${network}" class="detail-container" style="display:none;">
           <div class="content-wrapper is-large" style="display:flex;
           flex-direction:column;">
 
@@ -704,12 +697,13 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 function startNetwork(network, num_of_nodes){
   var value = event.value;
   toggles(network);
-  
+  document.getElementById(`loader${network}`).style.display="block";
   fetch(`/request/${network}/start/${num_of_nodes}`)
   .then(data => {
     document.getElementById(`status_${network}`).innerHTML="Started";
     $(`#traffic${network}`).toggleClass('hidden appear');
     $(`#trtext${network}`).toggleClass(' appear hidden');
+    
     
     if (!data.ok) {
       throw new Error("HTTP error " + data.status);
@@ -717,6 +711,7 @@ function startNetwork(network, num_of_nodes){
     return data.json()})
   .then((response) => {
     console.log(response);
+    document.getElementById(`loader${network}`).style.display="none";
     document.getElementById("btn1").disabled=true;
     })
   .catch((err) => console.error(err));
@@ -724,7 +719,8 @@ function startNetwork(network, num_of_nodes){
 };
 
 function configureNetwork(){
-  $("#stamon").toggleClass('appear hidden')
+  document.getElementById("stamon").display="hidden";
+  document.getElementById("sta").display="hidden";
   network  = document.getElementById('selected').value;
   if (network ==="Select a Network"){
     alert("Please select a valid network!");
@@ -750,21 +746,26 @@ function configureNetwork(){
   }
     return data.json()})
   .then((response) => {
+  
    console.log(response);
    document.getElementById("wait1").style.display = "none";
    $("#wait1t").toggleClass('appear hidden');
    $("#sta").toggleClass('hidden appear');
+   
+
    $("#array").toggleClass('hidden appear');
+
+   if (sessionStorage.getItem('stats')>0) { //on configure new network remove previous stats
+    sessionStorage.removeItem('stats');
+   }
    if ($(`#network-${network}`).length)
    {
     $(`#network-${network}`).remove();
-    AddRows(network, "Configured", num_of_nodes);
-    changeicon(network,"icon1");
-    changeicon(network,`icon${network}`);
-   }
-   else
-   {AddRows(network, "Configured", num_of_nodes);}
-   changeicon(network,"icon1");
+    $(`#panel-${network}`).remove();
+  }
+   
+   AddRows(network, "Configured", num_of_nodes);
+   document.getElementById(`loader${network}`).style.display="none";
    changeicon(network,`icon${network}`);
    })
   .catch((err) => console.error(err));
@@ -817,7 +818,6 @@ function changeicon(network, icon){
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
   }
-  console.log(document.getElementById("defaultOpen"));
   // Get the element with id="defaultOpen" and click on it
 
   </script>

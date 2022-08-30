@@ -1,6 +1,5 @@
 import gulp from "gulp";
 import path from 'path';
-import util from "gulp-util";
 import gulpSass from "gulp-sass";
 import concat from "gulp-concat";
 import imagemin from "gulp-imagemin";
@@ -15,7 +14,6 @@ import source from "vinyl-source-stream";
 import logSymbols from "log-symbols";
 import BrowserSync from "browser-sync";
 import options from "./config.js";
-import Iconify from '@iconify/iconify';
 
 import gulpBg from "gulp-bg";
 import {fileURLToPath} from 'url';

@@ -65,6 +65,7 @@ def is_monitoring_configured():
     a=[container.name for container in c]
     if "containers_logs_ui" in a and "prometheus" in a and "alertmanager" in a and "dc_stats_exp" in a and "statsdgraphite" in a and \
      "pushgateway" in a and "grafana" in a:
+        print(a)
         return json.dumps("True")      
     print(a)
     return json.dumps("False")

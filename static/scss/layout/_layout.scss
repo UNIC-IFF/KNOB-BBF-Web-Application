@@ -40,8 +40,12 @@ body {
     @media (min-width: 720px) {
         #myelement1 { height: 40%; float:right; justify-content: center;}
         #myelement2 {margin-top:-1.48em} 
+        #myelement3{    width: 9vw;  height: 4vh;}
     }
-    @media (max-width: 1024px) {#myelement1 { height: 40%;}#myelement2 {width:100%; height:100%; margin-top:-1.48em} }
+    @media (max-width: 1024px) {#myelement1 { height: 40%;}#myelement2 {width:100%; height:100%; margin-top:-1.48em} 
+
+   
+    }
     #middle-image{
         margin-top: 0.35em;
     }
@@ -100,7 +104,10 @@ body {
         cursor: pointer;
         opacity: 0.3;
       }
-      
+      #myelement3:hover {
+        cursor: pointer;
+        opacity: 0.3;
+      }
 }
 
 .hero, .section {
@@ -552,7 +559,8 @@ body {
 
 .monitoring-wrapper {
     .monitoring-image img {
-        height: 220px;
+        height: 60vh;
+        width: 60vw;
     }
 
     .is-ico-details {

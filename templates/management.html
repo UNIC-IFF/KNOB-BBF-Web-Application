@@ -93,30 +93,16 @@
                         </span>
                         <span class="more">
                             <i data-feather="file-text"></i>
-                            <a href="{{url_for('monitoring')}}"  target="_blank">
+                            <a href="{{url_for('benchmarking_engine')}}"  target="_blank">
                                Start Traffic Generator
                               </a>
                         </span>
                     </div>
                 </li>
+                
                 <li>
                     <div>
                         <span class="item-title">Step 5</span>
-                        <span class="item-content" style="text-align:justify;">
-                            This step is optional. In this step you can check the logs from the previous generated transaction. Keep the generated accounts and type them in the proper field in the Monitoring page by using the followin button.
-                            In the Monitoring page you will also fine the server_info functionality. 
-                        </span>
-                        <span class="more">
-                            <i data-feather="file-text"></i>
-                            <a href="{{url_for('monitoring')}}" target="_blank">
-                             Node / Public Key
-                              </a>
-                        </span>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <span class="item-title">Step 6</span>
                         <span class="item-content" style="text-align:justify;">
                             This step is optional. In this step you can check the grafana and docker logs by using the following button which will redirect you to the proper page.
                         </span>
@@ -128,22 +114,17 @@
                         </span>
                     </div>
                 </li>
+                
                 <li>
                     <div>
-                        <span class="item-title">Step 6a</span>
+                        <span class="item-title">Step 6</span>
                         <span class="item-content" style="text-align:justify;">
-                            If you chosed to use the Grafan then you need to configure it. In order to configure it you have complete the following steps:
-                             <ul>
-                                <li>
-                                    1 2 3 4...
-                                </li>
-        
-                             </ul>
+                            In this step you can check the running networks and also get some more user-friendly information about the blockchain networks.  
                         </span>
                         <span class="more">
                             <i data-feather="file-text"></i>
-                            <a href="{{url_for('grafana')}}" target="_blank">
-                             Grafana Configuration
+                            <a href="{{url_for('management')}}"  target="_blank">
+                               Docker APIs
                               </a>
                         </span>
                     </div>
@@ -152,12 +133,14 @@
                     <div>
                         <span class="item-title">Step 7</span>
                         <span class="item-content" style="text-align:justify;">
-                            In this step you can check the running networks and also get some more user-friendly information about the blockchain networks.  
+                            Stoping a network will enable you to restart it later, but this does not mean that it is removed from the disk. If you want to clean 
+                            some space you need to clean the stopped network. Cleaning a network means it will need to re-configure it later.
+                            The following button will redirect you to proper page.
                         </span>
                         <span class="more">
                             <i data-feather="file-text"></i>
-                            <a href="{{url_for('management')}}"  target="_blank">
-                               Docker APIs
+                            <a href="{{url_for('benchmarking_engine')}}" target="_blank">
+                            Clean Network
                               </a>
                         </span>
                     </div>
@@ -180,22 +163,6 @@
                 <li>
                     <div>
                         <span class="item-title">Step 9</span>
-                        <span class="item-content" style="text-align:justify;">
-                            Stoping a network will enable you to restart it later, but this does not mean that it is removed from the disk. If you want to clean 
-                            some space you need to clean the stopped network. Cleaning a network means it will need to re-configure it later.
-                            The following button will redirect you to proper page.
-                        </span>
-                        <span class="more">
-                            <i data-feather="file-text"></i>
-                            <a href="{{url_for('benchmarking_engine')}}" target="_blank">
-                            Clean Network
-                              </a>
-                        </span>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <span class="item-title">Step 10</span>
                         <span class="item-content" style="text-align:justify;">
                             As final step you can stop the monitoring engine (stop Grafana, Dozzle etc.) and free the resources.
                         </span>

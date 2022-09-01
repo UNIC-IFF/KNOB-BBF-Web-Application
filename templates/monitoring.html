@@ -6,7 +6,7 @@
 
 
 <section  >
-<h2 class="is-2 title is-light has-text-centered  is-semibold"> Architecture </h2>
+<h2 class="is-2 title is-light has-text-centered  is-semibold"> BBF Monitoring </h2>
 <div class="columns">
     <div class="column is-12 is-offset-2">
         <div class="monitoring-image">
@@ -15,6 +15,55 @@
     </div>
 </div>
 </section>
+
+<br>
+<br>
+<section>
+    <div class="container">
+       
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col">
+                                    <div class='container has-text-centered'>
+                                        <h3  class='title is-3 is-semibold is-light'>Control Panel</h3>
+                                        <div class="divider is-large has-text-centered is-centered"> </div>
+                                
+                                        <div class='buttons is-centered'>
+                                            <a href="{{url_for('grafana')}}"  class="button k-button is-primary is-dark is-bold  has-gradient is-fat  is-rounded">
+                                                Grafana
+                                            </a>
+                                            <a href="http://bbf-gui.ddns.net:9090" target="_blank" class="button k-button is-dark  is-bold  has-gradient is-fat is-rounded secondary-button">
+                                                Prometheus
+                                            </a>
+                                            <a href="http://bbf-gui.ddns.net:9091" target="_blank" class="button k-button grey-button is-bold raised  has-gradient is-fat is-rounded">
+                                                Push Gateway
+                                            </a>
+                                        <a href="http://bbf-gui.ddns.net:81" target="_blank"  class="button k-button is-primary is-dark is-bold  has-gradient is-fat is-rounded"> Graphite </a>
+                                        </div>
+                                    </div>
+                                        <div class='container has-text-centered'>
+                                        <br>
+                                    
+                                            <div class='buttons is-centered' >
+                                                <a href="http://bbf-gui.ddns.net:8086" target="_blank" class="button k-button secondary-button is-light is-bold has-gradient is-fat  is-rounded">
+                                                    InfluxDB
+                                                </a>
+                                                <a  href="http://bbf-gui.ddns.net:9093" target="_blank" class="button k-button is-primary is-dark is-bold has-gradient is-fat  raised is-rounded">
+                                                    Alert Manager
+                                                </a>
+                                                <a href="https://bbf-gui.ddns.net/request/mon-stop" target="_blank" class="button k-button secondary-button is-darkis-bold  has-gradient is-fat raised is-rounded">
+                                                    Stop Monitoring
+                                                </a>
+                                                <a href="http://bbf-gui.ddns.net:8888" class="button k-button is-primary is-light is-bold  has-gradient is-fat  is-rounded">  Dozzle </a>
+                                            </div>
+                                        </div>
+                                </div>
+                        </div>
+         </div>
+    
+</section>
+<br>
+
             
 <section class="section "  style="padding: 2.5% 0% 2.5% 0%" >
     <!-- Container -->
@@ -23,8 +72,7 @@
     
         <!-- Content wrapper -->
         <div class="content-wrapper " >
-            <div class="divider is-centered"></div>
-            <h2 class="title is-light is-semibold has-text-centered">Benchmarking Tools</h2>
+          
               <div class="columns is-vcentered">
                 
     
@@ -32,12 +80,12 @@
                   <div class="column is-5 is-offset-1">
                       <div class="side-feature-content">
     
-                          <h3 class="title  is-light" style="display:inline-table;"><img src="../static/img/icons/ico/bitbanner.svg" alt=""> <span>Medium Articles</span></h3>
+                          <h3 class="title  is-light" style="display:inline-table;"><span>Grafana</span></h3>
                           <div class="divider is-long"></div>
                           <p class="is-light" style="text-align:justify;">The blockchain trilemma (scalability, security, and decentralization) triggered a competition between initiatives and project teams from the wider blockchain ecosystem. These initiatives attempt to propose alternative to Bitcoin implementations for Distributed Ledgers. </p>
                           <div class="cta-wrapper" >
-                              <a href="https://medium.com/ripple-series/the-big-bang-of-blockchain-consensus-algorithms-the-case-of-ripple-1413fefb4f3b" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                                  <span class="text">Part I</span>
+                              <a href="https://grafana.com/" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                                  <span class="text">Grafana</span>
                                   <span class="front-gradient"></span>
                               </a> 
                              
@@ -47,21 +95,21 @@
     
                   <!-- Feature image -->
                   <div class="column is-7">
-                      <img class="side-feature" src="https://www.dmuth.org/wp-content/uploads/2021/11/grafana-logo.png" alt="">
+                      <img class="side-feature" src="https://seeklogo.com/images/G/grafana-logo-15BA0AFA8A-seeklogo.com.png" style="width: 40%; margin-left: 5vw;" alt="">
                   </div>
               </div>
     
               <div class="columns is-vcentered" >
                   <!-- Feature image desktop -->
                   <div class="column is-7 is-hidden-mobile">
-                      <img class="side-feature" src="../static/img/illustrations/blockchain-blocks.svg" alt="">
+                      <img class="side-feature" style="width: 40%; margin-left: 5vw;"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/2066px-Prometheus_software_logo.svg.png" alt="">
                   </div>
     
                   <!-- Feature content -->
                   <div class="column is-5" style="padding-top:5%">
                       <div class="side-feature-content">
     
-                          <h3 class="title is-light" style="display:inline-table;"><img src="../static/img/icons/ico/bitnetwork.svg" alt=""> Conference Articles</h3>
+                          <h3 class="title is-light" style="width: 40%; display:inline-table;"> Prometheus </h3>
                           <div class="divider is-long"></div>
                           <p class="is-light" style="text-align:justify;">Blockchain and Distributed Ledger Technologies
                             appear to be at a worldwide threshold of acceptance
@@ -70,14 +118,11 @@
                             blockchain trilemma, improving blockchain features
                             and its technical limitations. </p>
                           <div class="cta-wrapper">
-                              <a href="https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/29ef303a-820e-44fb-b659-cdd8f39c478a/content" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                                  <span class="text">HICSS55</span>
+                              <a href="https://prometheus.io/" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                                  <span class="text">Prometheus</span>
                                   <span class="front-gradient"></span>
                               </a>
-                              <a href="https://ieeexplore.ieee.org/abstract/document/9569810" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                                <span class="text">BRAINS</span>
-                                <span class="front-gradient"></span>
-                            </a>
+                              
                           </div>
                       </div>
                   </div>
@@ -93,12 +138,12 @@
                   <div class="column is-5 is-offset-1">
                       <div class="side-feature-content">
     
-                          <h3 class="title  is-light" style="display:inline-table;"><img src="../static/img/icons/ico/bitmining.svg" alt=""> Journals</h3>
+                          <h3 class="title  is-light" style="display:inline-table;">InfluxDB</h3>
                           <div class="divider is-long"></div>
                           <p class="is-light" style="text-align:justify">Blockchain and Distributed Ledger Technology (DLT) appears to be at a worldwide threshold of acceptance and adoption. Since their inception, several innovative projects have been proposing solutions to the blockchain trilemma, improving blockchain features and its technical limitations. However, the adoption of blockchain as a technology or a software component, requires a comprehensive understanding and characterization of their technical principles and characteristics.</p>
                           <div class="cta-wrapper">
-                              <a href="https://ieeexplore.ieee.org/abstract/document/9813702" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
-                                  <span class="text">Learn More</span>
+                              <a href="https://www.influxdata.com/" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                                  <span class="text">InfluxDB</span>
                                   <span class="front-gradient"></span>
                               </a>
                           </div>
@@ -107,7 +152,7 @@
     
                   <!-- Feature image -->
                   <div class="column is-7">
-                      <img class="side-feature" src="../static/img/illustrations/crypto-mining.svg" alt="">
+                      <img class="side-feature" style="width: 40%; margin-left: 5vw;" src="https://assets.zabbix.com/img/brands/influxdb.svg" alt="">
                   </div>
               </div>
           </div>
@@ -116,67 +161,7 @@
       </div>
     
     </section>
+<br><br>
 
-    <section>
-        <div class="container">
-           
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col">
-                                <div class='container has-text-centered'>
-                                    <h1 style='color:green;margin-top:30px' 
-                                        class='title'>Colored Buttons</h1>
-                              
-                                    <div class='buttons is-centered'>
-                                        <button class="button is-info">
-                                            Info
-                                        </button>
-                                        <button class="button is-success">
-                                            Success
-                                        </button>
-                                        <button class="button is-warning">
-                                            Warning
-                                        </button>
-                                        <button class="button is-danger">
-                                            Danger
-                                        </button>
-                                        <button class="button is-dark">
-                                            Dark
-                                        </button>
-                                        <button class="button is-light">
-                                            Light
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class='container has-text-centered'>
-                                 <br>
-                              
-                                    <div class='buttons is-centered'>
-                                        <button class="button is-info">
-                                            Info
-                                        </button>
-                                        <button class="button is-success">
-                                            Success
-                                        </button>
-                                        <button class="button is-warning">
-                                            Warning
-                                        </button>
-                                        <button class="button is-danger">
-                                            Danger
-                                        </button>
-                                        <button class="button is-dark">
-                                            Dark
-                                        </button>
-                                        <button class="button is-light">
-                                            Light
-                                        </button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-              
-        </div>
-        
-    </section>
     
    {%endblock%}

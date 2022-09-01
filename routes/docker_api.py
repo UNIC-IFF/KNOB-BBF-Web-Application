@@ -12,7 +12,10 @@ BLOCKCHAINS= ['geth', 'xrpl', 'besu-poa', 'stellar-docker-testnet']
 Active_Networks=set()
 def remove_network(network):
     get_running_networks()
-    Active_Networks.remove(network)
+    try:
+        Active_Networks.remove(network)
+    except:
+        return True
 
 
 def normalize(dictionary): # transforms docker output to dict
@@ -87,7 +90,10 @@ def docker_stats():
       # --------------------------- CPU STATS ----------------------------
       UsageDelta = i['cpu_stats']['cpu_usage']['total_usage'] - i['precpu_stats']['cpu_usage']['total_usage']
       SystemDelta= i['cpu_stats']['system_cpu_usage'] - i['precpu_stats']['system_cpu_usage']
-      len_cpu = len(i['cpu_stats']['cpu_usage']['percpu_usage'])
+      try:
+        len_cpu = len(i['cpu_stats']['cpu_usage']['percpu_usage'])
+      except:
+        len_cpu=2
       percent = round((UsageDelta / SystemDelta) * len_cpu * 100,3)
 
       # --------------------------- Memory STATS -------------------------
@@ -113,6 +119,21 @@ def docker_list():
    for container in client.containers.list():
         container_dict.append({"Container_name": container.name[1:],"Container_ID":container.short_id,"Container_status": container.status,"Container_image":re.search(r"\'(.*?)\'",str(container.image)).group(1) })
    return jsonify(container_dict)
+
+
+@GETH_API.route('/docker/management/graph/<string:network>', methods=['GET'])
+#returns the container list information
+def graph(network):
+   client = docker.from_env()
+   container_dict=[]
+   c=client.containers.list()
+   net=BLOCKCHAINS.index(network)
+   a=[container.name for container in c]
+   for i in a:
+        if i.startswith(BLOCKCHAINS[net]):
+            container_dict.append( i)
+   return json.dumps(container_dict)
+
 
 def docker_logs():
    client = docker.from_env()

@@ -549,6 +549,10 @@ body {
     }
 }
 
+.grafana-wrapper {
+    background: url(../img/bg/bg-token-top.png) no-repeat top center, url(../img/bg/bg-token-left.png) no-repeat top left, url(../img/bg/bg-token-bottom.png) no-repeat bottom right, #1c004c;
+}
+
 /* ==========================================================================
 4. Token page
 ========================================================================== */
@@ -561,6 +565,7 @@ body {
     .monitoring-image img {
         height: 60vh;
         width: 60vw;
+        margin-left: 3vw;
     }
 
     .is-ico-details {
@@ -1303,24 +1308,18 @@ body {
     .b-table {
         .table thead td, .table thead th {
             color:whitesmoke;
-
-         
+            font-weight: normal;
 
         }
         
         table{
         background-color: transparent;
         color: $white;
-        tr {   
-        
-        
-           
+        tr {           
               &:hover {
                 background-color: transparent!important;
                 opacity: 0.8;
-              }
-            
-        
+              }        
         }
        
         thead{
@@ -1337,8 +1336,7 @@ body {
             border-width: 0ch;
             
         }
-    
-        
+
         tr.detail:hover{
             background-color: $light-blue;
         }
@@ -1347,118 +1345,14 @@ body {
         }
         }
     }
-   
-    
 
     .benchmarking_engine-image img {
         height: 550px;
     }
 
-    .search-widget {
-        margin: 20px;
+   
 
-        .control-material {
-            input {
-                padding-right: 40px;
-            }
 
-            input:focus {
-                ~ svg {
-                    transform: translateX(0) rotate(0);
-                    opacity: 1;
-                }
-            }
-        }
-
-        svg {
-            position: absolute;
-            right: 10px;
-            top: 12px;
-            stroke: $secondary;
-            transition: all .3s;
-            transform: translateX(60px) rotate(360deg);
-            opacity: 0;
-        }
-    }
-
-    .categories-widget {
-        margin-bottom: 20px;
-
-        .widget-title {
-            font-family: 'Cabin', sans-serif;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            color: $light-blue;
-            padding: 0 20px;
-        }
-
-        .categories-list {
-            padding: 20px 0;
-
-            li {
-                padding: 10px 20px;
-
-                a {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    font-family: 'Cabin', sans-serif;
-                    font-size: .95rem;
-                    color: $white;
-                    opacity: 0.6;
-                    border-radius: 3px;
-                    transition: all .3s;
-
-                    span {
-                        display: block;
-
-                        &.tag {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            color: $secondary;
-                            background: transparent;
-                            border: 1px solid $secondary;
-                        }
-                    }
-
-                    &:hover, &.is-active {
-                        opacity: 1;
-                        color: $light-blue;
-                    }
-                }
-            }
-        }
-    }
-
-    .tags-widget {
-        margin-bottom: 20px;
-
-        .widget-title {
-            font-family: 'Cabin', sans-serif;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            color: $light-blue;
-            padding: 0 20px;
-        }
-
-        .tags {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 20px;
-
-            .tag {
-                margin: 5px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: $primary;
-                background: transparent;
-                border: 1px solid $primary;
-            }
-        }
-    }
 
     .archives-widget {
         margin-bottom: 20px;
@@ -1551,58 +1445,7 @@ body {
         }
     }
 
-    .posts-widget {
-        margin-top: 40px;
-        margin-bottom: 20px;
-
-        .widget-title {
-            font-family: 'Cabin', sans-serif;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            color: $light-blue;
-            padding: 0 20px;
-        }
-
-        .recent-posts {
-            padding: 20px;
-
-            .recent-post {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                margin-bottom: 20px;
-                font-family: 'Cabin', sans-serif;
-
-                img {
-                    height: 32px;
-                    width: 32px;
-                    border-radius: 50%;
-                }
-
-                .meta {
-                    padding: 0 10px;
-
-                    a {
-                        display: block;
-                        color: $white;
-                        font-size: .85rem;
-                        transition: all .3s;
-
-                        &:hover {
-                            color: $light-blue;
-                        }
-                    }
-
-                    span {
-                        display: block;
-                        font-size: .65rem;
-                        color: $white;
-                        opacity: 0.8;
-                    }
-                }
-            }
-        }
-    }
+   
 
     //Single post
     .benchmarking_engine-featured {
@@ -1612,154 +1455,7 @@ body {
         box-shadow: 0 15px 26px rgba(0, 0, 0, 0.4);
     }
 
-    .post-body {
-        padding: 20px 60px;
 
-        .intro {
-            font-style: italic;
-            font-family: 'Cabin', sans-serif;
-            color: $white;
-            opacity: 0.8;
-        }
-
-        h2 {
-            font-family: 'Cabin', sans-serif;
-            font-size: 1.5rem;
-            color: $white;
-            padding: 10px 0;
-        }
-
-        p {
-            font-family: 'Cabin', sans-serif;
-            font-size: .9rem;
-            color: $white;
-            padding-bottom: 20px;
-            opacity: 0.7;
-        }
-
-        blockquote {
-            padding: 0 20px;
-            border-left: 3px solid $primary;
-            color: $white;
-            opacity: 0.6;
-            margin-bottom: 20px;
-        }
-
-        hr {
-            opacity: 0.3;
-        }
-    }
-
-    .comments {
-        padding: 0 60px;
-
-        .comments-heading {
-            font-size: 1.2rem;
-            color: $light-blue;
-            text-align: center;
-        }
-
-        .comments-list {
-            padding: 60px 40px;
-
-            .is-comment {
-                border-top: none !important;
-
-                img {
-                    display: block;
-                    border-radius: 50%;
-                }
-
-                .user-meta {
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-
-                    span, small {
-                        display: block;
-                    }
-
-                    span {
-                        font-size: .9rem;
-                        font-family: 'Cabin', sans-serif;
-                        color: $light-blue;
-                    }
-
-                    small {
-                        font-family: 'Cabin', sans-serif;
-                        font-size: .8rem;
-                        color: $light-blue;
-                        opacity: 0.7;
-                        margin: 0 20px;
-                    }
-                }
-
-                p {
-                    font-family: 'Cabin', sans-serif;
-                    font-size: .9rem;
-                    color: $white;
-                    opacity: 0.7;
-                }
-
-                .post-controls {
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    padding: 10px 0;
-
-                    svg {
-                        width: 16px;
-                        height: 16px;
-                        margin: 0 5px;
-                        stroke: $white;
-                        stroke-width: 1.6px;
-                        transition: all .3s;
-                        cursor: pointer;
-                        opacity: 0.5;
-
-                        &:hover {
-                            stroke: $secondary;
-                            opacity: 1;
-                        }
-                    }
-                }
-            }
-
-            .is-form {
-                margin-top: 60px;
-                display: flex;
-                justify-content: flex-start;
-
-                img {
-                    height: 50px;
-                    width: 50px;
-                    border-radius: 50%;
-                }
-
-                .control {
-                    width: 100%;
-                    margin: 0 10px;
-
-                    label {
-                        color: $light-blue;
-                    }
-
-                    .textarea {
-                        width: 100%;
-                        background: rgba(17, 149, 247, 0.08);
-                        border: 1px solid rgba(0, 83, 251, 0.5);
-                        color: $white;
-                        font-size: .9rem;
-                        transition: all .3s;
-                    }
-                }
-            }
-
-            .comment-controls {
-                margin: 10px;
-            }
-        }
-    }
 
     
 
@@ -1774,14 +1470,15 @@ body {
         .tablinks{
             text-align: center;
             cursor: pointer;
-            color: #1ee0d5;
+            color: $white ;
+           
 
-            &:hover button {
+            &:hover  {
                 color: lighten(#1e004f, 15%);
             }
 
-            &.is-active button {
-                color: $white !important;
+            &.active  {
+                color: #1ee0d5!important;
             }
         }
 
@@ -1792,28 +1489,25 @@ body {
             width: 10rem;
             border-radius: 10px;
             padding: .75rem 0;
-           
-            color: #1ee0d5;
-            
-          
+            color: inherit;
             border: 2px solid ;
             
         }
 
         //Settings for underline
-        .tab-xrpl.is-active ~ .slider{
+        .tab-xrpl.active ~ .slider{
             margin-left: 75%;
         }
 
-        .tab-geth.is-active ~ .slider {
+        .tab-geth.active ~ .slider {
             margin-left: 25%;
         }
 
-        .tab-stellar-docker-testnet.is-active ~ .slider {
+        .tab-stellar-docker-testnet.active ~ .slider {
             margin-left: 50%;
         }
 
-        .tab-besu-poa.is-active ~ .slider {
+        .tab-besu-poa.active ~ .slider {
             margin-left: 0%;
         }
 
@@ -1841,8 +1535,10 @@ body {
     margin-top: 40px;
 
     //Active state
-    &.is-active {
+    &.active {
         display: inherit;
+        color: #1ee0d5;
+        
     }
 
    

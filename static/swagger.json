@@ -498,6 +498,30 @@
     }
   },
 
+  "/docker/management/graph/{network}": {
+    "get": {
+      "tags": [
+        "Return current docker stats"
+      ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+        "description": "Choose the prefered Blockchain Network",
+        "schema":{"$ref":"#/components/schemas/network"}  
+      }],
+      "summary": "Returns all the available networks",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
+
   "/docker/management/list": {
     "get": {
       "tags": [

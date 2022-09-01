@@ -29,9 +29,10 @@
                         <!-- Feature -->
                         <div class="column is-9">
                             <div class="feature" style="float:right;">
-                              <a  id="deploy" title="Toggle down the system where you cant configure and start a network" class="button k-button k-secondary is-bold raised has-gradient is-fat ">
+                              <a onclick="view(deploy)" id="deploy" title="Toggle down the system where you cant configure and start a network" class="button k-button k-secondary is-bold  has-gradient is-fat ">
                                 <span class="text" >Deploy a Network</span>
                                 <span class="front-gradient"></span>
+                                <span id="iconndeploy"  class="iconify-inline icon "><i class="mdi mdi-chevron-down mdi-1000px"></i></span>
                             </a>
                             </div>
                             <div class="w3-container">
@@ -47,6 +48,7 @@
                                                 <span class="text">Start Monitoring</span>
                                                 <span class="front-gradient"></span>
                                             </a>
+                                        
                                             </div>
                                       </div>
                                   </div>
@@ -65,7 +67,7 @@
                         <!-- Feature -->
                         <div class="column is-9">
                             <div class="feature">
-                              <a href="{{url_for("monitoring")}}" style="float:left;" title="Redirect to Monitoring page to check benchmarks after traffic generation" class="button k-button k-primary raised has-gradient is-bold is-fat ">
+                              <a href="{{url_for("monitoring")}}" target="_blank" style="float:left;" title="Redirect to Monitoring page to check benchmarks after traffic generation" class="button k-button k-primary raised has-gradient is-bold is-fat ">
                                 <span class="text" >Monitoring</span>
                                 <span class="front-gradient"></span>
                             </a>
@@ -155,8 +157,10 @@
             <div class="container">
               <div class="b-table">
                 <div class="table-wrapper has-mobile-cards">
+                  <h4 class="title is-4 is-light has-text-centered is-centered"> Network Control Panel </h4>
+                      <div class="divider is-centered has-text-centered is-large is-long"> </div>
                   <table id="myTable" class="table is-fullwidth is-hoverable is-fullwidth">
-                    <thead>
+                    <thead style="font-weight: normal;">
                     <tr>
                       <th class="is-chevron-cell"></th>
                       <th></th>
@@ -168,8 +172,7 @@
                     </tr>
                     </thead>
                     <tbody >
-                      <h4 class="title is-4 is-light is-semibold has-text-centered is-centered"> Network Control Panel </h4>
-                      <div class="divider is-centered has-text-centered is-large is-long"> </div>
+                      
 
                                 <div id="modall" class="w3-container">
                                   
@@ -178,7 +181,9 @@
                               
                     
                     </tbody>
+                    
                   </table>
+                  <h4 style="font-weight:normal;" id="init_message" class="is-6 is-light title has-text-centered"> There are no data yet</h4>
                 </div>
               </div>
             </div>
@@ -394,6 +399,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
       const myArray = data.split(",");
       if(myArray[0] == "Configured" || myArray[0] == "Started"  ) {
         AddRows(networks[networkk],myArray[0] ,myArray[1] );
+        document.getElementById('init_message').style.display="none";
         document.getElementById(`loader${networks[networkk]}`).style.display="none";
         if(myArray[0] == "Started" ){
           $(`#traffic${networks[networkk]}`).toggleClass('hidden appear');
@@ -435,17 +441,19 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 <script type="text/javascript">
   abort=true;
   $("#start_monitoring").click(function(){
-    document.getElementById("wait1").style.display = "flex";
-    $("#wait1t").toggleClass('hidden appear');
+   
     document.getElementById("btn1").classList.add("is-loading");
     if (abort){
+      $("#loadermon").toggleClass('hidden appear' );
+      $("#loader-textmon").toggleClass('hidden appear');
     fetch('/request/mon')
     .then((response) => response.json())
     .then(function(data) {
     console.log(data);
+    $("#loadermon").toggleClass('appear hidden');
+    $("#loader-textmon").toggleClass('appear hidden');
     document.getElementById("btn1").classList.remove("is-loading");
-    $("#wait1t").toggleClass('appear hidden');
-    document.getElementById("wait1").style.display = "none";
+    document.getElementById("btn1").disabled=false;
     $("#stamon").toggleClass('hidden appear');
     });
     }
@@ -574,7 +582,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
           <button title="Stop the Network" id="stop_${network}" onclick="stop('${network}')" class="button is-small is-danger jb-moda hidden" data-target="sample-modal" type="button">
             <span class="icon"><i id="stopicon${network}" class="mdi mdi-trash-can"></i></span>
           </button>
-          <button title="Delete the network" id="clean${network}"  onclick="clean('${network}')" class="button is-small is-danger jb-modal appear" data-target="sample-modal" type="button">
+          <button title="Clean the network" id="clean${network}"  onclick="clean('${network}')" class="button is-small is-warning jb-modal appear" data-target="sample-modal" type="button">
             <span class="icon"><i  class="mdi mdi-close-box"></i></span>
           </button>
           <button id="loader${network}" class="button button-ghost-background jb-modal is-small is-loading" style="background-color:transparent; border-color:transparent;" > </button>
@@ -593,7 +601,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
             <div class="w3-container w3-black">
               <span onclick="document.getElementById('id02${network}').style.display='none'; abort=false;" class="w3-button w3-display-topright">&times;</span>
             <br>
-            <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to Start a Network</h2>
+            <h2 class="title is-light is-2 is-semibold has-text-centered "> ${network} Traffic Generation </h2>
              <div class="container steps" >
                <div class="columns is-vcentered ">
                           <div style="margin-left:20%"></div>
@@ -652,7 +660,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
                 <div class="flying-tabs" >
               <button class="tablinks "   onclick="openCity(event, 'Network_Details${network}'); node('${network}');" id="node${network}">Network Details</button>
               <button id="traff${network}"  class="tablinks " onclick="openCity(event, 'Traffic_Details${network}'); show_traf_box('${network}');">Traffic Details</button>
-              
+              <button id="graph${network}"  class="tablinks " onclick="openCity(event, 'Graph${network}'); draw('${network}');">Network Graph</button>
             </div>
             <div id="slider1"  class="slider hidden" >  </div>
 
@@ -673,12 +681,19 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
                 <div class="columns " style="display:block;">
                   <!-- ICO Terms -->
                  
-                      <div id="trf-2${network}" class="text-content  has-text-centered " style="padding-top:3vh">
-                        
-                </div>
+                      <div id="trf-2${network}" class="text-content  has-text-centered " style="padding-top:3vh"> </div>
               </div>
             </div>
+
+            <div id="Graph${network}" class="tabcontent">
+              <span id="graph${network}"  onclick="this.parentElement.style.display='none'; draw('${network}');" class="topright">&times</span>
+              <div class="columns " style="display:block;">
+                <!-- ICO Terms -->
+               
+                    <div id="mynetwork_${network}" class="text-content  has-text-centered " style="padding-top:3vh; width:80vw; height:70vh;"> </div>
             </div>
+          </div>
+          </div>
 
     
         
@@ -713,14 +728,16 @@ function startNetwork(network, num_of_nodes){
     console.log(response);
     document.getElementById(`loader${network}`).style.display="none";
     document.getElementById("btn1").disabled=true;
+    alert("Network Started!");
     })
   .catch((err) => console.error(err));
 
 };
 
 function configureNetwork(){
-  document.getElementById("stamon").display="hidden";
-  document.getElementById("sta").display="hidden";
+  document.getElementById("init_message").style.display="none";
+  document.getElementById("stamon").style.display="none";
+  document.getElementById("sta").style.display="hidden";
   network  = document.getElementById('selected').value;
   if (network ==="Select a Network"){
     alert("Please select a valid network!");
@@ -819,6 +836,60 @@ function changeicon(network, icon){
     evt.currentTarget.className += " active";
   }
   // Get the element with id="defaultOpen" and click on it
+
+
+
+  function draw(network){
+
+  fetch(`/docker/management/graph/${network}`)
+  .then(data => {return data.json()})
+  .then((response) => {
+    const net_nodes=response;
+    console.log(response);
+    var nodes =[];
+    i=0;
+    for (var node in net_nodes){
+      nodes.push({id:i, label: net_nodes[node], font: { size: 12, color: "white", face: "sans-serif" }, group:i, margin: { top: 10, right: 20, bottom: 40, left: 30 }, });
+      i++;
+    }
+    var nodes= new vis.DataSet(nodes);
+    var nodes_len=net_nodes.length;
+    var edges = [];
+    // Nested loop for all possible pairs
+   for (var i = 0; i < nodes_len; i++) {
+        for (var j = 0; j < nodes_len; j++) {
+          if (i != j){
+           edges.push({from: i, to: j});
+          }
+        }
+    }
+    
+    var edges =new vis.DataSet(edges);
+    var container = document.getElementById(`mynetwork_`+network);
+    var data = {
+      nodes: nodes,
+      edges: edges,
+    };
+    var options = {
+      nodes: {
+        shape: "dot",
+        size: 20,
+      
+      },layout: { randomSeed: 2 },
+     
+     
+      
+      
+    };
+    new vis.Network(container, data, options);
+
+    });
+  
+
+   
+
+  }
+
 
   </script>
   

@@ -44,8 +44,7 @@ For each API type the prefered network. The list of the avialable networks can b
 * Elias Iosif [ iosif.e@unic.ac.cy ]
 
 ## Acknowledge
-This work is funded by the XRPL Grants. The XRPL Grants program seeks to enable others to build inclusive standards leveraging the XRP Ledger’s open source technology and further innovate in the Internet of Value.
-Link: [XRPL Grants](https://xrplgrants.org/)
+This work has been supported by the University Blockchain Research Initiative (UBRI) project, funded by the Ripple’s Impact Fund, advised funds of Silicon Valley Community Foundation (Grant ID: 2018-188546 and Grant ID: 2021-244121). Also,this work was supported by the XRP Ledger Developer Program, Wave 2 grants offered by Ripple Labs Inc.
 
 
 ## About IFF

@@ -56,8 +56,7 @@ def benchmarking_engine():
 def available_networks():
     
     li=json.loads(request_api.show_list())
-    
-    return render_template('available_networks.html', li=list(li["data"][2:]))
+    return render_template('available_networks.html', li=list(li[2:]))
 
 
 @APP.route("/monitoring", methods=["GET"])

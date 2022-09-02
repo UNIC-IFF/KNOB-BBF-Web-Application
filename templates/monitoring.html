@@ -4,7 +4,6 @@
 
 {% block content %}
 
-
 <section  >
 <h2 class="is-2 title is-light has-text-centered  is-semibold"> BBF Monitoring </h2>
 <div class="columns">
@@ -27,36 +26,37 @@
                                     <div class='container has-text-centered'>
                                         <h3  class='title is-3 is-semibold is-light'>Control Panel</h3>
                                         <div class="divider is-large has-text-centered is-centered"> </div>
-                                
+                                    
+                                        <div class="field">
+                                            <input id="switchRtlExample" type="checkbox" name="switchRtlExample" class="switch is-rtl" >
+                                            <label for="switchRtlExample" class="is-light is-5 is-semibold title">Stop/Start Monitoring</label>
+                                          </div>
+
+                                          <div class='container has-text-centered'>
+                                            <br>
+                                        
+                                                <div class='buttons is-centered' >
+                                                    <a  href="http://bbf-gui.ddns.net:9093" target="_blank" class="button k-button is-primary is-light is-bold  has-gradient is-fat">
+                                                        Alert Manager
+                                                    </a>
+                                                   
+                                                    <a href="http://bbf-gui.ddns.net:8888" class="button k-button is-primary is-light is-bold  has-gradient is-fat  ">  Dozzle </a>
+                                                </div>
+                                            </div>
+                                            <br>
                                         <div class='buttons is-centered'>
-                                            <a href="{{url_for('grafana')}}"  class="button k-button is-primary is-dark is-bold  has-gradient is-fat  is-rounded">
+                                            <a href="{{url_for('grafana')}}"  class="button k-button is-primary is-light is-bold  has-gradient is-fat">
                                                 Grafana
                                             </a>
-                                            <a href="http://bbf-gui.ddns.net:9090" target="_blank" class="button k-button is-dark  is-bold  has-gradient is-fat is-rounded secondary-button">
+                                            <a href="http://bbf-gui.ddns.net:9090" target="_blank" class="button k-button is-primary is-light is-bold  has-gradient is-fat">
                                                 Prometheus
                                             </a>
-                                            <a href="http://bbf-gui.ddns.net:9091" target="_blank" class="button k-button grey-button is-bold raised  has-gradient is-fat is-rounded">
+                                            <a href="http://bbf-gui.ddns.net:9091" target="_blank" class="button k-button is-primary is-light is-bold  has-gradient is-fat">
                                                 Push Gateway
                                             </a>
-                                        <a href="http://bbf-gui.ddns.net:81" target="_blank"  class="button k-button is-primary is-dark is-bold  has-gradient is-fat is-rounded"> Graphite </a>
                                         </div>
                                     </div>
-                                        <div class='container has-text-centered'>
-                                        <br>
-                                    
-                                            <div class='buttons is-centered' >
-                                                <a href="http://bbf-gui.ddns.net:8086" target="_blank" class="button k-button secondary-button is-light is-bold has-gradient is-fat  is-rounded">
-                                                    InfluxDB
-                                                </a>
-                                                <a  href="http://bbf-gui.ddns.net:9093" target="_blank" class="button k-button is-primary is-dark is-bold has-gradient is-fat  raised is-rounded">
-                                                    Alert Manager
-                                                </a>
-                                                <a href="https://bbf-gui.ddns.net/request/mon-stop" target="_blank" class="button k-button secondary-button is-darkis-bold  has-gradient is-fat raised is-rounded">
-                                                    Stop Monitoring
-                                                </a>
-                                                <a href="http://bbf-gui.ddns.net:8888" class="button k-button is-primary is-light is-bold  has-gradient is-fat  is-rounded">  Dozzle </a>
-                                            </div>
-                                        </div>
+                                       
                                 </div>
                         </div>
          </div>
@@ -95,21 +95,21 @@
     
                   <!-- Feature image -->
                   <div class="column is-7">
-                      <img class="side-feature" src="https://seeklogo.com/images/G/grafana-logo-15BA0AFA8A-seeklogo.com.png" style="width: 40%; margin-left: 5vw;" alt="">
+                      <img class="side-feature" src="https://seeklogo.com/images/G/grafana-logo-15BA0AFA8A-seeklogo.com.png" style="width: 25%; margin-left: 5vw;" alt="">
                   </div>
               </div>
     
               <div class="columns is-vcentered" >
                   <!-- Feature image desktop -->
                   <div class="column is-7 is-hidden-mobile">
-                      <img class="side-feature" style="width: 40%; margin-left: 5vw;"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/2066px-Prometheus_software_logo.svg.png" alt="">
+                      <img class="side-feature" style="width: 25%; margin-left: 5vw;"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/2066px-Prometheus_software_logo.svg.png" alt="">
                   </div>
     
                   <!-- Feature content -->
                   <div class="column is-5" style="padding-top:5%">
                       <div class="side-feature-content">
     
-                          <h3 class="title is-light" style="width: 40%; display:inline-table;"> Prometheus </h3>
+                          <h3 class="title is-light" style="width: 25%; display:inline-table;"> Prometheus </h3>
                           <div class="divider is-long"></div>
                           <p class="is-light" style="text-align:justify;">Blockchain and Distributed Ledger Technologies
                             appear to be at a worldwide threshold of acceptance
@@ -163,5 +163,67 @@
     </section>
 <br><br>
 
+    <script>
+        window.onload = function(){
+            var reloading = sessionStorage.getItem("reloading");
+            is_monitoring_on();
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var checkbox = document.querySelector('input[type="checkbox"]');
+            var cb= document.getElementById("switchRtlExample");
+            
+          
+            checkbox.addEventListener('change', function () {
+              if (checkbox.checked) {
+               start_monitoring();
+              } else {
+                stop_monitoring();
+              }
+            });
+          });    
     
+    
+          async function is_monitoring_on(){
+            const response = await 
+            fetch('/docker/management/is_monitoring_configured');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+            var data = await response.json();
+            if (data=="True"){
+                var checkbox = document.querySelector('input[type="checkbox"]');
+                checkbox.checked = true;
+                console.log("Monitoring is ON!");
+            }
+          }
+
+
+          async function start_monitoring(){
+            var cb= document.getElementById("switchRtlExample");
+            cb.disabled = true;
+            const response = await 
+            fetch('/request/mon');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+            var data = await response.json();
+            console.log(data);
+            cb.disabled = false;
+          }
+
+
+          async function stop_monitoring(){
+            var cb= document.getElementById("switchRtlExample");
+            cb.disabled = true;
+            const response = await 
+            fetch('/request/mon-stop');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          var data = await response.json();
+          console.log(data);
+          cb.disabled=false;
+          }
+          
+    </script>
    {%endblock%}

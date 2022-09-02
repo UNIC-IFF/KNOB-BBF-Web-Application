@@ -1,4 +1,4 @@
-FROM combos/python_node:3.7_16 
+FROM combos/python_node:3.8_16 
 
 VOLUME /hostpipe
 

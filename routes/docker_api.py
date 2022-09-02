@@ -98,7 +98,10 @@ def docker_stats():
 
       # --------------------------- Memory STATS -------------------------
 
-      memory_usage = i["memory_stats"]["usage"] - i["memory_stats"]["stats"]["cache"]
+      try:
+        memory_usage = i["memory_stats"]["usage"] - i["memory_stats"]["stats"]["cache"]
+      except:
+        memory_usage = i["memory_stats"]["usage"]
       limit = i["memory_stats"]["limit"]
       memory_utilization = round(memory_usage/limit * 100, 3)
      #--------------------------- UpTime ----------------------------------

@@ -68,7 +68,8 @@
     "log-symbols": "^5.0.0",
     "panini": "^1.7.2",
     "sass": "^1.43.4",
-    "vinyl-source-stream": "^2.0.0"
+    "vinyl-source-stream": "^2.0.0",
+    "vis-network":"9.1.2"
   },
   "private": false
 }

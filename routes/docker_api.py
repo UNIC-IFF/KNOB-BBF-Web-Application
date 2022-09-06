@@ -82,7 +82,12 @@ def docker_stats():
    c=client.containers.list()
    #for container in c:
    # container_Stats.append(container.stats(decode=False,stream=False))
-   stats= {str(c1.name): c1.stats(decode=False, stream=False) for c1 in c}
+   c2=[]
+   for j in c:
+        for i in BLOCKCHAINS:
+            if j.name.startswith(i):
+                c2.append(j)
+   stats= {str(c1.name): c1.stats(decode=False, stream=False) for c1 in c2}
    stats = normalize(stats)
    print(stats)
    for i in stats.values():

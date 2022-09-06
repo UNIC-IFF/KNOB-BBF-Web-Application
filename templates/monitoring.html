@@ -29,7 +29,7 @@
                                     
                                         <div class="field">
                                             <input id="switchRtlExample" type="checkbox" name="switchRtlExample" class="switch is-rtl" >
-                                            <label for="switchRtlExample" class="is-light is-5 is-semibold title">Stop/Start Monitoring</label>
+                                            <label for="switchRtlExample" class="is-light is-5 is-semibold title">Start/Stop Monitoring</label>
                                           </div>
 
                                           <div class='container has-text-centered'>
@@ -40,12 +40,12 @@
                                                         Alert Manager
                                                     </a>
                                                    
-                                                    <a href="http://bbf-gui.ddns.net:8888" class="button k-button is-primary is-light is-bold  has-gradient is-fat  ">  Dozzle </a>
+                                                    <a href="http://bbf-gui.ddns.net:8888" target="_blank" class="button k-button is-primary is-light is-bold  has-gradient is-fat  ">  Dozzle </a>
                                                 </div>
                                             </div>
                                             <br>
                                         <div class='buttons is-centered'>
-                                            <a href="{{url_for('grafana')}}"  class="button k-button is-primary is-light is-bold  has-gradient is-fat">
+                                            <a href="http:///bbf-gui.ddns.net:3000" target="_blank"   class="button k-button is-primary is-light is-bold  has-gradient is-fat">
                                                 Grafana
                                             </a>
                                             <a href="http://bbf-gui.ddns.net:9090" target="_blank" class="button k-button is-primary is-light is-bold  has-gradient is-fat">
@@ -82,7 +82,7 @@
     
                           <h3 class="title  is-light" style="display:inline-table;"><span>Grafana</span></h3>
                           <div class="divider is-long"></div>
-                          <p class="is-light" style="text-align:justify;">The blockchain trilemma (scalability, security, and decentralization) triggered a competition between initiatives and project teams from the wider blockchain ecosystem. These initiatives attempt to propose alternative to Bitcoin implementations for Distributed Ledgers. </p>
+                          <p class="is-light" style="text-align:justify;">No matter where your metrics are kept, you can query, view, receive alerts on, and understand them using Grafana. Develop a data-driven culture by creating, exploring, and sharing stunning dashboards with your team. Using our Grafana instance, you can generate you own charts and pipes using your data collected from your executed benchmarks. </p>
                           <div class="cta-wrapper" >
                               <a href="https://grafana.com/" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
                                   <span class="text">Grafana</span>
@@ -109,14 +109,9 @@
                   <div class="column is-5" style="padding-top:5%">
                       <div class="side-feature-content">
     
-                          <h3 class="title is-light" style="width: 25%; display:inline-table;"> Prometheus </h3>
+                          <h3 class="title is-light" style=" display:inline-table;"> Prometheus </h3>
                           <div class="divider is-long"></div>
-                          <p class="is-light" style="text-align:justify;">Blockchain and Distributed Ledger Technologies
-                            appear to be at a worldwide threshold of acceptance
-                            and adoption. Since their inception, several innovative
-                            projects have been proposing solutions to the
-                            blockchain trilemma, improving blockchain features
-                            and its technical limitations. </p>
+                          <p class="is-light" style="text-align:justify;">Prometheus stores data locally on the disk, which helps for fast data storage and fast querying but ability to store metrics in remote storage. In our implementation, Prometheus monitoring server was used to store the data generated from the executed benchmarking tests. </p>
                           <div class="cta-wrapper">
                               <a href="https://prometheus.io/" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
                                   <span class="text">Prometheus</span>
@@ -140,7 +135,7 @@
     
                           <h3 class="title  is-light" style="display:inline-table;">InfluxDB</h3>
                           <div class="divider is-long"></div>
-                          <p class="is-light" style="text-align:justify">Blockchain and Distributed Ledger Technology (DLT) appears to be at a worldwide threshold of acceptance and adoption. Since their inception, several innovative projects have been proposing solutions to the blockchain trilemma, improving blockchain features and its technical limitations. However, the adoption of blockchain as a technology or a software component, requires a comprehensive understanding and characterization of their technical principles and characteristics.</p>
+                          <p class="is-light" style="text-align:justify">InfluxDB is designed to store large volumes of time series data and quickly perform real-time analysis on that data. Our InfluxDB instance is deployed along with the rest of the monitoring services, responsible to hold all the time series data produced by the benchmarking tests. InfluxDB can then be configured as a data source in the Grafana service.</p>
                           <div class="cta-wrapper">
                               <a href="https://www.influxdata.com/" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
                                   <span class="text">InfluxDB</span>

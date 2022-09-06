@@ -94,7 +94,7 @@
                           
                                 <!-- Step 1 Content -->
                                 <section id="step-1" class="form-step">
-                                    <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to Start a Network</h2>
+                                    <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to configure a Network</h2>
                                     <!-- Step 1 input fields -->
                                     <div class="container steps"  >
                                       <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="post">
@@ -215,7 +215,7 @@
       console.log(data);
       document.getElementById(`trf-box${networkk}`).innerHTML=`   <h4 class="title is-light is-4 animated preFadeInUp fadeInUp" style="margin-left:1.3rem;">${networkk}</h4>
       <div class="divider is-centered"></div>
-      <h5 class="title is-light is-5 animated preFadeInUp fadeInUp">Service Info</h5>
+      <h5 class="title is-light is-5 animated preFadeInUp fadeInUp">Server Info</h5>
       <div class="animated preFadeInUp fadeInUp" style="width:70rem;  text-align:left; overflow:auto;">
           <span id='test${networkk}' class="text-content is-light" style="display:inline;"></span>
       </div>
@@ -336,7 +336,7 @@
       </div>
       ` ;
       var data="";
-      if (sessionStorage.getItem(`walllets${network}`) <= 0) {
+      
           
           const response = await 
           fetch(`traffic/wallets/${network}`);
@@ -345,11 +345,7 @@
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           data = await response.json();
-          sessionStorage.setItem(`walllets${network}`,JSON.stringify(data));
-        }
-      else{
-         data= JSON.parse(sessionStorage.getItem(`walllets${network}`));
-        }
+        
       console.log(data);
           $.each(data, function(index, value) {
             $(`
@@ -484,17 +480,20 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
       document.getElementById(`wait2${net}`).style.display = "flex";
       $(`#wait2t${net}`).toggleClass('hidden appear');
       document.getElementById(`start_traffic${net}`).disabled=true;
+      document.getElementById('close').disabled=true;
       fetch(`/traffic/${net}/traffic/${numWa}/${numTok}`)
       .then((response) => response.json())
       .then(function(data) {
+        document.getElementById('close').disabled=false;
         document.getElementById(`finished_traffic${net}`).style.display='block';
         console.log(data);
         document.getElementById(`wait2${net}`).style.display = "none";
         $(`#wait2t${net}`).toggleClass('appear hidden');
         $(`#finished_traffic${net}`).toggleClass('hidden appear');
         document.getElementById(`start_traffic${net}`).disabled=false;
-        if (sessionStorage.getItem(`walllets${net}`) > 0){
-        sessionStorage.removeItem(`walllets${net}`);}
+       
+        if (sessionStorage.getItem(`node${net}`) > 0){
+          sessionStorage.removeItem(`node${net}`);}
       });
     });
   };
@@ -599,7 +598,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
         <div id="id02${network}" class="w3-modal">
           <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:100%">
             <div class="w3-container w3-black">
-              <span onclick="document.getElementById('id02${network}').style.display='none'; abort=false;" class="w3-button w3-display-topright">&times;</span>
+              <span id="close" onclick="document.getElementById('id02${network}').style.display='none'; abort=false;" class="w3-button w3-display-topright">&times;</span>
             <br>
             <h2 class="title is-light is-2 is-semibold has-text-centered "> ${network} Traffic Generation </h2>
              <div class="container steps" >
@@ -690,7 +689,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
               <div class="columns " style="display:block;">
                 <!-- ICO Terms -->
                
-                    <div id="mynetwork_${network}" class="text-content  has-text-centered " style="padding-top:3vh; width:80vw; height:70vh;"> </div>
+                    <div id="mynetwork_${network}" class="text-content  has-text-centered " style="padding-top:3vh; width:50vw; height:60vh;"> </div>
             </div>
           </div>
           </div>
@@ -877,7 +876,8 @@ function changeicon(network, icon){
       
       },  
     };
-    new vis.Network(container, data, options);
+    n = new vis.Network(container, data, options);
+    n.stabilize();
 
     });
   

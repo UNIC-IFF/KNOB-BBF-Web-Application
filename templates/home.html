@@ -84,7 +84,7 @@
             </div>
 
             <!-- Feature image -->
-            <div   class="column is-7 is-offset-1" style="padding-top:3em;">
+            <div id="vid"   class="column is-7 is-offset-1" style="padding-top:3em;">
                     <iframe  width="560" height="315" src="../static/dist/img/media/bc-becnh-framework.mp4"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
             </iframe>
             </div>
@@ -580,7 +580,13 @@
     });
 
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+<script>
+    $(document).ready(function(){
+      // Target your .container, .wrapper, .post, etc.
+      $("#vid").fitVids();
+      $("#video1").fitVids();
+    });
+  </script>
 
 
 {%endblock%}

@@ -40,11 +40,11 @@ For each API type the prefered network. The list of the avialable networks can b
 * Marios Touloupou (@mtouloup) [ touloupos.m@unic.ac.cy ]
 * George Michoulis (@gmixoulis) [ michoulis.g@unic.ac.cy ]
 * Evgenia Kapassa (@ekapassa) [ kapassa.e@unic.ac.cy ]
-* Klitos Christodoulou [ christodoulou.kl@unic.ac.cy ]
+* Klitos Christodoulou (@klitoschr) [ christodoulou.kl@unic.ac.cy ]
 * Elias Iosif [ iosif.e@unic.ac.cy ]
 
-## Acknowledge
-This work has been supported by the University Blockchain Research Initiative (UBRI) project, funded by the Ripple’s Impact Fund, advised funds of Silicon Valley Community Foundation (Grant ID: 2018-188546 and Grant ID: 2021-244121). Also,this work was supported by the XRP Ledger Developer Program, Wave 2 grants offered by Ripple Labs Inc.
+## Acknowledgements
+The project is funded by the Ripple’s Impact Fund, an advised fund of Silicon Valley Community Foundation (Grant id: 2018–188546, 2021-244121). The UI module of the project has successfully received funding from the XRP Ledger (XRPL) Developer Program, Wave 2 grants offered by Ripple Labs Inc.
 
 
 ## About IFF

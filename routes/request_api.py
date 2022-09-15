@@ -48,7 +48,7 @@ def control_command(PATH,network, command, OUTPUT_FILE, Time2W): #
                 else:
                     time.sleep(Time2W)
         else:
-            time.sleep(1)
+            time.sleep(2)
     return out
 
 
@@ -107,6 +107,7 @@ def post_start(network, NUM_OF_NODES):
     @return: 200: an array of all Start logs as a \
     flask/response object with application/json mimetype.
     """
+    Time2W=5
     NUM_OF_NODES= abs(NUM_OF_NODES)
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:
@@ -133,6 +134,7 @@ def put_configure(network, NUM_OF_NODES):
     @return: 200: an array of all Configure logs as a \
     flask/response object with application/json mimetype.
     """
+    Time2W=3
     NUM_OF_NODES= abs(NUM_OF_NODES)
     network=compile_network_name(network)
     if network not in BLOCKCHAINS:

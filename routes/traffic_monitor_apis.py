@@ -43,6 +43,10 @@ def traffic(network,num_of_wallets,num_of_tokens):
              abort(404)            #number_of_wallets  #number_of_tokens
     command = f' {num_of_wallets} {num_of_tokens} '
     Time2W=10
+    if network=='geth':
+        Time2W=2
+        command = f'  python main.py {num_of_wallets}'
+        return json.dumps(control_command(INIT_PATH+f"networks/{network}/{network}_traffic_gen"," ",command,OUTPUT_FILE,Time2W))
     return json.dumps(control_command(INIT_PATH+f"networks/{network}/{network}_traffic_generator/traffic_gen.sh "," ",command,OUTPUT_FILE,Time2W))
     
 @MONITORING_APIS.route('/traffic/<string:network>/node', methods=['GET'])

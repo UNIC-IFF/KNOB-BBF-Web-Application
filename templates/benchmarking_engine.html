@@ -195,6 +195,7 @@
 
 <script >
   renderjson.set_max_string_length(150);
+  //create network details 
   async function node(networkk) {
     var data ="";
     if (document.cookie.indexOf(`node${networkk}`) <= 0) {    
@@ -233,6 +234,8 @@
       fetchStats(); 
       };
 
+
+      //function to return the docker stats  with time limit
    async function fetchStats() { 
     const itemStr = sessionStorage.getItem('stats');
     const item = JSON.parse(itemStr);
@@ -310,6 +313,9 @@
     });
    };
     
+   //Tab of wallet information
+   //The first method with the .innerHTML creates the container of the wallets
+   //The second method with the "each" creates the container of the waller details
     async function show_traf_box(network){
       document.getElementById(`trf-2${network}`).innerHTML=`
       <h4 class="title is-light is-4 animated preFadeInUp fadeInUp has-text-cetered" style="margin-left:1.3rem;">${network}</h4>
@@ -336,8 +342,6 @@
       </div>
       ` ;
       var data="";
-      
-          
           const response = await 
           fetch(`traffic/wallets/${network}`);
           
@@ -356,12 +360,10 @@
           </a>
           `).appendTo('TA');
           })
-        
-    
       };
 
     
-    function get_acc_info(net,acc){
+    function get_acc_info(net,acc){ // returns the selected account/waller information
         fetch(`/traffic/${net}/acc/${acc}`)
         .then((response) => response.json())
         .then(function(data) {
@@ -388,7 +390,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
           };
       
   };
-   function reloadn(networkk){
+   function reloadn(networkk){ // each time the user reload the BE page, it fetches the configured/started networks
     fetch(`/request/${networks[networkk]}/path`)
     .then((response) => response.json())
     .then(function(data) {
@@ -418,7 +420,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 
 
 <script>
-  function toggles(network){
+  function toggles(network){ // ui messages
     $(`#start${network}`).toggleClass('appear hidden')
     $(`#stop_${network}`).toggleClass('hidden appear')
     $(`#clean${network}`).toggleClass('appear hidden')
@@ -426,7 +428,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
   };
 
 
-  function view(network){
+  function view(network){ //drop down the network panel
     $(`#detail-container${network}`).slideToggle("slow");
     $(`#iconn${network}`).toggleClass(' is-expanded')
   };
@@ -436,21 +438,22 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 </script>
 <script type="text/javascript">
   abort=true;
+  
   $("#start_monitoring").click(function(){
    
-    document.getElementById("btn1").classList.add("is-loading");
+    document.getElementById("btn1").classList.add("is-loading"); // message ui
     if (abort){
-      $("#loadermon").toggleClass('hidden appear' );
-      $("#loader-textmon").toggleClass('hidden appear');
+      $("#loadermon").toggleClass('hidden appear' ); // message ui
+      $("#loader-textmon").toggleClass('hidden appear'); // message ui
     fetch('/request/mon')
-    .then((response) => response.json())
+    .then((response) => response.json()) //start monitoring engine
     .then(function(data) {
     console.log(data);
-    $("#loadermon").toggleClass('appear hidden');
-    $("#loader-textmon").toggleClass('appear hidden');
-    document.getElementById("btn1").classList.remove("is-loading");
-    document.getElementById("btn1").disabled=false;
-    $("#stamon").toggleClass('hidden appear');
+    $("#loadermon").toggleClass('appear hidden'); // message ui
+    $("#loader-textmon").toggleClass('appear hidden'); // message ui
+    document.getElementById("btn1").classList.remove("is-loading"); // message ui
+    document.getElementById("btn1").disabled=false; // message ui
+    $("#stamon").toggleClass('hidden appear'); // message ui
     });
     }
   else{
@@ -463,25 +466,27 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
    
   });
 
-   function start_traffic(net){
+   function start_traffic(net){ 
     document.getElementById(`id02${net}`).style.display='block';
-    $(`#finished_traffic${net}`).hide();
+    $(`#finished_traffic${net}`).style.display="none";
     $(`#start_traffic${net}`).click(function(){
-      var numWa  = document.getElementById(`numWa${net}`).value;
+      var numWa  = document.getElementById(`numWa${net}`).value; 
       var numTok =document.getElementById(`numTok${net}`).value;
       if (numWa === '' || numTok ===''){
-        alert ("Num Of Wallets and Num of Tokens is required");
+        alert ("Num Of Wallets and Num of Tokens is required"); //check if the numbers are correct
         return false;
       }
       if ( numTok < 1000){
         alert ("Number of Tokens is less than 1000");
         return false;
       }
-      document.getElementById(`wait2${net}`).style.display = "flex";
+      //UI messages and loaders
+      document.getElementById(`wait2${net}`).style.display = "flex"; 
       $(`#wait2t${net}`).toggleClass('hidden appear');
       document.getElementById(`start_traffic${net}`).disabled=true;
       document.getElementById('close').disabled=true;
-      fetch(`/traffic/${net}/traffic/${numWa}/${numTok}`)
+      //end of UI messages
+      fetch(`/traffic/${net}/traffic/${numWa}/${numTok}`) // start traffic generation
       .then((response) => response.json())
       .then(function(data) {
         document.getElementById('close').disabled=false;
@@ -498,7 +503,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
     });
   };
 
-  function clean(networkk){
+  function clean(networkk){ //delete a network
     fetch(`/request/${networkk}/clean`)
     .then((response) => response.json())
     .then(function(data) {
@@ -526,7 +531,8 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 
 
 <script>
-  function showDetails(){
+  //dropdown the configuration panel. on click of the deploy button it checks if the monitoring page is configured or not
+  function showDetails(){ 
     $('#slider1').removeClass('hidden');
   }
 
@@ -548,28 +554,28 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
         });
     });
   
-
+        //Append new rows when a network is configured
         function AddRows(network, status, num_) {
           var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
           var row = table.insertRow(0);
-          row.id = `network-${network}`;
+          row.id = `network-${network}`; //network id
           var cel0=row.insertCell(0);
           cel0.innerHTML = `<a role="button" onclick="view('${network}')"  >
-            <span id="iconn${network}" class="iconify-inline icon "><i class="mdi mdi-chevron-right mdi-24px"></i></span>
-          </a>`;
+            <span id="iconn${network}" class="iconify-inline icon "><i class="mdi mdi-chevron-right mdi-24px"></i></span> 
+          </a>`; //the dropdown button
           var cel= row.insertCell(1);
           cel.innerHTML=`  <i id="icon${network}" class="cf cf-eth"></i>`;
-          changeicon(network,`icon${network}`);
+          changeicon(network,`icon${network}`); //add the requested network icon
           var cell1 = row.insertCell(2);
           cell1.innerHTML=network;
           var cell11 = row.insertCell(3);
-          cell11.id=`numnodes${network}`;
+          cell11.id=`numnodes${network}`; //add the configured number of nodes
           cell11.innerHTML=`<span value="${num_}"> ${num_} </span>`;
           var cell2 = row.insertCell(4);
-          cell2.id=`status_${network}`;
+          cell2.id=`status_${network}`; // the network's status "Configured/Started"
           cell2.innerHTML=status;
           var cel3= row.insertCell(5);
-          cel3.className="is-actions-cell";
+          cel3.className="is-actions-cell"; // buttons to control the network
           cel3.innerHTML=` 
           <div class="buttons is-center">
           <button title="View advanced options for the network" id="viewgraph${network}" onclick="view('${network}')" class="button is-small is-primary" type="button">
@@ -588,12 +594,12 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 
         </div>
         `; 
-        var cel4= row.insertCell(6);
+        var cel4= row.insertCell(6); // Traffic generation button
         cel4.innerHTML=`<h6 id="trtext${network}" class="is-6 title is-semibold is-light appear"> Press start to generate traffic </h6>
         <button id="traffic${network}"  onclick="start_traffic('${network}')"  class="button k-button is-primary is-small is-semibold hidden" type="button">
           Traffic Generation
         </button>`
-        // add modal traffic generator
+        // add modal traffic generator. For each netwrok create new modal to start traffic generation
         document.getElementById("modall").innerHTML+=`
         <div id="id02${network}" class="w3-modal">
           <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:100%">
@@ -644,7 +650,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
 </div>
         `;
 
-        // Panel 
+        // Panel. For each row create the panel with the network's information. This just creates the header-tabs and on click it fetch the requested data
         var row1 = table.insertRow(1);
         row1.id = `panel-${network}`;
 
@@ -707,7 +713,7 @@ var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
    
 
 
-
+//This function starts a network after the configuration process
 function startNetwork(network, num_of_nodes){
   var value = event.value;
   toggles(network);
@@ -733,7 +739,9 @@ function startNetwork(network, num_of_nodes){
 
 };
 
-function configureNetwork(){
+// This method configures a network in a proper way.
+function configureNetwork(){ 
+
   document.getElementById("init_message").style.display="none";
   document.getElementById("stamon").style.display="none";
   document.getElementById("sta").style.display="hidden";
@@ -750,7 +758,7 @@ function configureNetwork(){
   let url = `/request/${network}/configure/${num_of_nodes}`;
   document.getElementById("wait1").style.display = "flex";
   $("#wait1t").toggleClass('hidden appear');
-
+  document.getElementById("btn1").disabled=true;
   fetch(url, {
   method: "POST",
   })
@@ -762,7 +770,7 @@ function configureNetwork(){
   }
     return data.json()})
   .then((response) => {
-  
+   document.getElementById("btn1").disabled=false;
    console.log(response);
    document.getElementById("wait1").style.display = "none";
    $("#wait1t").toggleClass('appear hidden');
@@ -774,7 +782,7 @@ function configureNetwork(){
    if (sessionStorage.getItem('stats')>0) { //on configure new network remove previous stats
     sessionStorage.removeItem('stats');
    }
-   if ($(`#network-${network}`).length)
+   if ($(`#network-${network}`).length) // on reconfigure remove the previous configured network
    {
     $(`#network-${network}`).remove();
     $(`#panel-${network}`).remove();
@@ -786,6 +794,9 @@ function configureNetwork(){
    })
   .catch((err) => console.error(err));
 };
+
+
+
 
   // don't let the user to reconfigure a started network. Notify him that he should stop it before reconfigure it
   $("#selected").change(function(){
@@ -821,6 +832,7 @@ function changeicon(network, icon){
 
 </script>
 <script>
+  //Got from w3schools. is the functionality for changing the tabs on click
   function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -837,7 +849,7 @@ function changeicon(network, icon){
   // Get the element with id="defaultOpen" and click on it
 
 
-
+  // Create graph with vis lib
   function draw(network){
 
   fetch(`/docker/management/graph/${network}`)
@@ -848,13 +860,12 @@ function changeicon(network, icon){
     var nodes =[];
     i=0;
     for (var node in net_nodes){
-      nodes.push({id:i, label: net_nodes[node], font: { size: 12, color: "white", face: "sans-serif" }, group:i, margin: { top: 10, right: 20, bottom: 40, left: 30 }, });
+      nodes.push({id:i, label: net_nodes[node], font: { size: 20, color: "white", face: "sans-serif" }, group:i, margin: { top: 10, right: 20, bottom: 40, left: 30 }, });
       i++;
     }
     var nodes= new vis.DataSet(nodes);
     var nodes_len=net_nodes.length;
     var edges = [];
-    // Nested loop for all possible pairs
    for (var i = 0; i < nodes_len; i++) {
         for (var j = 0; j < nodes_len; j++) {
           if (i != j){
@@ -870,11 +881,27 @@ function changeicon(network, icon){
       edges: edges,
     };
     var options = {
-      nodes: {
-        shape: "dot",
-        size: 20,
-      
-      },  
+      nodes:{
+        shape:"dot",
+        fontSize: 50
+      },
+      groups: {
+        delay: 50,
+        fontColor: "black",
+        font: 50, 
+        fontFace: "sans-serif",
+  
+      },
+   
+      physics:{
+        barnesHut:{
+          gravitationalConstant: -6000,
+          springConstant:0.02
+        }
+      },
+      smoothCurves: {dynamic:false},
+      autoResize: true,
+    
     };
     n = new vis.Network(container, data, options);
     n.stabilize();

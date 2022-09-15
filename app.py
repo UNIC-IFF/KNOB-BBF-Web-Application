@@ -5,15 +5,12 @@ from flask import Flask, jsonify, make_response, render_template, redirect, requ
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 from routes import request_api, traffic_monitor_apis, docker_api
-from flask_babel import Babel
 import json
-from itertools import  chain
 import mimetypes
 mimetypes.add_type('application/javascript', '.js')
 APP = Flask(__name__)
 APP.app_context().push()
 CORS(APP)
-Babel(APP)
 ### swagger specific ###
 SWAGGER_URL = '/swagger'
 API_URL = '/static/swagger.json'

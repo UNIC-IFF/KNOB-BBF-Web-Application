@@ -47,7 +47,10 @@ def traffic(network,num_of_wallets,num_of_tokens):
         Time2W=2
         command = f'  python main.py {num_of_wallets}'
         return json.dumps(control_command(INIT_PATH+f"networks/{network}/{network}_traffic_gen"," ",command,OUTPUT_FILE,Time2W))
-    return json.dumps(control_command(INIT_PATH+f"networks/{network}/{network}_traffic_generator/traffic_gen.sh "," ",command,OUTPUT_FILE,Time2W))
+    elif network=="xrpl":
+        return json.dumps(control_command(INIT_PATH+f"networks/{network}/{network}_traffic_generator/traffic_gen.sh "," ",command,OUTPUT_FILE,Time2W))
+    else:
+            return json.dumps("*Still under Development*")
     
 @MONITORING_APIS.route('/traffic/<string:network>/node', methods=['GET'])
 #begin with this action for the framework
@@ -62,11 +65,17 @@ def node(network):
 def acc(network,public_key):
     command=f"acc_info.js {public_key}" #traffic part
     OUTPUT_FILE="../output.txt"
-    return json.dumps(control_command(" node "+INIT_PATH+f"networks/{network}/{network}_traffic_generator/"+command,"","",OUTPUT_FILE,Time2W))
+    if network=="xrpl":
+        return json.dumps(control_command(" node "+INIT_PATH+f"networks/{network}/{network}_traffic_generator/"+command,"","",OUTPUT_FILE,Time2W))
+    else:
+        return json.dumps("**Still under Development**")
 
 
 @MONITORING_APIS.route('/traffic/wallets/<string:network>', methods=['GET'])
 #begin with this action for the framework1
 def wallets(network):
   path= f'cat blockchain-benchmarking-framework/networks/{network}/{network}_traffic_generator/output_data/accounts_to_pay.txt'
-  return json.dumps(control_command(path,"","",OUTPUT_FILE,Time2W))
+  if network=="xrpl":
+    return json.dumps(control_command(path,"","",OUTPUT_FILE,Time2W))
+  else:
+        return json.dumps("**Still under Development**")

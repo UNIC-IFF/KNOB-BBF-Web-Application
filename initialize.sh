@@ -49,7 +49,7 @@ while true; do
     eval "$(cat $WORKING_DIR/blockchain-benchmarking-framework/$pipe) &> $WORKING_DIR/output.txt" 
     
      
-done 
+done &
 
 
 

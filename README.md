@@ -9,8 +9,9 @@ The Blockchain Benchmarking Framework will focus on the development of a user-fr
 To execute the FLASK API you should execute with admin privileges the initialize.sh ( `sudo ./initialize.sh` ) file under the main folder. 
 In case the css and Js is not working properly please execute in the terminal the following commands:
  1. `docker exec -it bbf-gui-apis /bin/bash`
- 2. `npm install`
- 3. `gulp`
+ 2. `cd static`
+ 3. `npm install`
+ 4. `gulp`
 
 The swagger URL is the: i) private- [localhost/swagger] ii) public - [http://bbf-gui.ddns.net/swagger] .
 

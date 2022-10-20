@@ -1,3 +1,5 @@
+:no_entry: [DEPRECATED] Active at https://github.com/UniversityOfNicosia/KNOB-BBF-Web-Application
+
 <p align="center"><img src="https://github.com/UNIC-IFF/BBF-FLASK-API/blob/main/figs/bbf_api_logo.png" /></p>
 
 
